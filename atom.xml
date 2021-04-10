@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fly6022.fun/"/>
-  <updated>2021-03-27T15:17:04.556Z</updated>
+  <updated>2021-04-10T14:23:06.256Z</updated>
   <id>https://fly6022.fun/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>71 Days For Dream.</title>
+    <link href="https://fly6022.fun/posts/2021-04-10-01/"/>
+    <id>https://fly6022.fun/posts/2021-04-10-01/</id>
+    <published>2021-04-10T11:10:43.000Z</published>
+    <updated>2021-04-10T14:23:06.256Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天是2021年4月10日，距离2021中考还剩下71天，中考复习正在如火如荼地进行着……</p><a id="more"></a><p>学校一次模考已在一周前举行完毕，但我的成绩并不理想，年级名次相较于上学期期末考试也有所下滑（年级名次：99/585），备考的紧张情绪 + 模拟考试失利的焦虑感一并涌上心头。</p><p>但焦虑无用，依然道阻且长。</p><p>六月是盛夏的六月，既是汗水，亦是胜利。</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天是2021年4月10日，距离2021中考还剩下71天，中考复习正在如火如荼地进行着……&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Hexo 博客配置 Mathjax 来显示数学公式</title>
