@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-hans">
+
+<head>
+
+    <title>中考倒计时</title>
+    
+    <!-- Meta-Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   
+    <!--Style-CSS -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
+   
+    <!--Font-awesome-icons -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+   
+    <!--Google-fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="fly6022" type="application/atom+xml">
+</head>
+
+<body>
+
+    <section class="w3l-opening-soon">
+        <div class="opening-soon-info">
+            <div class="wrapper">
+                <div class="header">
+                    <div class="logo">
+                        <a class="brand-logo" href="index.html">fly6022</a>
+                    </div>
+                </div>
+                <div class="coming-block">
+                    <h1>中考倒计时</h1>
+                    <p class="parahny">2021中考加油！</p>
+                    <div class="countdown">
+                        <div class="countdown__days">
+                            <div class="number"></div>
+                            <span class>Days</span>
+                        </div>
+
+                        <div class="countdown__hours">
+                            <div class="number"></div>
+                            <span class>Hours</span>
+                        </div>
+
+                        <div class="countdown__minutes">
+                            <div class="number"></div>
+                            <span class>Minutes</span>
+                        </div>
+
+                        <div class="countdown__seconds">
+                            <div class="number"></div>
+                            <span class>Seconds</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="copyright-footer">
+                    <p>Copyright &copy; 2021 fly6022 All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    
+        <script>
+            (() => {
+                // Specify the deadline date
+                const deadlineDate = new Date('June 21, 2021 00:00:00').getTime();
+
+                // Cache all countdown boxes into consts
+                const countdownDays = document.querySelector('.countdown__days .number');
+                const countdownHours = document.querySelector('.countdown__hours .number');
+                const countdownMinutes = document.querySelector('.countdown__minutes .number');
+                const countdownSeconds = document.querySelector('.countdown__seconds .number');
+
+                // Update the count down every 1 second (1000 milliseconds)
+                setInterval(() => {
+                    // Get current date and time
+                    const currentDate = new Date().getTime();
+
+                    // Calculate the distance between current date and time and the deadline date and time
+                    const distance = deadlineDate - currentDate;
+
+                    // Calculations the data for remaining days, hours, minutes and seconds
+                    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                    // Insert the result data into individual countdown boxes
+                    countdownDays.innerHTML = days;
+                    countdownHours.innerHTML = hours;
+                    countdownMinutes.innerHTML = minutes;
+                    countdownSeconds.innerHTML = seconds;
+                }, 1000);
+            })();
+        </script>
+
+    </section>
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":112,"height":225},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

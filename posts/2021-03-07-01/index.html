@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+  
+<title>Ajax 同源策略限制问题的解决 - fly6022</title>
+<meta charset="UTF-8">
+<meta name="description" content="自己的感受·比道理重要，这里是fly6022的博客。">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+
+
+<link rel="shortcut icon" href="https://fly6022.fun/images/favicon.png" type="image/png" />
+<meta name="description" content="Ajax 同源策略限制问题的解决。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ajax 同源策略限制问题的解决">
+<meta property="og:url" content="https://fly6022.fun/posts/2021-03-07-01/index.html">
+<meta property="og:site_name" content="fly6022">
+<meta property="og:description" content="Ajax 同源策略限制问题的解决。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-03-07-01/01.jpg">
+<meta property="article:published_time" content="2021-03-07T01:29:22.000Z">
+<meta property="article:modified_time" content="2021-03-07T02:28:11.451Z">
+<meta property="article:author" content="fly6022">
+<meta property="article:tag" content="Javascript">
+<meta property="article:tag" content="Ajax">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fly6022.fun/images/posts/2021-03-07-01/01.jpg">
+<link rel="stylesheet" href="/css/style.css" crossorigin>
+<link rel="stylesheet" href="/css/tip.css" />
+
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+  <!--<link rel="stylesheet" href="/css/style.css?v=1618032388159">-->
+
+   
+<style>
+      .nexmoe-avatar img:hover {
+        -webkit-transform: rotateZ(360deg);
+        -moz-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+      }	
+</style>
+
+  
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="@fly6022">
+<meta name="twitter:title" content=" | " />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="" />
+
+<meta property="og:site_name" content="">
+<meta property="og:title" content=" | " />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh-cn" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>
+  LA.init({
+    id: 'JEOD145Z95thC4GS',
+    ck: 'JEOD145Z95thC4GS'
+  })
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="fly6022" type="application/atom+xml">
+</head>
+
+<body class="mdui-drawer-body-left">
+
+<script type="text/javascript" src="/js/mouse.js"></script>
+
+<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:999999;pointer-events:none;"></canvas>
+
+<meting-js style="position:absolute; z-index:99999" type="playlist" server="netease" id="6622801607" fixed="true"></meting-js>
+
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(/images/background/5.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="fly6022" class="mdui-btn mdui-btn-icon"><img src="/images/logo.jpg" alt="fly6022"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="fly6022">
+            <img src="/images/logo.jpg" alt="fly6022" alt="fly6022">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>27</div>
+        <div><span>分类</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于网站">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于网站
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/links.html" title="友情链接">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                友情链接
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/donate.html" title="请杯咖啡">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                请杯咖啡
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/djs/index.html" title="中考倒计时">
+            <i class="mdui-list-item-icon nexmoefont icon-time-circle-fill"></i>
+            <div class="mdui-list-item-content">
+                中考倒计时
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://www.baidu.com/search?q=site:fly6022.fun" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/191078710" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/fly6022" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="http://wpa.qq.com/msgrd?v=3&uin=2875752791&site=qq&menu=yes" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://www.zhihu.com/people/si-ceng-xiang-shi-92-30/" target="_blank" mdui-tooltip="{content: '知乎'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-zhihu"></i>
+        </a><a class="mdui-ripple" href="https://steamcommunity.com/profiles/76561198816493466/" target="_blank" mdui-tooltip="{content: 'Steam'}" style="color: rgb(14, 71, 161);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-steam"></i>
+        </a><a class="mdui-ripple" href="https://t.me/fly6022" target="_blank" mdui-tooltip="{content: 'Telegram'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-telegram"></i>
+        </a><a class="mdui-ripple" href="https://twitter.com/fly_6022" target="_blank" mdui-tooltip="{content: 'Twitter'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-twitter"></i>
+        </a><a class="mdui-ripple" href="/atom.xml" target="_blank" mdui-tooltip="{content: 'RSS'}" style="color: rgb(247, 132, 34);background-color: rgba(247, 132, 34, .1);">
+            <i class="nexmoefont icon-rss"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/信息汇总/">信息汇总</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/编程开发/">编程开发</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随便写写/">随便写写</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/ADB/" style="font-size: 10px;">ADB</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/FM/" style="font-size: 10px;">FM</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Mathjax/" style="font-size: 10px;">Mathjax</a> <a href="/tags/Minecraft/" style="font-size: 10px;">Minecraft</a> <a href="/tags/NodeMCU/" style="font-size: 10px;">NodeMCU</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rasberry-Pi/" style="font-size: 10px;">Rasberry Pi</a> <a href="/tags/Tracker/" style="font-size: 10px;">Tracker</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/web%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">web前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%AE%B6%E5%BA%AD%E5%AE%BD%E5%B8%A6/" style="font-size: 10px;">家庭宽带</a> <a href="/tags/%E6%97%A5%E5%81%8F%E9%A3%9F/" style="font-size: 10px;">日偏食</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 15px;">树莓派</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 15px;">爬虫</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">硬件编程</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" style="font-size: 15px;">编程开发</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">编程语言</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+    <div><a href="https://travellings.now.sh/" target="blank" title="开往-友链接力"><img src="https://travellings.now.sh/assets/logo.gif" alt="开往-友链接力" width="100"></a></div>
+    <br>
+    <div title="TrustAsia 安全签章" id="myssl_seal" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=fly6022.fun','TrustAsia 安全签章','width=100,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" style="text-align: center"><img src="https://sealres.trustasia.com/seal/img/1x/seal.png?domain=fly6022.fun" alt="TrustAsia 安全签章" style="width: 100px;height: auto; cursor: pointer"></div>
+        <br>&copy; 2021 fly6022<br>
+        由 <a href="http://hexo.io/" target="_blank">Hexo</a> 强力驱动<br>Theme:<a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank"> Nexmoe</a>
+      <br><a href="https://icp.gov.moe" target="_blank">萌ICP备 </a><a href="https://icp.gov.moe/?keyword=20206022" target="_blank"> 20206022号</a>
+    </div>
+</div>
+
+<!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" 
+          style="padding-bottom: 54.08%;"> 
+          <img data-src="/images/background/7.jpg" data-sizes="auto" alt="Ajax 同源策略限制问题的解决" class="lazyload">
+          <h1>Ajax 同源策略限制问题的解决</h1>
+      </div>
+  
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年03月07日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1,016 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/">编程开发</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Ajax/" rel="tag">Ajax</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/Javascript/" rel="tag">Javascript</a>
+    
+    
+  </div>
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#写在前面"><span class="toc-number">1.</span> <span class="toc-text">写在前面</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">2.</span> <span class="toc-text">解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JSONP"><span class="toc-number">2.1.</span> <span class="toc-text">JSONP</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本原理"><span class="toc-number">2.1.1.</span> <span class="toc-text">基本原理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CORS（跨域资源共享）"><span class="toc-number">2.2.</span> <span class="toc-text">CORS（跨域资源共享）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#基本原理（仅针对简单请求：HEAD、GET、POST）"><span class="toc-number">2.2.1.</span> <span class="toc-text">基本原理（仅针对简单请求：HEAD、GET、POST）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用"><span class="toc-number">3.</span> <span class="toc-text">引用</span></a></li></ol>
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    <p>Ajax 同源策略限制问题的解决。</p>
+<a id="more"></a>
+<p><img data-sizes="auto" data-src="/images/posts/2021-03-07-01/01.jpg" alt="01" class="lazyload"></p>
+<h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>首先，我们要了解，何为『同源策略』。</p>
+<blockquote>
+<p><strong>同源策略</strong>是一个重要的<strong>安全策略</strong>，它用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。</p>
+<p>如果两个 URL 的 protocol、port (如果有指定的话)和 host 都相同的话，则这两个 URL 是<em>同源</em>。这个方案也被称为“协议/主机/端口元组”，或者直接是 “元组”。（“元组” 是指一组项目构成的整体，双重/三重/四重/五重/等的通用形式）。</p>
+<p align="right">—— <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank">MDN官方文档</a></p>
+
+</blockquote>
+<p>例如：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>结果</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://a.com/1.html" target="_blank" rel="noopener">http://a.com/1.html</a></td>
+<td>同源</td>
+<td>只有路径不同</td>
+</tr>
+<tr>
+<td><a href="http://a.com/src/2.html" target="_blank" rel="noopener">http://a.com/src/2.html</a></td>
+<td>同源</td>
+<td>只有路径不同</td>
+</tr>
+<tr>
+<td><a href="https://a.com/3.html" target="_blank" rel="noopener">https://a.com/3.html</a></td>
+<td>失败</td>
+<td>协议不同</td>
+</tr>
+<tr>
+<td><a href="http://a.com:81/4.html" target="_blank" rel="noopener">http://a.com:81/4.html</a></td>
+<td>失败</td>
+<td>端口不同</td>
+<td>(<a href="http://默认端口是80" target="_blank" rel="noopener">http://默认端口是80</a>)</td>
+</tr>
+<tr>
+<td><a href="http://b.com/1.html" target="_blank" rel="noopener">http://b.com/1.html</a></td>
+<td>失败</td>
+<td>主机不同</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>总结一下，满足<em>同源</em>的条件：</p>
+<ul>
+<li>主机相同</li>
+<li>端口相同</li>
+<li>协议相同</li>
+</ul>
+<p>三者缺一不可。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>我们已经了解了『同源策略』的基本概念，虽然说，它是一种浏览器主动的安全策略，但是，却时常给我们的前端开发造成了困难。</p>
+<p>那么，我们如何解决『同源策略』给我们带来的不便呢？</p>
+<p>我比较推荐的方法有两种。</p>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>JSONP 是利用html标签不受『同源策略』限制的影响，从而达到解决『同源策略』限制的目的。通俗来讲，叫“曲线救国”。</p>
+<p>但是，这种方法是有一定的局限性的：它仅支持GET方式请求数据。</p>
+<p>这种方法的好处是：</p>
+<ul>
+<li>比较简单</li>
+<li>兼容性较好（较老版本的浏览器也支持）</li>
+<li>不必对服务器端进行配置（或配置相对较少）</li>
+</ul>
+<h4 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h4><p>在网页添加一个<code>&lt;script&gt;</code>元素，再向服务器请求JSON数据。服务器收到请求后，将数据存放在一个指定的回调函数<code>callback()</code>里。</p>
+<h3 id="CORS（跨域资源共享）"><a href="#CORS（跨域资源共享）" class="headerlink" title="CORS（跨域资源共享）"></a>CORS（跨域资源共享）</h3><p>这种方法允许浏览器向跨源服务器发出<code>XMLHttpRequest</code>请求，从而克服了同源策略的限制。</p>
+<p>好处是：</p>
+<ul>
+<li>较方便配置</li>
+<li>兼容所有请求方式</li>
+</ul>
+<p>局限性是：</p>
+<ul>
+<li>较老版本的浏览器可能不支持</li>
+<li>需要在服务器端配置</li>
+</ul>
+<h4 id="基本原理（仅针对简单请求：HEAD、GET、POST）"><a href="#基本原理（仅针对简单请求：HEAD、GET、POST）" class="headerlink" title="基本原理（仅针对简单请求：HEAD、GET、POST）"></a>基本原理（仅针对简单请求：HEAD、GET、POST）</h4><p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个<code>Origin</code>字段。</p>
+<p>下面是一个例子，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个<code>Origin</code>字段。</p>
+<pre><code>GET /cors HTTP/1.1
+Origin: http://api.bob.com
+Host: api.alice.com
+Accept-Language: en-US
+Connection: keep-alive
+User-Agent: Mozilla/5.0...
+</code></pre><p>上面的头信息中，<code>Origin</code>字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。</p>
+<p>如果<code>Origin</code>指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。浏览器发现，这个回应的头信息没有包含<code>Access-Control-Allow-Origin</code>字段（详见下文），就知道出错了，从而抛出一个错误，被<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。</p>
+<p>如果<code>Origin</code>指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。</p>
+<pre><code>Access-Control-Allow-Origin: http://api.bob.com
+Access-Control-Allow-Credentials: true
+Access-Control-Expose-Headers: FooBar
+Content-Type: text/html; charset=utf-8
+</code></pre><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>【1】MDN官方文档（ <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a> ）- Author(s): Jesse Ruderman<br>【2】《跨域资源共享 CORS 详解》[2016-4-12]（ <a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/cors.html</a> ） - 作者：阮一峰 - 许可证：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</p>
+<p>— END</p>
+<p><ins class="adsbygoogle"
+  style="display:block"
+  data-ad-client="ca-pub-6839568581522290"
+  data-ad-slot="4087099451"
+  data-ad-format="auto"
+  data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>Author：</strong>fly6022<br>
+<strong>Link：</strong><a href="https://fly6022.fun/posts/2021-03-07-01/" title="https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-03-07-01&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-03-07-01&#x2F;</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0) </a> 协议进行许可，转载请注明原出处。
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '15111f41fc2a43bae55d',
+        clientSecret: 'bd56a6ae6546a0fab467366fa5c14cfed4fd106b',
+        id: window.location.pathname,
+        repo: 'fly6022.github.io',
+        owner: 'fly6022',
+        admin: 'fly6022'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="/js/app-2.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1618032388159"></script>-->
+
+
+
+
+  
+
+
+
+
+    <!-- 51.La Analytics -->
+<div hidden>
+  <script type="text/javascript" src="https://js.users.51.la/20230665.js"></script>
+</div>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":112,"height":225},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

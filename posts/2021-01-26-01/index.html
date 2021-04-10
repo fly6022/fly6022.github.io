@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+  
+<title>树莓派搭建Minecraft服务器 - fly6022</title>
+<meta charset="UTF-8">
+<meta name="description" content="自己的感受·比道理重要，这里是fly6022的博客。">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+
+
+<link rel="shortcut icon" href="https://fly6022.fun/images/favicon.png" type="image/png" />
+<meta name="description" content="树莓派搭建Minecraft服务器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="树莓派搭建Minecraft服务器">
+<meta property="og:url" content="https://fly6022.fun/posts/2021-01-26-01/index.html">
+<meta property="og:site_name" content="fly6022">
+<meta property="og:description" content="树莓派搭建Minecraft服务器">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/01.png">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/02.png">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/03.png">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/04.png">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/05.png">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/06.png">
+<meta property="og:image" content="https://fly6022.fun/images/posts/2021-01-26-01/07.png">
+<meta property="article:published_time" content="2021-01-26T10:58:13.000Z">
+<meta property="article:modified_time" content="2021-03-27T15:18:40.624Z">
+<meta property="article:author" content="fly6022">
+<meta property="article:tag" content="Minecraft">
+<meta property="article:tag" content="服务器">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://fly6022.fun/images/posts/2021-01-26-01/01.png">
+<link rel="stylesheet" href="/css/style.css" crossorigin>
+<link rel="stylesheet" href="/css/tip.css" />
+
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+  <!--<link rel="stylesheet" href="/css/style.css?v=1618032388178">-->
+
+   
+<style>
+      .nexmoe-avatar img:hover {
+        -webkit-transform: rotateZ(360deg);
+        -moz-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+      }	
+</style>
+
+  
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="@fly6022">
+<meta name="twitter:title" content=" | " />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="" />
+
+<meta property="og:site_name" content="">
+<meta property="og:title" content=" | " />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh-cn" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>
+  LA.init({
+    id: 'JEOD145Z95thC4GS',
+    ck: 'JEOD145Z95thC4GS'
+  })
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="fly6022" type="application/atom+xml">
+</head>
+
+<body class="mdui-drawer-body-left">
+
+<script type="text/javascript" src="/js/mouse.js"></script>
+
+<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:999999;pointer-events:none;"></canvas>
+
+<meting-js style="position:absolute; z-index:99999" type="playlist" server="netease" id="6622801607" fixed="true"></meting-js>
+
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(/images/background/5.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="fly6022" class="mdui-btn mdui-btn-icon"><img src="/images/logo.jpg" alt="fly6022"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="fly6022">
+            <img src="/images/logo.jpg" alt="fly6022" alt="fly6022">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>27</div>
+        <div><span>分类</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于网站">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于网站
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/links.html" title="友情链接">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                友情链接
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/donate.html" title="请杯咖啡">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                请杯咖啡
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/djs/index.html" title="中考倒计时">
+            <i class="mdui-list-item-icon nexmoefont icon-time-circle-fill"></i>
+            <div class="mdui-list-item-content">
+                中考倒计时
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://www.baidu.com/search?q=site:fly6022.fun" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/191078710" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/fly6022" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="http://wpa.qq.com/msgrd?v=3&uin=2875752791&site=qq&menu=yes" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://www.zhihu.com/people/si-ceng-xiang-shi-92-30/" target="_blank" mdui-tooltip="{content: '知乎'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-zhihu"></i>
+        </a><a class="mdui-ripple" href="https://steamcommunity.com/profiles/76561198816493466/" target="_blank" mdui-tooltip="{content: 'Steam'}" style="color: rgb(14, 71, 161);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-steam"></i>
+        </a><a class="mdui-ripple" href="https://t.me/fly6022" target="_blank" mdui-tooltip="{content: 'Telegram'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-telegram"></i>
+        </a><a class="mdui-ripple" href="https://twitter.com/fly_6022" target="_blank" mdui-tooltip="{content: 'Twitter'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-twitter"></i>
+        </a><a class="mdui-ripple" href="/atom.xml" target="_blank" mdui-tooltip="{content: 'RSS'}" style="color: rgb(247, 132, 34);background-color: rgba(247, 132, 34, .1);">
+            <i class="nexmoefont icon-rss"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/信息汇总/">信息汇总</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/编程开发/">编程开发</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随便写写/">随便写写</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/ADB/" style="font-size: 10px;">ADB</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/FM/" style="font-size: 10px;">FM</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Mathjax/" style="font-size: 10px;">Mathjax</a> <a href="/tags/Minecraft/" style="font-size: 10px;">Minecraft</a> <a href="/tags/NodeMCU/" style="font-size: 10px;">NodeMCU</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rasberry-Pi/" style="font-size: 10px;">Rasberry Pi</a> <a href="/tags/Tracker/" style="font-size: 10px;">Tracker</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/web%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">web前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%AE%B6%E5%BA%AD%E5%AE%BD%E5%B8%A6/" style="font-size: 10px;">家庭宽带</a> <a href="/tags/%E6%97%A5%E5%81%8F%E9%A3%9F/" style="font-size: 10px;">日偏食</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 15px;">树莓派</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 15px;">爬虫</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">硬件编程</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" style="font-size: 15px;">编程开发</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">编程语言</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+    <div><a href="https://travellings.now.sh/" target="blank" title="开往-友链接力"><img src="https://travellings.now.sh/assets/logo.gif" alt="开往-友链接力" width="100"></a></div>
+    <br>
+    <div title="TrustAsia 安全签章" id="myssl_seal" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=fly6022.fun','TrustAsia 安全签章','width=100,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" style="text-align: center"><img src="https://sealres.trustasia.com/seal/img/1x/seal.png?domain=fly6022.fun" alt="TrustAsia 安全签章" style="width: 100px;height: auto; cursor: pointer"></div>
+        <br>&copy; 2021 fly6022<br>
+        由 <a href="http://hexo.io/" target="_blank">Hexo</a> 强力驱动<br>Theme:<a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank"> Nexmoe</a>
+      <br><a href="https://icp.gov.moe" target="_blank">萌ICP备 </a><a href="https://icp.gov.moe/?keyword=20206022" target="_blank"> 20206022号</a>
+    </div>
+</div>
+
+<!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" 
+          style="padding-bottom: 56.25%;"> 
+          <img data-src="/images/background/97.jpg" data-sizes="auto" alt="树莓派搭建Minecraft服务器" class="lazyload">
+          <h1>树莓派搭建Minecraft服务器</h1>
+      </div>
+  
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年01月26日</a>
+    <a><i class="nexmoefont icon-areachart"></i>1,266 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 5 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/">随便写写</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Minecraft/" rel="tag">Minecraft</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" rel="tag">服务器</a>
+    
+    
+  </div>
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#本文章适合的人-情况"><span class="toc-number">1.</span> <span class="toc-text">本文章适合的人&#x2F;情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#注意事项"><span class="toc-number">2.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#你需要准备"><span class="toc-number">3.</span> <span class="toc-text">你需要准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始搭建"><span class="toc-number">4.</span> <span class="toc-text">开始搭建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#下载开服核心"><span class="toc-number">4.1.</span> <span class="toc-text">下载开服核心</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置服务器环境"><span class="toc-number">4.2.</span> <span class="toc-text">配置服务器环境</span></a></li></ol></li></ol>
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    <p>树莓派搭建Minecraft服务器</p>
+<a id="more"></a>
+<h2 id="本文章适合的人-情况"><a href="#本文章适合的人-情况" class="headerlink" title="本文章适合的人/情况"></a>本文章适合的人/情况</h2><ul>
+<li>希望搭建一个属于自己的同学、基友服务器</li>
+<li>对服务器配置要求不太高的人</li>
+<li>有一定技术基础的人</li>
+<li>希望开一个7*24小时服务器却又担心电费问题的人</li>
+<li>平时玩游戏时间不多，租用服务器觉得不划算的人</li>
+<li>有以上情况且手头正好有一台闲置的树莓派的人</li>
+</ul>
+<h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol>
+<li>树莓派的配置不高且高负荷工作时发热较严重，推荐搭配散热片及散热风扇来使用。</li>
+<li>树莓派的稳定性较差，仅适用于搭建个人小型服务器，不要跑图、设置在线人数过多。</li>
+<li>本文章需要有一定的技术基础，小白请先了解相关知识。</li>
+<li>本教程一些步骤不单单局限于树莓派，可拓展至大部分安装有Linux系统的硬件设备。</li>
+</ol>
+<h2 id="你需要准备"><a href="#你需要准备" class="headerlink" title="你需要准备"></a>你需要准备</h2><ul>
+<li>安装好系统（最好是图形界面，如果你对命令行界面也很熟悉的话，那么无所谓）且可以联网的树莓派</li>
+<li>公网映射软件（如：<a href="https://www.natfrp.com/" target="_blank" rel="noopener">Sakura FRP</a>等），局域网开服可略过。</li>
+<li>一台能远程控制树莓派的手机/电脑</li>
+</ul>
+<h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="下载开服核心"><a href="#下载开服核心" class="headerlink" title="下载开服核心"></a>下载开服核心</h3><p>首先，搭建Minecraft服务器需要一个开服核心，这是搭建服务器的必由之路。</p>
+<p>这里，我推荐使用Spigot（水龙头）核心，原因是这个核心比较稳定，并且适合配置较低的设备。你也可以使用其它核心，比如bukkit。</p>
+<p>访问<a href="https://getbukkit.org/download/spigot" target="_blank" rel="noopener">Getbukkit</a>，下载你需要版本的核心。</p>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/01.png" alt="01" class="lazyload"></p>
+<p>核心是一个<code>.jar</code>文件,此处我使用的核心适用于Minecraft Java版 1.15.2。</p>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/02.png" alt="02" class="lazyload"></p>
+<h3 id="配置服务器环境"><a href="#配置服务器环境" class="headerlink" title="配置服务器环境"></a>配置服务器环境</h3><p>在存有核心文件的目录新建一个<code>run.sh</code>文件。</p>
+<p>打开，在编辑器输入以下内容：</p>
+<pre><code>sudo java -Xms768M -Xmx2048M -jar /root/Desktop/Minecraft_server/Server_3/[核心名称].jar nogui
+</code></pre><p>其中，<strong>文件路径根据具体情况而定</strong>。</p>
+<blockquote>
+<p>sudo：以管理员身份执行<br>-Xms768M：程序运行时最小内存为768M<br>-Xmx2048M：程序运行时最大内存为2048M<br>nogui：即No GUI，无图形界面，可节省内存</p>
+</blockquote>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/03.png" alt="03" class="lazyload"></p>
+<p>之后保存文件。</p>
+<p>在终端输入命令：</p>
+<pre><code>cd /root/Desktop/Minecraft_server/Server_3/
+
+sh run.sh
+</code></pre><p>回车。</p>
+<p>命令执行结束，会发现文件夹中多了几个文件。</p>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/04.png" alt="04" class="lazyload"></p>
+<p>打开<code>eula.txt</code>，将<code>eula</code>的参数由<code>false</code>改为<code>true</code>。</p>
+<p>保存。</p>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/05.png" alt="05" class="lazyload"></p>
+<p>接着，打开文件夹中的<code>server.properties</code>文件，这是服务器的配置文件。</p>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/06.png" alt="06" class="lazyload"></p>
+<p>参考<a href="https://minecraft-zh.gamepedia.com/Server.properties" target="_blank" rel="noopener">Minecraft Wiki</a>.以下是我整理出来的各参数的实际含义：</p>
+<pre><code>#Minecraft server properties
+#Wed Jan 27 16:46:05 CST 2021
+broadcast-rcon-to-ops=true  # 广播RCON信息给OP
+view-distance=10  # 视野距离
+max-build-height=256  # 建筑最大高度，最大值65534
+server-ip=  # 服务器IP（可留空或填localhost）
+level-seed=  # 地图种子
+rcon.port=25575  # 可忽略，RCON远程连接协议端口
+gamemode=survival  # 游戏模式
+server-port=25565 # 游戏端口，根据个人情况设置，可保持默认值25565
+allow-nether=true  # 开放地狱
+enable-command-block=false  # 开启命令方块
+enable-rcon=false  # 开启RCON功能，建议不开启
+enable-query=false  # 允许使用 GameSpy4 协议的服务器监听器
+op-permission-level=4  # OP等级，最大值为4，等同于控制台权限
+prevent-proxy-connections=false  # 检测异地登陆并阻止进入游戏
+generator-settings=  # 生成器设置
+resource-pack=  # 服务器使用资源包设置
+level-name=world  # 地图名称
+rcon.password=  # RCON密码，若不开启RCON功能可忽略
+player-idle-timeout=0  # 挂机检测，0表示不开启，单位为分钟
+motd=A Minecraft Server  # 服务器标题，要求使用Unicode格式文字
+query.port=25565  # Query端口，若不开启Query可忽略
+debug=false # 调试模式
+force-gamemode=false  # 强制游戏模式
+hardcore=false  # 极限生存
+white-list=false  # 白名单
+broadcast-console-to-ops=true  # 广播控制台信息给OP
+pvp=true  # 玩家攻击
+spawn-npcs=true  # 生成村民
+generate-structures=true  # 生成建筑
+spawn-animals=true  # 生成动物
+snooper-enabled=true  # 允许采集服务器信息
+difficulty=easy  # 强制难度选项
+function-permission-level=2  # 默认权限等级
+network-compression-threshold=256  # 数据包压缩大小
+level-type=default  # 种子类型
+spawn-monsters=true  # 生成怪物
+max-tick-time=60000  # 服务器最大崩溃等待响应时间，单位毫秒
+enforce-whitelist=false  # 强制白名单
+use-native-transport=true  # 针对Linux的优化
+max-players=20  # 最大玩家数量
+resource-pack-sha1=  # 资源包验证，使用哈希加密SHA1
+spawn-protection=16  # 出生点保护
+online-mode=true  # 在线模式（正版模式）
+allow-flight=false  # 允许飞行
+max-world-size=29999984  # 世界生成上限
+</code></pre><p>配置并保存后，再次运行核心。</p>
+<pre><code>sh run.sh
+</code></pre><p>稍等片刻。</p>
+<p><img data-sizes="auto" data-src="/images/posts/2021-01-26-01/07.png" alt="07" class="lazyload"></p>
+<p>等到命令行出现<code>Done</code>时，即表示我们的服务器在本地已经运行成功了。</p>
+<p>不过，想要邀请你的好朋友一起来玩服务器，还差最后一步，就是-配置公网映射，可以使用Sakura FRP，本教程不再赘述。</p>
+<p><ins class="adsbygoogle"
+  style="display:block"
+  data-ad-client="ca-pub-6839568581522290"
+  data-ad-slot="4087099451"
+  data-ad-format="auto"
+  data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>Author：</strong>fly6022<br>
+<strong>Link：</strong><a href="https://fly6022.fun/posts/2021-01-26-01/" title="https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-01-26-01&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-01-26-01&#x2F;</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0) </a> 协议进行许可，转载请注明原出处。
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '15111f41fc2a43bae55d',
+        clientSecret: 'bd56a6ae6546a0fab467366fa5c14cfed4fd106b',
+        id: window.location.pathname,
+        repo: 'fly6022.github.io',
+        owner: 'fly6022',
+        admin: 'fly6022'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="/js/app-2.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1618032388179"></script>-->
+
+
+
+
+  
+
+
+
+
+    <!-- 51.La Analytics -->
+<div hidden>
+  <script type="text/javascript" src="https://js.users.51.la/20230665.js"></script>
+</div>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":112,"height":225},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

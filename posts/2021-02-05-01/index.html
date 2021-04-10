@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+
+<html lang="zh-cn">
+
+<head>
+  
+<title>Tracker 服务器 / DNS 服务器汇总 - fly6022</title>
+<meta charset="UTF-8">
+<meta name="description" content="自己的感受·比道理重要，这里是fly6022的博客。">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
+
+
+
+<link rel="shortcut icon" href="https://fly6022.fun/images/favicon.png" type="image/png" />
+<meta name="description" content="Tracker 服务器 &#x2F; DNS服务器汇总">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Tracker 服务器 &#x2F; DNS 服务器汇总">
+<meta property="og:url" content="https://fly6022.fun/posts/2021-02-05-01/index.html">
+<meta property="og:site_name" content="fly6022">
+<meta property="og:description" content="Tracker 服务器 &#x2F; DNS服务器汇总">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-02-05T06:05:57.000Z">
+<meta property="article:modified_time" content="2021-02-05T06:44:12.929Z">
+<meta property="article:author" content="fly6022">
+<meta property="article:tag" content="Tracker">
+<meta property="article:tag" content="DNS">
+<meta name="twitter:card" content="summary">
+<link rel="stylesheet" href="/css/style.css" crossorigin>
+<link rel="stylesheet" href="/css/tip.css" />
+
+<link rel="stylesheet" href="/css/iconfont.css">
+
+
+  <!--<link rel="stylesheet" href="/css/style.css?v=1618032388168">-->
+
+   
+<style>
+      .nexmoe-avatar img:hover {
+        -webkit-transform: rotateZ(360deg);
+        -moz-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+      }	
+</style>
+
+  
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="" />
+<meta name="twitter:creator" content="@fly6022">
+<meta name="twitter:title" content=" | " />
+<meta name="twitter:description" content="" />
+<meta name="twitter:image" content="" />
+
+<meta property="og:site_name" content="">
+<meta property="og:title" content=" | " />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="zh-cn" />
+<meta property="og:description" content="" />
+<meta property="og:image" content="" />
+
+<!-- require APlayer -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/aplayer@1.10.1/dist/APlayer.min.js"></script>
+  <!-- require MetingJS -->
+  <script src="https://cdn.jsdelivr.net/npm/meting@2.0.1/dist/Meting.min.js"></script>
+  <!-- Google Ads -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script charset="UTF-8" id="LA_COLLECT" src="//sdk.51.la/js-sdk-pro.min.js"></script>
+  <script>
+  LA.init({
+    id: 'JEOD145Z95thC4GS',
+    ck: 'JEOD145Z95thC4GS'
+  })
+  </script>
+
+<meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="fly6022" type="application/atom+xml">
+</head>
+
+<body class="mdui-drawer-body-left">
+
+<script type="text/javascript" src="/js/mouse.js"></script>
+
+<canvas class="fireworks" style="position:fixed;left:0;top:0;z-index:999999;pointer-events:none;"></canvas>
+
+<meting-js style="position:absolute; z-index:99999" type="playlist" server="netease" id="6622801607" fixed="true"></meting-js>
+
+  
+  <div id="nexmoe-background">
+    <div class="nexmoe-bg" style="background-image: url(/images/background/5.jpg)"></div>
+    <div class="mdui-appbar mdui-shadow-0">
+      <div class="mdui-toolbar">
+        <a mdui-drawer="{target: '#drawer', swipe: true}" class="mdui-btn mdui-btn-icon mdui-ripple"><i class="mdui-icon nexmoefont icon-menu"></i></a>
+        <div class="mdui-toolbar-spacer"></div>
+        <!--<a href="javascript:;" class="mdui-btn mdui-btn-icon"><i class="mdui-icon material-icons">search</i></a>-->
+        <a href="/" title="fly6022" class="mdui-btn mdui-btn-icon"><img src="/images/logo.jpg" alt="fly6022"></a>
+       </div>
+    </div>
+  </div>
+  <div id="nexmoe-header">
+      <div class="nexmoe-drawer mdui-drawer" id="drawer">
+    <div class="nexmoe-avatar mdui-ripple">
+        <a href="/" title="fly6022">
+            <img src="/images/logo.jpg" alt="fly6022" alt="fly6022">
+        </a>
+    </div>
+    <div class="nexmoe-count">
+        <div><span>文章</span>17</div>
+        <div><span>标签</span>27</div>
+        <div><span>分类</span>3</div>
+    </div>
+    <div class="nexmoe-list mdui-list" mdui-collapse="{accordion: true}">
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/" title="回到首页">
+            <i class="mdui-list-item-icon nexmoefont icon-home"></i>
+            <div class="mdui-list-item-content">
+                回到首页
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/archives" title="文章归档">
+            <i class="mdui-list-item-icon nexmoefont icon-container"></i>
+            <div class="mdui-list-item-content">
+                文章归档
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/about.html" title="关于网站">
+            <i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+            <div class="mdui-list-item-content">
+                关于网站
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/links.html" title="友情链接">
+            <i class="mdui-list-item-icon nexmoefont icon-unorderedlist"></i>
+            <div class="mdui-list-item-content">
+                友情链接
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/donate.html" title="请杯咖啡">
+            <i class="mdui-list-item-icon nexmoefont icon-coffee"></i>
+            <div class="mdui-list-item-content">
+                请杯咖啡
+            </div>
+        </a>
+        
+        <a class="nexmoe-list-item mdui-list-item mdui-ripple" href="/djs/index.html" title="中考倒计时">
+            <i class="mdui-list-item-icon nexmoefont icon-time-circle-fill"></i>
+            <div class="mdui-list-item-content">
+                中考倒计时
+            </div>
+        </a>
+        
+    </div>
+    <aside id="nexmoe-sidebar">
+  
+  <div class="nexmoe-widget-wrap">
+    <div class="nexmoe-widget nexmoe-search">
+        <form id="search_form" action_e="https://www.baidu.com/search?q=site:fly6022.fun" onsubmit="return search();">
+            <label><input id="search_value" name="q" type="search" placeholder="搜索"></label>
+        </form>
+    </div>
+</div>
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">社交按钮</h3>
+    <div class="nexmoe-widget nexmoe-social">
+        <a class="mdui-ripple" href="https://space.bilibili.com/191078710" target="_blank" mdui-tooltip="{content: '哔哩哔哩'}" style="color: rgb(231, 106, 141);background-color: rgba(231, 106, 141, .15);">
+            <i class="nexmoefont icon-bilibili"></i>
+        </a><a class="mdui-ripple" href="https://github.com/fly6022" target="_blank" mdui-tooltip="{content: 'GitHub'}" style="color: rgb(25, 23, 23);background-color: rgba(25, 23, 23, .15);">
+            <i class="nexmoefont icon-github"></i>
+        </a><a class="mdui-ripple" href="http://wpa.qq.com/msgrd?v=3&uin=2875752791&site=qq&menu=yes" target="_blank" mdui-tooltip="{content: 'QQ'}" style="color: rgb(249, 174, 8);background-color: rgba(249, 174, 8, .1);">
+            <i class="nexmoefont icon-QQ"></i>
+        </a><a class="mdui-ripple" href="https://www.zhihu.com/people/si-ceng-xiang-shi-92-30/" target="_blank" mdui-tooltip="{content: '知乎'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-zhihu"></i>
+        </a><a class="mdui-ripple" href="https://steamcommunity.com/profiles/76561198816493466/" target="_blank" mdui-tooltip="{content: 'Steam'}" style="color: rgb(14, 71, 161);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-steam"></i>
+        </a><a class="mdui-ripple" href="https://t.me/fly6022" target="_blank" mdui-tooltip="{content: 'Telegram'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-telegram"></i>
+        </a><a class="mdui-ripple" href="https://twitter.com/fly_6022" target="_blank" mdui-tooltip="{content: 'Twitter'}" style="color: rgb(30, 136, 229);background-color: rgba(30, 136, 229, .1);">
+            <i class="nexmoefont icon-twitter"></i>
+        </a><a class="mdui-ripple" href="/atom.xml" target="_blank" mdui-tooltip="{content: 'RSS'}" style="color: rgb(247, 132, 34);background-color: rgba(247, 132, 34, .1);">
+            <i class="nexmoefont icon-rss"></i>
+        </a>
+    </div>
+</div>
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章分类</h3>
+    <div class="nexmoe-widget">
+
+      <ul class="category-list">
+
+        
+
+
+        
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/信息汇总/">信息汇总</a>
+          <span class="category-list-count">1</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/编程开发/">编程开发</a>
+          <span class="category-list-count">9</span>
+        </li>
+
+        
+
+        <li class="category-list-item">
+          <a class="category-list-link" href="/categories/随便写写/">随便写写</a>
+          <span class="category-list-count">7</span>
+        </li>
+
+        
+      </ul>
+
+    </div>
+  </div>
+
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">标签云</h3>
+    <div id="randomtagcloud" class="nexmoe-widget tagcloud">
+      <a href="/tags/ADB/" style="font-size: 10px;">ADB</a> <a href="/tags/Ajax/" style="font-size: 10px;">Ajax</a> <a href="/tags/Android/" style="font-size: 10px;">Android</a> <a href="/tags/DNS/" style="font-size: 10px;">DNS</a> <a href="/tags/ESP8266/" style="font-size: 10px;">ESP8266</a> <a href="/tags/FM/" style="font-size: 10px;">FM</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/IPv6/" style="font-size: 10px;">IPv6</a> <a href="/tags/Javascript/" style="font-size: 15px;">Javascript</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Mathjax/" style="font-size: 10px;">Mathjax</a> <a href="/tags/Minecraft/" style="font-size: 10px;">Minecraft</a> <a href="/tags/NodeMCU/" style="font-size: 10px;">NodeMCU</a> <a href="/tags/Python/" style="font-size: 20px;">Python</a> <a href="/tags/Rasberry-Pi/" style="font-size: 10px;">Rasberry Pi</a> <a href="/tags/Tracker/" style="font-size: 10px;">Tracker</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/web%E5%89%8D%E7%AB%AF/" style="font-size: 10px;">web前端</a> <a href="/tags/%E5%8D%9A%E5%AE%A2/" style="font-size: 10px;">博客</a> <a href="/tags/%E5%AE%B6%E5%BA%AD%E5%AE%BD%E5%B8%A6/" style="font-size: 10px;">家庭宽带</a> <a href="/tags/%E6%97%A5%E5%81%8F%E9%A3%9F/" style="font-size: 10px;">日偏食</a> <a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 10px;">服务器</a> <a href="/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/" style="font-size: 15px;">树莓派</a> <a href="/tags/%E7%88%AC%E8%99%AB/" style="font-size: 15px;">爬虫</a> <a href="/tags/%E7%A1%AC%E4%BB%B6%E7%BC%96%E7%A8%8B/" style="font-size: 10px;">硬件编程</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/" style="font-size: 15px;">编程开发</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 15px;">编程语言</a>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="nexmoe-widget-wrap">
+    <h3 class="nexmoe-widget-title">文章归档</h3>
+    <div class="nexmoe-widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/02/">二月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">一月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/12/">十二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/11/">十一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">八月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+</aside>
+    <div class="nexmoe-copyright">
+    <div><a href="https://travellings.now.sh/" target="blank" title="开往-友链接力"><img src="https://travellings.now.sh/assets/logo.gif" alt="开往-友链接力" width="100"></a></div>
+    <br>
+    <div title="TrustAsia 安全签章" id="myssl_seal" onclick="window.open('https://seal.trustasia.com/seal/detail?domain=fly6022.fun','TrustAsia 安全签章','width=100,top=0,right=0,toolbar=no,menubar=no,scrollbars=no,resizable=no,location=no,status=no')" style="text-align: center"><img src="https://sealres.trustasia.com/seal/img/1x/seal.png?domain=fly6022.fun" alt="TrustAsia 安全签章" style="width: 100px;height: auto; cursor: pointer"></div>
+        <br>&copy; 2021 fly6022<br>
+        由 <a href="http://hexo.io/" target="_blank">Hexo</a> 强力驱动<br>Theme:<a href="https://nexmoe.com/hexo-theme-nexmoe.html" target="_blank"> Nexmoe</a>
+      <br><a href="https://icp.gov.moe" target="_blank">萌ICP备 </a><a href="https://icp.gov.moe/?keyword=20206022" target="_blank"> 20206022号</a>
+    </div>
+</div>
+
+<!-- .nexmoe-drawer -->
+  </div>
+  <div id="nexmoe-content">
+    <div class="nexmoe-primary">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" 
+          style="padding-bottom: 37.5%;"> 
+          <img data-src="/images/background/79.jpg" data-sizes="auto" alt="Tracker 服务器 / DNS 服务器汇总" class="lazyload">
+          <h1>Tracker 服务器 / DNS 服务器汇总</h1>
+      </div>
+  
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年02月05日</a>
+    <a><i class="nexmoefont icon-areachart"></i>3,066 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 18 分钟</a>
+    
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB/">信息汇总</a>
+    
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/DNS/" rel="tag">DNS</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/Tracker/" rel="tag">Tracker</a>
+    
+    
+  </div>
+
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tracker-服务器汇总"><span class="toc-number">1.</span> <span class="toc-text">Tracker 服务器汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv4-DNS服务器汇总"><span class="toc-number">2.</span> <span class="toc-text">IPv4 DNS服务器汇总</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#IPv6-DNS-服务器"><span class="toc-number">3.</span> <span class="toc-text">IPv6 DNS 服务器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#公共-DNS"><span class="toc-number">3.1.</span> <span class="toc-text">公共 DNS</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#教育网-DNS"><span class="toc-number">3.2.</span> <span class="toc-text">教育网 DNS</span></a></li></ol></li></ol>
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    <p>Tracker 服务器 / DNS服务器汇总</p>
+<a id="more"></a>
+<div class="danger custom-block">
+<p>本页面中内容收集自网络，时效性可能不强，仅供参考</p>
+</div>
+
+<h2 id="Tracker-服务器汇总"><a href="#Tracker-服务器汇总" class="headerlink" title="Tracker 服务器汇总"></a>Tracker 服务器汇总</h2><details>
+
+```markdown
+https://torrent.ubuntu.com/announce
+
+https://ipv6.torrent.ubuntu.com/announce
+
+http://milliontorrent.pl/announce.php
+
+udp://47.97.100.153:6969/announce
+
+udp://ns-1.x-fins.com:6969/announce
+
+http://bt.3dmgame.com:2710/announce
+
+http://bt.ali213.net:8080/announce
+
+http://tracker.ali213.net:8080/announce
+
+http://220.173.37.33:6969/announce
+
+udp://tracker.skyts.net:6969/announce
+
+ws://tracker.btsync.cf:6969/announce
+
+udp://qg.lorzl.gq:6969/announce
+
+udp://tracker.btsync.gq:233/announce
+
+https://torrents.linuxmint.com:443/announce.php
+
+http://tracker1.bt.moack.co.kr:80/announce
+
+http://156.234.201.18:80/announce
+
+udp://185.8.156.2:6969/announce
+
+udp://engplus.ru:6969/announce
+
+udp://tracker.filemail.com:6969/announce
+
+http://60-fps.org:80/bt/announce.php
+
+http://tracker.tntvillage.scambioetico.org:2710/announce
+
+udp://134.209.1.127:6969/announce
+
+http://www.xwt-classics.net/announce.php
+
+https://tracker.nitrix.me:443/announce
+
+http://masters-tb.com/announce.php
+
+wss://video.blender.org:443/tracker/socket
+
+http://mediaclub.tv/announce
+
+http://torrentsmd.com:8080/announce
+
+udp://tracker.zemoj.com:6969/announce
+
+http://tracker.fdn.fr:6969/announce
+
+http://www.thegeeks.bz:3210/announce
+
+udp://tracker.gbitt.info:80/announce
+
+http://tracker.torrentleech.org:2710/announce
+
+https://tracker.hama3.net:443/announce
+
+http://data-bg.net/announce.php
+
+udp://tracker.shittyurl.org:6969/announce
+
+http://www.bitseduce.com/announce.php
+
+https://tracker.foreverpirates.co:443/announce
+
+http://tracker-cdn.moeking.me:2095/announce
+
+http://vpn.flying-datacenter.de:6969/announce
+
+udp://johnrosen1.com:6969/announce
+
+udp://103.30.17.23:6969/announce
+
+wss://peertube.cpy.re:443/tracker/socket
+
+https://tracker.nanoha.org:443/announce
+
+udp://37.59.48.81:6969/announce
+
+http://all4nothin.net/announce.php
+
+http://music-torrent.net:2710/announce
+
+udp://212.83.181.109:6969/announce
+
+udp://104.244.72.77:1337/announce
+
+udp://t1.leech.ie:1337/announce
+
+udp://opentrackr.org:1337/announce
+
+udp://93.158.213.92:1337/announce
+
+https://1337.abcvg.info:443/announce
+
+http://tracker.anonwebz.xyz:8080/announce
+
+http://tracker.gcvchp.com:2710/announce
+
+http://irrenhaus.dyndns.dk:80/announce.php
+
+https://w.wwwww.wtf:443/announce
+
+https://tracker.renfei.net:443/announce
+
+udp://195.128.100.150:6969/announce
+
+http://www.tribalmixes.com/announce.php
+
+https://tracker.imgoingto.icu:443/announce
+
+http://alltorrents.net:80/bt/announce.php
+
+http://www.mvgroup.org:2710/announce
+
+udp://sugoi.pomf.se:80/announce
+
+udp://explodie.org:6969/announce
+
+udp://184.105.151.164:6969/announce
+
+udp://p4p.arenabg.ch:1337/announce
+
+udp://91.149.192.31:6969/announce
+
+http://potuk.com:2710/announce
+
+udp://173.212.223.237:6969/announce
+
+udp://62.138.2.239:6969/announce
+
+http://mvgroup.org:2710/announce
+
+udp://91.121.145.207:6969/announce
+
+http://nyaa.tracker.wf:7777/announce
+
+udp://148.251.53.72:6969/announce
+
+http://tracker3.dler.org:2710/announce
+
+udp://tracker.uw0.xyz:6969/announce
+
+http://168.119.183.174:80/announce
+
+udp://bt2.3kb.xyz:6969/announce
+
+http://www.biztorrents.com/announce.php
+
+udp://tracker.sigterm.xyz:6969/announce
+
+http://www.all4nothin.net/announce.php
+
+udp://tracker.opentrackr.org:1337/announce
+
+udp://51.77.134.13:6969/announce
+
+udp://anidex.moe:6969/announce
+
+http://bt.unionpeer.org:777/announce
+
+udp://138.201.150.56:6969/announce
+
+udp://cdn-2.gamecoast.org:6969/announce
+
+udp://cutiegirl.ru:6969/announce
+
+udp://103.196.36.31:6969/announce
+
+udp://tracker.ds.is:6969/announce
+
+http://concen.org:6969/announce
+
+udp://5.226.148.20:6969/announce
+
+http://bt.zlofenix.org:81/announce
+
+udp://176.31.101.42:6969/announce
+
+udp://www.torrent.eu.org:451/announce
+
+http://bobbialbano.com:6969/announce
+
+udp://teamspeak.value-wolf.org:6969/announce
+
+http://btx.anifilm.tv:80/announce.php
+
+udp://91.216.110.52:451/announce
+
+udp://t3.leech.ie:1337/announce
+
+udp://51.77.58.98:6969/announce
+
+http://tracker.baltracker.net:3390/announce
+
+http://tracker.sloppyta.co:80/announce
+
+udp://194.182.165.153:6969/announce
+
+udp://185.181.60.67:80/announce
+
+udp://37.235.174.46:2710/announce
+
+udp://tracker.sbsub.com:2710/announce
+
+http://tracker.frozen-layer.net:6969/announce.php
+
+udp://46.148.18.254:2710/announce
+
+udp://us-tracker.publictracker.xyz:6969/announce
+
+udp://104.244.153.245:6969/announce
+
+udp://inferno.demonoid.is:3391/announce
+
+udp://open.stealth.si:80/announce
+
+http://open.touki.ru/announce
+
+http://torrent.rus.ec:2710/announce
+
+http://bt-tracker.gamexp.ru:2710/announce
+
+http://bttracker.debian.org:6969/announce
+
+http://tracker.minglong.org:8080/announce
+
+udp://185.92.223.36:6969/announce
+
+udp://public.publictracker.xyz:6969/announce
+
+udp://tracker.0x.tf:6969/announce
+
+udp://185.21.216.185:6969/announce
+
+http://torrentclub.online:54123/announce
+
+udp://free-tracker.zooki.xyz:6969/announce
+
+udp://45.56.65.82:54123/announce
+
+http://rt.tace.ru:80/announce
+
+http://www.tvnihon.com:6969/announce
+
+udp://ipv4.tracker.harry.lu:80/announce
+
+udp://213.108.129.160:6969/announce
+
+udp://tracker.openbittorrent.com:80/announce
+
+udp://176.123.5.238:3391/announce
+
+udp://209.141.45.244:1337/announce
+
+udp://vibe.community:6969/announce
+
+udp://51.15.40.114:80/announce
+
+wss://open.tube:443/tracker/socket
+
+http://tracker.zerobytes.xyz:1337/announce
+
+http://www.worldboxingvideoarchive.com/announce.php
+
+http://www.legittorrents.info:80/announce.php
+
+http://bt.firebit.org:2710/announce
+
+http://tracker.files.fm:6969/announce
+
+udp://37.1.205.89:2710/announce
+
+udp://cdn-1.gamecoast.org:6969/announce
+
+udp://tracker.pomf.se:80/announce
+
+http://ns3107607.ip-54-36-126.eu:6969/announce
+
+http://54.36.126.137:6969/announce
+
+http://51.38.230.101:80/announce
+
+udp://212.1.226.176:2710/announce
+
+udp://tracker7.dler.org:6969/announce
+
+http://tracker4.dler.org:6969/announce
+
+udp://193.34.92.5:80/announce
+
+udp://51.68.199.47:6969/announce
+
+udp://138.68.69.188:6969/announce
+
+udp://tracker.altrosky.nl:6969/announce
+
+udp://49.12.113.1:8866/announce
+
+http://kaztorka.org:80/announce.php
+
+udp://51.68.34.33:6969/announce
+
+udp://217.12.218.177:2710/announce
+
+udp://45.77.100.109:6969/announce
+
+udp://drumkitx.com:6969/announce
+
+udp://discord.heihachi.pw:6969/announce
+
+udp://205.185.121.146:6969/announce
+
+udp://tracker.v6speed.org:6969/announce
+
+wss://tube.privacytools.io:443/tracker/socket
+
+udp://195.201.94.195:6969/announce
+
+udp://46.101.244.237:6969/announce
+
+udp://208.83.20.20:6969/announce
+
+udp://exodus.desync.com:6969/announce
+
+ws://hub.bugout.link:80/announce
+
+udp://mail.realliferpg.de:6969/announce
+
+udp://199.195.249.193:1337/announce
+
+udp://t2.leech.ie:1337/announce
+
+udp://daveking.com:6969/announce
+
+udp://138.68.171.1:6969/announce
+
+http://tracker4.itzmx.com:6961/announce
+
+udp://blokas.io:6969/announce
+
+http://54.39.179.91:6699/announce
+
+http://vps02.net.orel.ru:80/announce
+
+udp://edu.uifr.ru:6969/announce
+
+http://torrent.arjlover.net:2710/announce
+
+udp://62.168.229.166:6969/announce
+
+udp://ln.mtahost.co:6969/announce
+
+http://tracker.kali.org:6969/announce
+
+http://t.acg.rip:6699/announce
+
+udp://code2chicken.nl:6969/announce
+
+udp://movies.zsw.ca:6969/announce
+
+http://share.camoe.cn:8080/announce
+
+udp://open.lolicon.eu:7777/announce
+
+http://95.107.48.115:80/announce
+
+http://proaudiotorrents.org/announce.php
+
+udp://198.100.149.66:6969/announce
+
+udp://198.50.195.216:7777/announce
+
+udp://tr2.ysagin.top:2710/announce
+
+http://elitezones.ro/announce.php
+
+http://tracker.etree.org:6969/announce
+
+http://185.148.3.231:80/announce
+
+udp://199.217.118.72:6969/announce
+
+http://t1.pow7.com:80/announce
+
+http://tracker.pow7.com:80/announce
+
+http://secure.pow7.com:80/announce
+
+http://pow7.com:80/announce
+
+http://finbytes.org/announce.php
+
+udp://tracker.shkinev.me:6969/announce
+
+udp://178.159.40.252:6969/announce
+
+http://bt2.edwardk.info:4040/announce
+
+http://xbtrutor.com:2710/announce
+
+udp://151.236.218.182:6969/announce
+
+udp://51.79.81.233:6969/announce
+
+udp://tracker.tricitytorrents.com:2710/announce
+
+http://t2.pow7.com:80/announce
+
+udp://bt.okmp3.ru:2710/announce
+
+udp://151.248.118.189:2710/announce
+
+http://freerainbowtables.com:6969/announce
+
+udp://159.65.202.134:6969/announce
+
+http://www.freerainbowtables.com:6969/announce
+
+http://atrack.pow7.com:80/announce
+
+http://tracker.gigatorrents.ws:2710/announce
+
+udp://tracker.fortu.io:6969/announce
+
+http://bluebird-hd.org/announce.php
+
+http://51.81.46.170:6969/announce
+
+udp://opentracker.i2p.rocks:6969/announce
+
+udp://89.234.156.205:451/announce
+
+udp://46.148.18.250:2710/announce
+
+udp://valakas.rollo.dnsabr.com:2710/announce
+
+http://tracker.pussytorrents.org:3000/announce
+
+http://mixfiend.com:6969/announce
+
+udp://openbittorrent.com:80/announce
+
+http://torrent-team.net/announce.php
+
+http://www.zone-torrent.net:80/announce.php
+
+http://siambit.com/announce.php
+
+udp://5.206.60.196:6969/announce
+
+udp://tracker.tiny-vps.com:6969/announce
+
+http://kinorun.com/announce.php
+
+udp://storage.groupees.com:6969/announce
+
+http://derpyradio.net:6969/announce
+
+udp://135.181.203.12:6969/announce
+
+udp://tracker.dler.org:6969/announce
+
+http://tracker.electro-torrent.pl:80/announce
+
+http://tr.bangumi.moe:6969/announce
+
+udp://51.15.3.74:6969/announce
+
+udp://udp-tracker.shittyurl.org:6969/announce
+
+http://198.251.80.84:6969/announce
+
+http://torrent.ubuntu.com:6969/announce
+
+udp://tracker.lelux.fi:6969/announce
+
+udp://199.187.121.233:6969/announce
+
+http://www.theplace.bz:2910/announce
+
+http://tracker.tasvideos.org:6969/announce
+
+http://torrents-nn.cn:2710/announce
+
+http://107.152.127.9:6969/announce
+
+http://torrenttracker.nwc.acsalaska.net:6969/announce
+
+http://176.113.68.67:6961/announce
+
+http://176.113.71.60:6961/announce
+
+http://184.105.151.164:6969/announce
+
+http://185.83.214.123:6969/announce
+
+http://51.15.55.204:1337/announce
+
+http://51.38.230.101:80/announce
+
+http://93.158.213.92:1337/announce
+
+http://95.107.48.115:80/announce
+
+http://aaa.army:8866/announce
+
+http://bobbialbano.com:6969/announce
+
+http://derpyradio.net:6969/announce
+
+http://h4.trakx.nibba.trade:80/announce
+
+http://open.acgnxtracker.com/announce
+
+http://opentracker.i2p.rocks:6969/announce
+
+http://publictracker.ch:6969/announce
+
+http://retracker.sevstar.net:2710/announce
+
+http://rt.tace.ru:80/announce
+
+http://share.camoe.cn:8080/announce
+
+http://t.acg.rip:6699/announce
+
+http://t.nyaatracker.com/announce
+
+http://t.nyaatracker.com:80/announce
+
+http://t.overflow.biz:6969/announce
+
+http://tr.cili001.com:8070/announce
+
+http://tracker.anonwebz.xyz:8080/announce
+
+http://tracker.dler.org:6969/announce
+
+http://tracker.files.fm:6969/announce
+
+http://tracker.gbitt.info/announce
+
+http://tracker.gbitt.info:80/announce
+
+http://tracker.ipv6tracker.ru:80/announce
+
+http://tracker.kamigami.org:2710/announce
+
+http://tracker.lelux.fi:80/announce
+
+http://tracker.noobsubs.net:80/announce
+
+http://tracker.skyts.cn:6969/announce
+
+http://tracker.skyts.net:6969/announce
+
+http://tracker.ygsub.com:6969/announce
+
+http://tracker.zerobytes.xyz:1337/announce
+
+http://tracker1.itzmx.com:8080/announce
+
+http://tracker2.dler.org:80/announce
+
+http://tracker2.itzmx.com:6961/announce
+
+http://tracker3.itzmx.com:6961/announce
+
+http://tracker4.itzmx.com:2710/announce
+
+http://vpn.flying-datacenter.de:6969/announce
+
+http://vps02.net.orel.ru/announce
+
+http://vps02.net.orel.ru:80/announce
+
+https://1337.abcvg.info/announce
+
+https://1337.abcvg.info:443/announce
+
+https://aaa.army:8866/announce
+
+https://publictracker.pp.ua:443/announce
+
+https://tr.ready4.icu:443/announce
+
+https://tracker.gbitt.info/announce
+
+https://tracker.hama3.net:443/announce
+
+https://tracker.imgoingto.icu:443/announce
+
+https://tracker.lelux.fi:443/announce
+
+https://tracker.nitrix.me:443/announce
+
+https://tracker.tamersunion.org:443/announce
+
+https://trakx.herokuapp.com:443/announce
+
+https://w.wwwww.wtf:443/announce
+
+udp://176.113.68.67:6961/announce
+
+udp://176.113.71.60:6961/announce
+
+udp://185.181.60.67:80/announce
+
+udp://185.83.214.123:6969/announce
+
+udp://207.241.226.111:6969/announce
+
+udp://207.241.231.226:6969/announce
+
+udp://208.83.20.20:6969/announce
+
+udp://212.1.226.176:2710/announce
+
+udp://212.47.227.58:6969/announce
+
+udp://217.76.183.53:80/announce
+
+udp://37.235.174.46:2710/announce
+
+udp://46.148.18.250:2710/announce
+
+udp://46.148.18.254:2710/announce
+
+udp://47.ip-51-68-199.eu:6969/announce
+
+udp://5.226.148.20:6969/announce
+
+udp://61626c.net:6969/announce
+
+udp://62.210.97.59:1337/announce
+
+udp://6ahddutb1ucc3cp.ru:6969/announce
+
+udp://91.149.192.31:6969/announce
+
+udp://91.216.110.52:451/announce
+
+udp://93.158.213.92:1337/announce
+
+udp://adm.category5.tv:6969/announce
+
+udp://admin.videoenpoche.info:6969/announce
+
+udp://adminion.n-blade.ru:6969/announce
+
+udp://api.bitumconference.ru:6969/announce
+
+udp://aruacfilmes.com.br:6969/announce
+
+udp://bclearning.top:6969/announce
+
+udp://benouworldtrip.fr:6969/announce
+
+udp://bioquantum.co.za:6969/announce
+
+udp://bitsparadise.info:6969/announce
+
+udp://blokas.io:6969/announce
+
+udp://bms-hosxp.com:6969/announce
+
+udp://bubu.mapfactor.com:6969/announce
+
+udp://cdn-1.gamecoast.org:6969/announce
+
+udp://cdn-2.gamecoast.org:6969/announce
+
+udp://chanchan.uchuu.co.uk:6969/announce
+
+udp://cutiegirl.ru:6969/announce
+
+udp://daveking.com:6969/announce
+
+udp://discord.heihachi.pw:6969/announce
+
+udp://dpiui.reedlan.com:6969/announce
+
+udp://edu.uifr.ru:6969/announce
+
+udp://eliastre100.fr:6969/announce
+
+udp://engplus.ru:6969/announce
+
+udp://fe.dealclub.de:6969/announce
+
+udp://forever-tracker.zooki.xyz:6969/announce
+
+udp://inferno.demonoid.is:3391/announce
+
+udp://ipv4.tracker.harry.lu:80/announce
+
+udp://josueunhuit.com:6969/announce
+
+udp://kanal-4.de:6969/announce
+
+udp://koli.services:6969/announce
+
+udp://mail.realliferpg.de:6969/announce
+
+udp://movies.zsw.ca:6969/announce
+
+udp://mts.tvbit.co:6969/announce
+
+udp://nagios.tks.sumy.ua:80/announce
+
+udp://ns-1.x-fins.com:6969/announce
+
+udp://open.stealth.si:80/announce
+
+udp://opentor.org:2710/announce
+
+udp://opentracker.arg.bz:6969/announce
+
+udp://opentracker.i2p.rocks:6969/announce
+
+udp://publictracker.xyz:6969/announce
+
+udp://qg.lorzl.gq:2710/announce
+
+udp://retracker.akado-ural.ru:80/announce
+
+udp://retracker.lanta-net.ru:2710/announce
+
+udp://retracker.local.msn-net.ru:6969/announce
+
+udp://retracker.netbynet.ru:2710/announce
+
+udp://retracker.sevstar.net:2710/announce
+
+udp://rutorrent.frontline-mod.com:6969/announce
+
+udp://sd-161673.dedibox.fr:6969/announce
+
+udp://storage.groupees.com:6969/announce
+
+udp://teamspeak.value-wolf.org:6969/announce
+
+udp://torrent.tdjs.tech:6969/announce
+
+udp://tr.cili001.com:8070/announce
+
+udp://tracker.0x.tf:6969/announce
+
+udp://tracker.altrosky.nl:6969/announce
+
+udp://tracker.blacksparrowmedia.net:6969/announce
+
+udp://tracker.coppersurfer.tk:6969/announce
+
+udp://tracker.dler.org:6969/announce
+
+udp://tracker.ds.is:6969/announce
+
+udp://tracker.dyne.org:6969/announce
+
+udp://tracker.filemail.com:6969/announce
+
+udp://tracker.fortu.io:6969/announce
+
+udp://tracker.kamigami.org:2710/announce
+
+udp://tracker.leechers-paradise.org:6969/announce
+
+udp://tracker.lelux.fi:6969/announce
+
+udp://tracker.opentrackr.org:1337/announce
+
+udp://tracker.shkinev.me:6969/announce
+
+udp://tracker.skynetcloud.site:6969/announce
+
+udp://tracker.skyts.net:6969/announce
+
+udp://tracker.tiny-vps.com:6969/announce
+
+udp://tracker.uw0.xyz:6969/announce
+
+udp://tracker.v6speed.org:6969/announce
+
+udp://tracker.vulnix.sh:6969/announce
+
+udp://tracker.zemoj.com:6969/announce
+
+udp://tracker.zerobytes.xyz:1337/announce
+
+udp://tracker.zum.bi:6969/announce
+
+udp://tracker0.ufibox.com:6969/announce
+
+udp://tracker2.dler.org:80/announce
+
+udp://tracker2.itzmx.com:6961/announce
+
+udp://tracker3.itzmx.com:6961/announce
+
+udp://tracker6.dler.org:2710/announce
+
+udp://tracker-udp.gbitt.info:80/announce
+
+udp://ultra.zt.ua:6969/announce
+
+udp://us-tracker.publictracker.xyz:6969/announce
+
+udp://valakas.rollo.dnsabr.com:2710/announce
+
+udp://vibe.community:6969/announce
+
+udp://www.midea123.z-media.com.cn:6969/announce
+
+udp://zephir.monocul.us:6969/announce
+
+```
+
+</details>
+
+<h2 id="IPv4-DNS服务器汇总"><a href="#IPv4-DNS服务器汇总" class="headerlink" title="IPv4 DNS服务器汇总"></a>IPv4 DNS服务器汇总</h2><pre><code>CloudFlare:
+    默认：1.1.1.1
+    备用：1.0.0.1
+
+腾讯 DNS：
+    默认：119.29.29.29
+    备用：182.254.116.116
+
+阿里 DNS：
+    默认：223.5.5.5
+    备用：223.6.6.6
+
+百度 DNS:
+    默认：180.76.76.76
+
+114 DNS：
+    默认：114.114.114.114
+    备用：114.114.115.115
+
+CNNIC DNS（中国互联网信息中心 DNS）：
+    默认：1.2.4.8
+    备用：210.2.4.8
+
+清华大学 TUNA 协会 DNS：
+    默认：101.6.6.6
+
+Google Public DNS：
+    默认：8.8.8.8
+    备用：8.8.4.4
+
+诺顿 Norton DNS：
+    安全：
+        默认：199.85.126.10
+        备用：199.85.127.10
+</code></pre><h2 id="IPv6-DNS-服务器"><a href="#IPv6-DNS-服务器" class="headerlink" title="IPv6 DNS 服务器"></a>IPv6 DNS 服务器</h2><h3 id="公共-DNS"><a href="#公共-DNS" class="headerlink" title="公共 DNS"></a>公共 DNS</h3><pre><code>阿里 IPv6 DNS (Alidns):
+    默认：2400:3200::1
+    备用：2400:3200:baba::1
+
+百度 IPv6 DNS：
+    默认：2400:da00::6666
+
+中国电信 IPv6 DNS：
+    默认：240e:4c:4008::1
+    备用：240e:4c:4808::1
+
+CNNIC IPv6 DNS 服务器：
+    默认：2001:dc7:1000::1
+
+Google Public IPv6 DNS：
+    默认：2001:4860:4860::8888
+    备用：2001:4860:4860::8844
+
+Cloudflare IPv6 DNS：
+    默认：2606:4700:4700::1111
+    备用：2606:4700:4700::1001
+
+OpenDNS：
+    默认：2620:0:ccc::2
+    备用：2620:0:ccd::2
+
+Neustar UltraDNS IPv6：
+    1组：
+        默认：2610:a1:1018::1
+        备用：2610:a1:1019::1
+    2组：
+        默认：2610:a1:1018::5
+        备用：2610:a1:1019::1
+</code></pre><h3 id="教育网-DNS"><a href="#教育网-DNS" class="headerlink" title="教育网 DNS"></a>教育网 DNS</h3><pre><code>北京邮电大学 IPv6 DNS 服务器:
+    默认：2001:da8:202:10::36
+    备用：2001:da8:202:10::37
+
+上海交通大学 IPv6 DNS 服务器
+    默认：2001:da8:8000:1:202:120:2:100
+    备用：2001:da8:8000:1:202:120:2:101
+
+中科院网络信息中心 IPv6 DNS 服务器：
+    默认：2001:cc0:2fff:1::6666
+
+北京交通大学 IPv6 DNS 服务器：
+    默认：2001:da8:205:2060::188
+
+清华大学 IPv6 DNS 服务器：
+    默认：2001:da8:ff:305:20c:29ff:fe1f:a92a
+
+清华大学 TUNA 协会 IPv6 DNS 服务器：
+    默认：2001:da8::666
+
+科技网 IPv6 DNS 服务器：
+    默认：2001:cc0:2fff:2::6
+</code></pre><p><ins class="adsbygoogle"
+  style="display:block"
+  data-ad-client="ca-pub-6839568581522290"
+  data-ad-slot="4087099451"
+  data-ad-format="auto"
+  data-full-width-responsive="true"></ins>
+<script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script></p>
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>Author：</strong>fly6022<br>
+<strong>Link：</strong><a href="https://fly6022.fun/posts/2021-02-05-01/" title="https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-02-05-01&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-02-05-01&#x2F;</a><br>
+
+  <strong>版权声明：</strong>本文采用 <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh" target="_blank">署名-非商业性使用-禁止演绎 4.0 国际 (CC BY-NC-ND 4.0) </a> 协议进行许可，转载请注明原出处。
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '15111f41fc2a43bae55d',
+        clientSecret: 'bd56a6ae6546a0fab467366fa5c14cfed4fd106b',
+        id: window.location.pathname,
+        repo: 'fly6022.github.io',
+        owner: 'fly6022',
+        admin: 'fly6022'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
+    </div>
+  </div>
+  <script src="/js/app-2.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+<!--<script src="/js/app.js?v=1618032388169"></script>-->
+
+
+
+
+  
+
+
+
+
+    <!-- 51.La Analytics -->
+<div hidden>
+  <script type="text/javascript" src="https://js.users.51.la/20230665.js"></script>
+</div>
+
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/assets/koharu.model.json"},"display":{"position":"right","width":112,"height":225},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+
+</html>

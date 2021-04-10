@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>fly6022</title>
+  
+  <subtitle>皮皮的阿辉</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://fly6022.fun/"/>
+  <updated>2021-03-27T15:17:04.556Z</updated>
+  <id>https://fly6022.fun/</id>
+  
+  <author>
+    <name>fly6022</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo 博客配置 Mathjax 来显示数学公式</title>
+    <link href="https://fly6022.fun/posts/2021-03-14-01/"/>
+    <id>https://fly6022.fun/posts/2021-03-14-01/</id>
+    <published>2021-03-14T10:27:55.000Z</published>
+    <updated>2021-03-27T15:17:04.556Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hexo 博客配置 Mathjax 来显示数学公式</p><a id="more"></a><h2 id="配置与安装"><a href="#配置与安装" class="headerlink" title="配置与安装"></a>配置与安装</h2><p>首先，卸载掉Hexo自带的数学公式渲染插件<code>hexo-renderer-marked</code>.</p><pre><code class="lang-shell">npm uninstall hexo-renderer-marked --save</code></pre><p>之后，安装<code>hexo-renderer-kramed</code>.</p><pre><code class="lang-shell">npm install hexo-renderer-kramed --save</code></pre><h2 id="转义"><a href="#转义" class="headerlink" title="转义"></a>转义</h2><p>为了防止渲染<code>Markdown</code>文档时，字符发生冲突，需要转义。</p><p>路径：博客根目录\node_modules\kramed\lib\rules\inline.js，将第11行<code>escape</code>变量的值做修改：</p><pre><code class="lang-javascript">//  escape: /^\\([\\`*{}\[\]()#$+\-.!_&gt;])/,  escape: /^\\([`*\[\]()#$+\-.!_&gt;])/,</code></pre><p>第20行的<code>em</code>变量也要做修改：</p><pre><code class="lang-javascript">//  em: /^\b_((?:__|[\s\S])+?)_\b|^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,  em: /^\*((?:\*\*|[\s\S])+?)\*(?!\*)/,</code></pre><p>博客根目录下，命令行界面输入<code>hexo clean &amp;&amp; hexo g</code></p><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>在博客主题的<code>_config.yml</code>配置文件中添加：</p><pre><code># MathJax Supportmathjax:  enable: true  per_page: true</code></pre><p>在需要使用<code>Mathjax</code>的<code>Markdown</code>文档头部添加：</p><pre><code>mathjax: true</code></pre><h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><script type="math/tex; mode=display">a^2+b^2=c^2</script><p><img src="/images/posts/2020-03-27-01/01.png" alt="加菲尔德证法（总统证法）"></p><p>$ S_{△ AEC} = S_{△CDB} = \frac{ab}{2} $</p><p>$ S_{△ ACB} = \frac{c^2}{2} $</p><p>$ S_{AECB} = \frac{(a+b)\times(a+b)}{2} $</p><p>$ S_{△AEC} + S_{△CDB} + S_{△ACB} = S_{AEDB} $</p><p>$ ∵\frac{ab}{2}+\frac{ab}{2}+\frac{c^2}{2} = \frac{(a+b)^2}{2} $</p><p>$ ∴ab + \frac{c^2}{2} = ab + \frac{a^2+b^2}{2} $</p><p>$ c^2 = a^2 + b^2 $</p><p>— END</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Hexo 博客配置 Mathjax 来显示数学公式&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="Hexo" scheme="https://fly6022.fun/tags/Hexo/"/>
+    
+      <category term="Mathjax" scheme="https://fly6022.fun/tags/Mathjax/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ajax 同源策略限制问题的解决</title>
+    <link href="https://fly6022.fun/posts/2021-03-07-01/"/>
+    <id>https://fly6022.fun/posts/2021-03-07-01/</id>
+    <published>2021-03-07T01:29:22.000Z</published>
+    <updated>2021-03-07T02:28:11.451Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ajax 同源策略限制问题的解决。</p><a id="more"></a><p><img src="/images/posts/2021-03-07-01/01.jpg" alt="01"></p><h2 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h2><p>首先，我们要了解，何为『同源策略』。</p><blockquote><p><strong>同源策略</strong>是一个重要的<strong>安全策略</strong>，它用于限制一个origin的文档或者它加载的脚本如何能与另一个源的资源进行交互。它能帮助阻隔恶意文档，减少可能被攻击的媒介。</p><p>如果两个 URL 的 protocol、port (如果有指定的话)和 host 都相同的话，则这两个 URL 是<em>同源</em>。这个方案也被称为“协议/主机/端口元组”，或者直接是 “元组”。（“元组” 是指一组项目构成的整体，双重/三重/四重/五重/等的通用形式）。</p><p align="right">—— <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank">MDN官方文档</a></p></blockquote><p>例如：</p><div class="table-container"><table><thead><tr><th>URL</th><th>结果</th><th>原因</th></tr></thead><tbody><tr><td><a href="http://a.com/1.html" target="_blank" rel="noopener">http://a.com/1.html</a></td><td>同源</td><td>只有路径不同</td></tr><tr><td><a href="http://a.com/src/2.html" target="_blank" rel="noopener">http://a.com/src/2.html</a></td><td>同源</td><td>只有路径不同</td></tr><tr><td><a href="https://a.com/3.html" target="_blank" rel="noopener">https://a.com/3.html</a></td><td>失败</td><td>协议不同</td></tr><tr><td><a href="http://a.com:81/4.html" target="_blank" rel="noopener">http://a.com:81/4.html</a></td><td>失败</td><td>端口不同</td><td>(<a href="http://默认端口是80" target="_blank" rel="noopener">http://默认端口是80</a>)</td></tr><tr><td><a href="http://b.com/1.html" target="_blank" rel="noopener">http://b.com/1.html</a></td><td>失败</td><td>主机不同</td></tr></tbody></table></div><p>总结一下，满足<em>同源</em>的条件：</p><ul><li>主机相同</li><li>端口相同</li><li>协议相同</li></ul><p>三者缺一不可。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>我们已经了解了『同源策略』的基本概念，虽然说，它是一种浏览器主动的安全策略，但是，却时常给我们的前端开发造成了困难。</p><p>那么，我们如何解决『同源策略』给我们带来的不便呢？</p><p>我比较推荐的方法有两种。</p><h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><p>JSONP 是利用html标签不受『同源策略』限制的影响，从而达到解决『同源策略』限制的目的。通俗来讲，叫“曲线救国”。</p><p>但是，这种方法是有一定的局限性的：它仅支持GET方式请求数据。</p><p>这种方法的好处是：</p><ul><li>比较简单</li><li>兼容性较好（较老版本的浏览器也支持）</li><li>不必对服务器端进行配置（或配置相对较少）</li></ul><h4 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h4><p>在网页添加一个<code>&lt;script&gt;</code>元素，再向服务器请求JSON数据。服务器收到请求后，将数据存放在一个指定的回调函数<code>callback()</code>里。</p><h3 id="CORS（跨域资源共享）"><a href="#CORS（跨域资源共享）" class="headerlink" title="CORS（跨域资源共享）"></a>CORS（跨域资源共享）</h3><p>这种方法允许浏览器向跨源服务器发出<code>XMLHttpRequest</code>请求，从而克服了同源策略的限制。</p><p>好处是：</p><ul><li>较方便配置</li><li>兼容所有请求方式</li></ul><p>局限性是：</p><ul><li>较老版本的浏览器可能不支持</li><li>需要在服务器端配置</li></ul><h4 id="基本原理（仅针对简单请求：HEAD、GET、POST）"><a href="#基本原理（仅针对简单请求：HEAD、GET、POST）" class="headerlink" title="基本原理（仅针对简单请求：HEAD、GET、POST）"></a>基本原理（仅针对简单请求：HEAD、GET、POST）</h4><p>对于简单请求，浏览器直接发出CORS请求。具体来说，就是在头信息之中，增加一个<code>Origin</code>字段。</p><p>下面是一个例子，浏览器发现这次跨源AJAX请求是简单请求，就自动在头信息之中，添加一个<code>Origin</code>字段。</p><pre><code>GET /cors HTTP/1.1Origin: http://api.bob.comHost: api.alice.comAccept-Language: en-USConnection: keep-aliveUser-Agent: Mozilla/5.0...</code></pre><p>上面的头信息中，<code>Origin</code>字段用来说明，本次请求来自哪个源（协议 + 域名 + 端口）。服务器根据这个值，决定是否同意这次请求。</p><p>如果<code>Origin</code>指定的源，不在许可范围内，服务器会返回一个正常的HTTP回应。浏览器发现，这个回应的头信息没有包含<code>Access-Control-Allow-Origin</code>字段（详见下文），就知道出错了，从而抛出一个错误，被<code>XMLHttpRequest</code>的<code>onerror</code>回调函数捕获。注意，这种错误无法通过状态码识别，因为HTTP回应的状态码有可能是200。</p><p>如果<code>Origin</code>指定的域名在许可范围内，服务器返回的响应，会多出几个头信息字段。</p><pre><code>Access-Control-Allow-Origin: http://api.bob.comAccess-Control-Allow-Credentials: trueAccess-Control-Expose-Headers: FooBarContent-Type: text/html; charset=utf-8</code></pre><h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p>【1】MDN官方文档（ <a href="https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/Security/Same-origin_policy</a> ）- Author(s): Jesse Ruderman<br>【2】《跨域资源共享 CORS 详解》[2016-4-12]（ <a href="http://www.ruanyifeng.com/blog/2016/04/cors.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/04/cors.html</a> ） - 作者：阮一峰 - 许可证：自由转载-非商用-非衍生-保持署名（创意共享3.0许可证）</p><p>— END</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Ajax 同源策略限制问题的解决。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Javascript" scheme="https://fly6022.fun/tags/Javascript/"/>
+    
+      <category term="Ajax" scheme="https://fly6022.fun/tags/Ajax/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>开启我的 ESP8266 之旅</title>
+    <link href="https://fly6022.fun/posts/2021-02-23-01/"/>
+    <id>https://fly6022.fun/posts/2021-02-23-01/</id>
+    <published>2021-02-23T14:07:20.000Z</published>
+    <updated>2021-02-23T15:02:53.836Z</updated>
+    
+    <content type="html"><![CDATA[<p>NodeMCU ESP8266</p><a id="more"></a><h2 id="为什么买-ESP8266"><a href="#为什么买-ESP8266" class="headerlink" title="为什么买 ESP8266"></a>为什么买 ESP8266</h2><p>emm，因为手头上正好有一张淘宝优惠券，而且最近正好有入坑硬件编程的想法，so，就买了这个单片机。</p><p>PS: 用了优惠券之后实际支付10.01元（我还买了其它的东西）</p><h2 id="ESP8266-能做什么"><a href="#ESP8266-能做什么" class="headerlink" title="ESP8266 能做什么"></a>ESP8266 能做什么</h2><p>ESP8266 是单片机界里程碑一般的存在。10元左右的亲民价格、32位架构（80/160MHz切换）、512KB flash、支持WiFi功能，使得它成为许多硬件编程新手入门的不二之选。</p><p>同时，在ESP8266上，不单单可以运行C语言，还可以运行Lua语言、Javascript语言、Python语言。</p><p>那么，在日常生活当中，小小的它能做些什么呢？</p><ul><li>智能家居</li><li>网络摄像机</li><li>工业无线控制</li><li>传感器网络</li></ul><h2 id="外包装"><a href="#外包装" class="headerlink" title="外包装"></a>外包装</h2><p>由于春节假期的原因，快递2月22日才送到，拆开快递纸盒，ESP8266被一个黑色防静电袋包裹着。</p><p><img src="/images/posts/2021-02-23-01/01.jpg" alt="01"></p><p>乍一看还不错，可当我拆开包装准备上机测试时，我发现它的MicroUSB接口竟然变形了…变形了…</p><p>不清楚是次品还是快递的原因…果断联系客服……</p><p>然后，我用螺丝刀把插口撬了几下，竟然修好了。</p><p><img src="/images/posts/2021-02-23-01/04.jpg" alt="02"></p><h2 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h2><p><img src="/images/posts/2021-02-23-01/02.jpg" alt="02"></p><p>我使用了Arduino IDE，配置ESP8266环境。</p><p><img src="/images/posts/2021-02-23-01/03.jpg" alt="03"></p><p>原谅我吐槽一下，这玩意真的好慢啊…</p><p><img src="/images/posts/2021-02-23-01/05.jpg" alt="02"></p><p>— END</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;NodeMCU ESP8266&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="ESP8266" scheme="https://fly6022.fun/tags/ESP8266/"/>
+    
+      <category term="NodeMCU" scheme="https://fly6022.fun/tags/NodeMCU/"/>
+    
+      <category term="硬件编程" scheme="https://fly6022.fun/tags/%E7%A1%AC%E4%BB%B6%E7%BC%96%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python 模拟枚举类型</title>
+    <link href="https://fly6022.fun/posts/2021-02-17-01/"/>
+    <id>https://fly6022.fun/posts/2021-02-17-01/</id>
+    <published>2021-02-16T16:20:21.000Z</published>
+    <updated>2021-02-22T03:04:12.308Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python 模拟枚举类型</p><a id="more"></a><p>先来看一段Python代码：</p><pre><code>class weather() {    SUNNY = &quot;sunny&quot;    WINDY = &quot;windy&quot;    RAINY = &quot;rainy&quot;}print(weather.SUNNY) # 输出枚举对象</code></pre><p>乍一看，好像很简单，对不对？我们只是声明了一个类变量(class)，并且用<code>print()</code>函数来调用类变量中的一个变量。but，这个代码是有问题的。</p><pre><code>class weather() {    SUNNY = &quot;sunny&quot;    WINDY = &quot;windy&quot;    RAINY = &quot;rainy&quot;    SUNNY = &quot;windy&quot;}print(weather.SUNNY) # 输出的值是 windyweather.SUNNY = &quot;rainy&quot;print(weather.SUNNY) # 输出的值是 rainy</code></pre><p>通常情况，一个类中的枚举项不能发生重复（key不能重复），并且，该类中，所有枚举项的枚举值（value）应是一个常量。</p><p>显然，上面的代码不符合这一要求。</p><p>那么，我们如何在Python中模拟枚举类型呢？我们可以使用Python中已经提供的enum模块。</p><pre><code>from enum import Enum</code></pre><pre><code>from enum import Enumclass weather(Enum) {    SUNNY = &quot;sunny&quot;    WINDY = &quot;windy&quot;    RAINY = &quot;rainy&quot;}print(weather.SUNNY) # 输出 weather.SUNNYprint(type(weather.SUNNY)) # 输出 &lt;enum &#39;weather&#39;&gt;print(weather.SUNNY.name) # 输出 SUNNYprint(weather.SUNNY.value) # 输出 sunny</code></pre><p>— END</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python 模拟枚举类型&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Python" scheme="https://fly6022.fun/tags/Python/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Tracker 服务器 / DNS 服务器汇总</title>
+    <link href="https://fly6022.fun/posts/2021-02-05-01/"/>
+    <id>https://fly6022.fun/posts/2021-02-05-01/</id>
+    <published>2021-02-05T06:05:57.000Z</published>
+    <updated>2021-02-05T06:44:12.929Z</updated>
+    
+    <content type="html"><![CDATA[<p>Tracker 服务器 / DNS服务器汇总</p><a id="more"></a><div class="danger custom-block"><p>本页面中内容收集自网络，时效性可能不强，仅供参考</p></div><h2 id="Tracker-服务器汇总"><a href="#Tracker-服务器汇总" class="headerlink" title="Tracker 服务器汇总"></a>Tracker 服务器汇总</h2><details>```markdownhttps://torrent.ubuntu.com/announcehttps://ipv6.torrent.ubuntu.com/announcehttp://milliontorrent.pl/announce.phpudp://47.97.100.153:6969/announceudp://ns-1.x-fins.com:6969/announcehttp://bt.3dmgame.com:2710/announcehttp://bt.ali213.net:8080/announcehttp://tracker.ali213.net:8080/announcehttp://220.173.37.33:6969/announceudp://tracker.skyts.net:6969/announcews://tracker.btsync.cf:6969/announceudp://qg.lorzl.gq:6969/announceudp://tracker.btsync.gq:233/announcehttps://torrents.linuxmint.com:443/announce.phphttp://tracker1.bt.moack.co.kr:80/announcehttp://156.234.201.18:80/announceudp://185.8.156.2:6969/announceudp://engplus.ru:6969/announceudp://tracker.filemail.com:6969/announcehttp://60-fps.org:80/bt/announce.phphttp://tracker.tntvillage.scambioetico.org:2710/announceudp://134.209.1.127:6969/announcehttp://www.xwt-classics.net/announce.phphttps://tracker.nitrix.me:443/announcehttp://masters-tb.com/announce.phpwss://video.blender.org:443/tracker/sockethttp://mediaclub.tv/announcehttp://torrentsmd.com:8080/announceudp://tracker.zemoj.com:6969/announcehttp://tracker.fdn.fr:6969/announcehttp://www.thegeeks.bz:3210/announceudp://tracker.gbitt.info:80/announcehttp://tracker.torrentleech.org:2710/announcehttps://tracker.hama3.net:443/announcehttp://data-bg.net/announce.phpudp://tracker.shittyurl.org:6969/announcehttp://www.bitseduce.com/announce.phphttps://tracker.foreverpirates.co:443/announcehttp://tracker-cdn.moeking.me:2095/announcehttp://vpn.flying-datacenter.de:6969/announceudp://johnrosen1.com:6969/announceudp://103.30.17.23:6969/announcewss://peertube.cpy.re:443/tracker/sockethttps://tracker.nanoha.org:443/announceudp://37.59.48.81:6969/announcehttp://all4nothin.net/announce.phphttp://music-torrent.net:2710/announceudp://212.83.181.109:6969/announceudp://104.244.72.77:1337/announceudp://t1.leech.ie:1337/announceudp://opentrackr.org:1337/announceudp://93.158.213.92:1337/announcehttps://1337.abcvg.info:443/announcehttp://tracker.anonwebz.xyz:8080/announcehttp://tracker.gcvchp.com:2710/announcehttp://irrenhaus.dyndns.dk:80/announce.phphttps://w.wwwww.wtf:443/announcehttps://tracker.renfei.net:443/announceudp://195.128.100.150:6969/announcehttp://www.tribalmixes.com/announce.phphttps://tracker.imgoingto.icu:443/announcehttp://alltorrents.net:80/bt/announce.phphttp://www.mvgroup.org:2710/announceudp://sugoi.pomf.se:80/announceudp://explodie.org:6969/announceudp://184.105.151.164:6969/announceudp://p4p.arenabg.ch:1337/announceudp://91.149.192.31:6969/announcehttp://potuk.com:2710/announceudp://173.212.223.237:6969/announceudp://62.138.2.239:6969/announcehttp://mvgroup.org:2710/announceudp://91.121.145.207:6969/announcehttp://nyaa.tracker.wf:7777/announceudp://148.251.53.72:6969/announcehttp://tracker3.dler.org:2710/announceudp://tracker.uw0.xyz:6969/announcehttp://168.119.183.174:80/announceudp://bt2.3kb.xyz:6969/announcehttp://www.biztorrents.com/announce.phpudp://tracker.sigterm.xyz:6969/announcehttp://www.all4nothin.net/announce.phpudp://tracker.opentrackr.org:1337/announceudp://51.77.134.13:6969/announceudp://anidex.moe:6969/announcehttp://bt.unionpeer.org:777/announceudp://138.201.150.56:6969/announceudp://cdn-2.gamecoast.org:6969/announceudp://cutiegirl.ru:6969/announceudp://103.196.36.31:6969/announceudp://tracker.ds.is:6969/announcehttp://concen.org:6969/announceudp://5.226.148.20:6969/announcehttp://bt.zlofenix.org:81/announceudp://176.31.101.42:6969/announceudp://www.torrent.eu.org:451/announcehttp://bobbialbano.com:6969/announceudp://teamspeak.value-wolf.org:6969/announcehttp://btx.anifilm.tv:80/announce.phpudp://91.216.110.52:451/announceudp://t3.leech.ie:1337/announceudp://51.77.58.98:6969/announcehttp://tracker.baltracker.net:3390/announcehttp://tracker.sloppyta.co:80/announceudp://194.182.165.153:6969/announceudp://185.181.60.67:80/announceudp://37.235.174.46:2710/announceudp://tracker.sbsub.com:2710/announcehttp://tracker.frozen-layer.net:6969/announce.phpudp://46.148.18.254:2710/announceudp://us-tracker.publictracker.xyz:6969/announceudp://104.244.153.245:6969/announceudp://inferno.demonoid.is:3391/announceudp://open.stealth.si:80/announcehttp://open.touki.ru/announcehttp://torrent.rus.ec:2710/announcehttp://bt-tracker.gamexp.ru:2710/announcehttp://bttracker.debian.org:6969/announcehttp://tracker.minglong.org:8080/announceudp://185.92.223.36:6969/announceudp://public.publictracker.xyz:6969/announceudp://tracker.0x.tf:6969/announceudp://185.21.216.185:6969/announcehttp://torrentclub.online:54123/announceudp://free-tracker.zooki.xyz:6969/announceudp://45.56.65.82:54123/announcehttp://rt.tace.ru:80/announcehttp://www.tvnihon.com:6969/announceudp://ipv4.tracker.harry.lu:80/announceudp://213.108.129.160:6969/announceudp://tracker.openbittorrent.com:80/announceudp://176.123.5.238:3391/announceudp://209.141.45.244:1337/announceudp://vibe.community:6969/announceudp://51.15.40.114:80/announcewss://open.tube:443/tracker/sockethttp://tracker.zerobytes.xyz:1337/announcehttp://www.worldboxingvideoarchive.com/announce.phphttp://www.legittorrents.info:80/announce.phphttp://bt.firebit.org:2710/announcehttp://tracker.files.fm:6969/announceudp://37.1.205.89:2710/announceudp://cdn-1.gamecoast.org:6969/announceudp://tracker.pomf.se:80/announcehttp://ns3107607.ip-54-36-126.eu:6969/announcehttp://54.36.126.137:6969/announcehttp://51.38.230.101:80/announceudp://212.1.226.176:2710/announceudp://tracker7.dler.org:6969/announcehttp://tracker4.dler.org:6969/announceudp://193.34.92.5:80/announceudp://51.68.199.47:6969/announceudp://138.68.69.188:6969/announceudp://tracker.altrosky.nl:6969/announceudp://49.12.113.1:8866/announcehttp://kaztorka.org:80/announce.phpudp://51.68.34.33:6969/announceudp://217.12.218.177:2710/announceudp://45.77.100.109:6969/announceudp://drumkitx.com:6969/announceudp://discord.heihachi.pw:6969/announceudp://205.185.121.146:6969/announceudp://tracker.v6speed.org:6969/announcewss://tube.privacytools.io:443/tracker/socketudp://195.201.94.195:6969/announceudp://46.101.244.237:6969/announceudp://208.83.20.20:6969/announceudp://exodus.desync.com:6969/announcews://hub.bugout.link:80/announceudp://mail.realliferpg.de:6969/announceudp://199.195.249.193:1337/announceudp://t2.leech.ie:1337/announceudp://daveking.com:6969/announceudp://138.68.171.1:6969/announcehttp://tracker4.itzmx.com:6961/announceudp://blokas.io:6969/announcehttp://54.39.179.91:6699/announcehttp://vps02.net.orel.ru:80/announceudp://edu.uifr.ru:6969/announcehttp://torrent.arjlover.net:2710/announceudp://62.168.229.166:6969/announceudp://ln.mtahost.co:6969/announcehttp://tracker.kali.org:6969/announcehttp://t.acg.rip:6699/announceudp://code2chicken.nl:6969/announceudp://movies.zsw.ca:6969/announcehttp://share.camoe.cn:8080/announceudp://open.lolicon.eu:7777/announcehttp://95.107.48.115:80/announcehttp://proaudiotorrents.org/announce.phpudp://198.100.149.66:6969/announceudp://198.50.195.216:7777/announceudp://tr2.ysagin.top:2710/announcehttp://elitezones.ro/announce.phphttp://tracker.etree.org:6969/announcehttp://185.148.3.231:80/announceudp://199.217.118.72:6969/announcehttp://t1.pow7.com:80/announcehttp://tracker.pow7.com:80/announcehttp://secure.pow7.com:80/announcehttp://pow7.com:80/announcehttp://finbytes.org/announce.phpudp://tracker.shkinev.me:6969/announceudp://178.159.40.252:6969/announcehttp://bt2.edwardk.info:4040/announcehttp://xbtrutor.com:2710/announceudp://151.236.218.182:6969/announceudp://51.79.81.233:6969/announceudp://tracker.tricitytorrents.com:2710/announcehttp://t2.pow7.com:80/announceudp://bt.okmp3.ru:2710/announceudp://151.248.118.189:2710/announcehttp://freerainbowtables.com:6969/announceudp://159.65.202.134:6969/announcehttp://www.freerainbowtables.com:6969/announcehttp://atrack.pow7.com:80/announcehttp://tracker.gigatorrents.ws:2710/announceudp://tracker.fortu.io:6969/announcehttp://bluebird-hd.org/announce.phphttp://51.81.46.170:6969/announceudp://opentracker.i2p.rocks:6969/announceudp://89.234.156.205:451/announceudp://46.148.18.250:2710/announceudp://valakas.rollo.dnsabr.com:2710/announcehttp://tracker.pussytorrents.org:3000/announcehttp://mixfiend.com:6969/announceudp://openbittorrent.com:80/announcehttp://torrent-team.net/announce.phphttp://www.zone-torrent.net:80/announce.phphttp://siambit.com/announce.phpudp://5.206.60.196:6969/announceudp://tracker.tiny-vps.com:6969/announcehttp://kinorun.com/announce.phpudp://storage.groupees.com:6969/announcehttp://derpyradio.net:6969/announceudp://135.181.203.12:6969/announceudp://tracker.dler.org:6969/announcehttp://tracker.electro-torrent.pl:80/announcehttp://tr.bangumi.moe:6969/announceudp://51.15.3.74:6969/announceudp://udp-tracker.shittyurl.org:6969/announcehttp://198.251.80.84:6969/announcehttp://torrent.ubuntu.com:6969/announceudp://tracker.lelux.fi:6969/announceudp://199.187.121.233:6969/announcehttp://www.theplace.bz:2910/announcehttp://tracker.tasvideos.org:6969/announcehttp://torrents-nn.cn:2710/announcehttp://107.152.127.9:6969/announcehttp://torrenttracker.nwc.acsalaska.net:6969/announcehttp://176.113.68.67:6961/announcehttp://176.113.71.60:6961/announcehttp://184.105.151.164:6969/announcehttp://185.83.214.123:6969/announcehttp://51.15.55.204:1337/announcehttp://51.38.230.101:80/announcehttp://93.158.213.92:1337/announcehttp://95.107.48.115:80/announcehttp://aaa.army:8866/announcehttp://bobbialbano.com:6969/announcehttp://derpyradio.net:6969/announcehttp://h4.trakx.nibba.trade:80/announcehttp://open.acgnxtracker.com/announcehttp://opentracker.i2p.rocks:6969/announcehttp://publictracker.ch:6969/announcehttp://retracker.sevstar.net:2710/announcehttp://rt.tace.ru:80/announcehttp://share.camoe.cn:8080/announcehttp://t.acg.rip:6699/announcehttp://t.nyaatracker.com/announcehttp://t.nyaatracker.com:80/announcehttp://t.overflow.biz:6969/announcehttp://tr.cili001.com:8070/announcehttp://tracker.anonwebz.xyz:8080/announcehttp://tracker.dler.org:6969/announcehttp://tracker.files.fm:6969/announcehttp://tracker.gbitt.info/announcehttp://tracker.gbitt.info:80/announcehttp://tracker.ipv6tracker.ru:80/announcehttp://tracker.kamigami.org:2710/announcehttp://tracker.lelux.fi:80/announcehttp://tracker.noobsubs.net:80/announcehttp://tracker.skyts.cn:6969/announcehttp://tracker.skyts.net:6969/announcehttp://tracker.ygsub.com:6969/announcehttp://tracker.zerobytes.xyz:1337/announcehttp://tracker1.itzmx.com:8080/announcehttp://tracker2.dler.org:80/announcehttp://tracker2.itzmx.com:6961/announcehttp://tracker3.itzmx.com:6961/announcehttp://tracker4.itzmx.com:2710/announcehttp://vpn.flying-datacenter.de:6969/announcehttp://vps02.net.orel.ru/announcehttp://vps02.net.orel.ru:80/announcehttps://1337.abcvg.info/announcehttps://1337.abcvg.info:443/announcehttps://aaa.army:8866/announcehttps://publictracker.pp.ua:443/announcehttps://tr.ready4.icu:443/announcehttps://tracker.gbitt.info/announcehttps://tracker.hama3.net:443/announcehttps://tracker.imgoingto.icu:443/announcehttps://tracker.lelux.fi:443/announcehttps://tracker.nitrix.me:443/announcehttps://tracker.tamersunion.org:443/announcehttps://trakx.herokuapp.com:443/announcehttps://w.wwwww.wtf:443/announceudp://176.113.68.67:6961/announceudp://176.113.71.60:6961/announceudp://185.181.60.67:80/announceudp://185.83.214.123:6969/announceudp://207.241.226.111:6969/announceudp://207.241.231.226:6969/announceudp://208.83.20.20:6969/announceudp://212.1.226.176:2710/announceudp://212.47.227.58:6969/announceudp://217.76.183.53:80/announceudp://37.235.174.46:2710/announceudp://46.148.18.250:2710/announceudp://46.148.18.254:2710/announceudp://47.ip-51-68-199.eu:6969/announceudp://5.226.148.20:6969/announceudp://61626c.net:6969/announceudp://62.210.97.59:1337/announceudp://6ahddutb1ucc3cp.ru:6969/announceudp://91.149.192.31:6969/announceudp://91.216.110.52:451/announceudp://93.158.213.92:1337/announceudp://adm.category5.tv:6969/announceudp://admin.videoenpoche.info:6969/announceudp://adminion.n-blade.ru:6969/announceudp://api.bitumconference.ru:6969/announceudp://aruacfilmes.com.br:6969/announceudp://bclearning.top:6969/announceudp://benouworldtrip.fr:6969/announceudp://bioquantum.co.za:6969/announceudp://bitsparadise.info:6969/announceudp://blokas.io:6969/announceudp://bms-hosxp.com:6969/announceudp://bubu.mapfactor.com:6969/announceudp://cdn-1.gamecoast.org:6969/announceudp://cdn-2.gamecoast.org:6969/announceudp://chanchan.uchuu.co.uk:6969/announceudp://cutiegirl.ru:6969/announceudp://daveking.com:6969/announceudp://discord.heihachi.pw:6969/announceudp://dpiui.reedlan.com:6969/announceudp://edu.uifr.ru:6969/announceudp://eliastre100.fr:6969/announceudp://engplus.ru:6969/announceudp://fe.dealclub.de:6969/announceudp://forever-tracker.zooki.xyz:6969/announceudp://inferno.demonoid.is:3391/announceudp://ipv4.tracker.harry.lu:80/announceudp://josueunhuit.com:6969/announceudp://kanal-4.de:6969/announceudp://koli.services:6969/announceudp://mail.realliferpg.de:6969/announceudp://movies.zsw.ca:6969/announceudp://mts.tvbit.co:6969/announceudp://nagios.tks.sumy.ua:80/announceudp://ns-1.x-fins.com:6969/announceudp://open.stealth.si:80/announceudp://opentor.org:2710/announceudp://opentracker.arg.bz:6969/announceudp://opentracker.i2p.rocks:6969/announceudp://publictracker.xyz:6969/announceudp://qg.lorzl.gq:2710/announceudp://retracker.akado-ural.ru:80/announceudp://retracker.lanta-net.ru:2710/announceudp://retracker.local.msn-net.ru:6969/announceudp://retracker.netbynet.ru:2710/announceudp://retracker.sevstar.net:2710/announceudp://rutorrent.frontline-mod.com:6969/announceudp://sd-161673.dedibox.fr:6969/announceudp://storage.groupees.com:6969/announceudp://teamspeak.value-wolf.org:6969/announceudp://torrent.tdjs.tech:6969/announceudp://tr.cili001.com:8070/announceudp://tracker.0x.tf:6969/announceudp://tracker.altrosky.nl:6969/announceudp://tracker.blacksparrowmedia.net:6969/announceudp://tracker.coppersurfer.tk:6969/announceudp://tracker.dler.org:6969/announceudp://tracker.ds.is:6969/announceudp://tracker.dyne.org:6969/announceudp://tracker.filemail.com:6969/announceudp://tracker.fortu.io:6969/announceudp://tracker.kamigami.org:2710/announceudp://tracker.leechers-paradise.org:6969/announceudp://tracker.lelux.fi:6969/announceudp://tracker.opentrackr.org:1337/announceudp://tracker.shkinev.me:6969/announceudp://tracker.skynetcloud.site:6969/announceudp://tracker.skyts.net:6969/announceudp://tracker.tiny-vps.com:6969/announceudp://tracker.uw0.xyz:6969/announceudp://tracker.v6speed.org:6969/announceudp://tracker.vulnix.sh:6969/announceudp://tracker.zemoj.com:6969/announceudp://tracker.zerobytes.xyz:1337/announceudp://tracker.zum.bi:6969/announceudp://tracker0.ufibox.com:6969/announceudp://tracker2.dler.org:80/announceudp://tracker2.itzmx.com:6961/announceudp://tracker3.itzmx.com:6961/announceudp://tracker6.dler.org:2710/announceudp://tracker-udp.gbitt.info:80/announceudp://ultra.zt.ua:6969/announceudp://us-tracker.publictracker.xyz:6969/announceudp://valakas.rollo.dnsabr.com:2710/announceudp://vibe.community:6969/announceudp://www.midea123.z-media.com.cn:6969/announceudp://zephir.monocul.us:6969/announce```</details><h2 id="IPv4-DNS服务器汇总"><a href="#IPv4-DNS服务器汇总" class="headerlink" title="IPv4 DNS服务器汇总"></a>IPv4 DNS服务器汇总</h2><pre><code>CloudFlare:    默认：1.1.1.1    备用：1.0.0.1腾讯 DNS：    默认：119.29.29.29    备用：182.254.116.116阿里 DNS：    默认：223.5.5.5    备用：223.6.6.6百度 DNS:    默认：180.76.76.76114 DNS：    默认：114.114.114.114    备用：114.114.115.115CNNIC DNS（中国互联网信息中心 DNS）：    默认：1.2.4.8    备用：210.2.4.8清华大学 TUNA 协会 DNS：    默认：101.6.6.6Google Public DNS：    默认：8.8.8.8    备用：8.8.4.4诺顿 Norton DNS：    安全：        默认：199.85.126.10        备用：199.85.127.10</code></pre><h2 id="IPv6-DNS-服务器"><a href="#IPv6-DNS-服务器" class="headerlink" title="IPv6 DNS 服务器"></a>IPv6 DNS 服务器</h2><h3 id="公共-DNS"><a href="#公共-DNS" class="headerlink" title="公共 DNS"></a>公共 DNS</h3><pre><code>阿里 IPv6 DNS (Alidns):    默认：2400:3200::1    备用：2400:3200:baba::1百度 IPv6 DNS：    默认：2400:da00::6666中国电信 IPv6 DNS：    默认：240e:4c:4008::1    备用：240e:4c:4808::1CNNIC IPv6 DNS 服务器：    默认：2001:dc7:1000::1Google Public IPv6 DNS：    默认：2001:4860:4860::8888    备用：2001:4860:4860::8844Cloudflare IPv6 DNS：    默认：2606:4700:4700::1111    备用：2606:4700:4700::1001OpenDNS：    默认：2620:0:ccc::2    备用：2620:0:ccd::2Neustar UltraDNS IPv6：    1组：        默认：2610:a1:1018::1        备用：2610:a1:1019::1    2组：        默认：2610:a1:1018::5        备用：2610:a1:1019::1</code></pre><h3 id="教育网-DNS"><a href="#教育网-DNS" class="headerlink" title="教育网 DNS"></a>教育网 DNS</h3><pre><code>北京邮电大学 IPv6 DNS 服务器:    默认：2001:da8:202:10::36    备用：2001:da8:202:10::37上海交通大学 IPv6 DNS 服务器    默认：2001:da8:8000:1:202:120:2:100    备用：2001:da8:8000:1:202:120:2:101中科院网络信息中心 IPv6 DNS 服务器：    默认：2001:cc0:2fff:1::6666北京交通大学 IPv6 DNS 服务器：    默认：2001:da8:205:2060::188清华大学 IPv6 DNS 服务器：    默认：2001:da8:ff:305:20c:29ff:fe1f:a92a清华大学 TUNA 协会 IPv6 DNS 服务器：    默认：2001:da8::666科技网 IPv6 DNS 服务器：    默认：2001:cc0:2fff:2::6</code></pre><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Tracker 服务器 / DNS服务器汇总&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="信息汇总" scheme="https://fly6022.fun/categories/%E4%BF%A1%E6%81%AF%E6%B1%87%E6%80%BB/"/>
+    
+    
+      <category term="Tracker" scheme="https://fly6022.fun/tags/Tracker/"/>
+    
+      <category term="DNS" scheme="https://fly6022.fun/tags/DNS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python爬虫实战2——爬取网页元素内容</title>
+    <link href="https://fly6022.fun/posts/2021-02-01-01/"/>
+    <id>https://fly6022.fun/posts/2021-02-01-01/</id>
+    <published>2021-02-01T02:48:37.000Z</published>
+    <updated>2021-04-04T11:53:45.996Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python爬虫实战之爬取网页元素内容</p><a id="more"></a><p>上篇文章，我借用了『整蛊网站』为大家来演示Python调用requests库爬取网页源代码。</p><p>而这一次，是上次代码的“升级版”。</p><p>什么是『元素内容』？举个栗子。</p><pre><code class="lang-html">&lt;title&gt;fly6022&lt;/title&gt;&lt;p&gt;hello, world!&lt;/p&gt;</code></pre><p>形如<code>&lt;title&gt;</code>与<code>&lt;/title&gt;</code>之间、<code>&lt;p&gt;</code>与<code>&lt;/p&gt;</code>之间的信息就叫“元素内容”。</p><h2 id="调用库"><a href="#调用库" class="headerlink" title="调用库"></a>调用库</h2><ul><li>requests</li><li>beautifulsoup4</li></ul><h2 id="安装库"><a href="#安装库" class="headerlink" title="安装库"></a>安装库</h2><pre><code>pip install beautifulsoup4</code></pre><p>else</p><pre><code>easy_install beautifulsoup4</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><pre><code class="lang-python">import requestsfrom bs4 import BeautifulSoupprint(&quot;键入URL:&quot;)a = input()ret = requests.get(a)soup = BeautifulSoup(ret.content,&quot;html.parser&quot;)print(soup.title)</code></pre><p>为变量<code>a</code>赋值<code>https://www.baidu.com/index.html</code>，输出的结果是：</p><pre><code>&lt;title&gt;百度一下，你就知道&lt;/title&gt;</code></pre><p>类似的，通过对以上代码的微小修改，还可以获取到网页的其它元素信息，例如<code>&lt;head&gt;</code>:</p><pre><code class="lang-python">import requestsfrom bs4 import BeautifulSoupprint(&quot;键入URL:&quot;)a = input()ret = requests.get(a)soup = BeautifulSoup(ret.content,&quot;html.parser&quot;)print(soup.head)</code></pre><p>输出的结果是：</p><pre><code>&lt;head&gt;&lt;meta content=&quot;text/html;charset=utf-8&quot; http-equiv=&quot;content-type&quot;/&gt;&lt;meta content=&quot;IE=Edge&quot; http-equiv=&quot;X-UA-Compatible&quot;/&gt;&lt;meta content=&quot;always&quot; name=&quot;referrer&quot;/&gt;&lt;link href=&quot;https://ss1.bdstatic.com/5eN1bjq8AAUYm2zgoY3K/r/www/cache/bdorz/baidu.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;/&gt;&lt;title&gt;百度一下，你就知道&lt;/title&gt;&lt;/head&gt;</code></pre><h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><ul><li><a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/index.zh.html" target="_blank" rel="noopener">Beautiful Soup 4.2.0 中文文档</a></li></ul><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python爬虫实战之爬取网页元素内容&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Python" scheme="https://fly6022.fun/tags/Python/"/>
+    
+      <category term="爬虫" scheme="https://fly6022.fun/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Python爬虫实战1——爬取网页源代码</title>
+    <link href="https://fly6022.fun/posts/2021-01-29-02/"/>
+    <id>https://fly6022.fun/posts/2021-01-29-02/</id>
+    <published>2021-01-29T06:13:17.000Z</published>
+    <updated>2021-01-29T06:40:32.378Z</updated>
+    
+    <content type="html"><![CDATA[<p>Python爬虫实战之爬取网页源代码</p><a id="more"></a><p>偶然在QQ群里面发现了这个：</p><p><img src="/images/posts/2021-01-29-02/01.png" alt=""></p><p>一位群员提出了和我一样的疑问：</p><p><img src="/images/posts/2021-01-29-02/02.png" alt=""></p><p>究竟是什么网站，还要试一试才知道<br><img src="/images/emoji/doge.png" alt=""></p><p>我想到了一个好点子，用Python写一个爬虫看看源代码不就知道了嘛<br><img style="-webkit-filter: none; width: 10%" src="/images/emoji/01.gif" /></p><p>废话不多说，直接开写：</p><pre><code>import requestsprint(&quot;请输入URL：&quot;)a = input()url = a html = requests.get(url)print(&quot;爬取到的网页源代码：\n&quot; , html.text , &quot;\n执行完毕。&quot;)</code></pre><p><img src="/images/posts/2021-01-29-02/03.png" alt=""></p><p><img src="/images/posts/2021-01-29-02/04.png" alt=""></p><p>cxk，熟悉的名字…<br><img src="/images/emoji/doge.png" alt=""></p><p>打开这个链接试一试：</p><p><img src="/images/posts/2021-01-29-02/05.png" alt=""></p><p><img src="/images/posts/2021-01-29-02/06.png" alt=""></p><p>好家伙，还真是（律师函警告）</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Python爬虫实战之爬取网页源代码&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="Python" scheme="https://fly6022.fun/tags/Python/"/>
+    
+      <category term="爬虫" scheme="https://fly6022.fun/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派搭建Minecraft服务器</title>
+    <link href="https://fly6022.fun/posts/2021-01-26-01/"/>
+    <id>https://fly6022.fun/posts/2021-01-26-01/</id>
+    <published>2021-01-26T10:58:13.000Z</published>
+    <updated>2021-03-27T15:18:40.624Z</updated>
+    
+    <content type="html"><![CDATA[<p>树莓派搭建Minecraft服务器</p><a id="more"></a><h2 id="本文章适合的人-情况"><a href="#本文章适合的人-情况" class="headerlink" title="本文章适合的人/情况"></a>本文章适合的人/情况</h2><ul><li>希望搭建一个属于自己的同学、基友服务器</li><li>对服务器配置要求不太高的人</li><li>有一定技术基础的人</li><li>希望开一个7*24小时服务器却又担心电费问题的人</li><li>平时玩游戏时间不多，租用服务器觉得不划算的人</li><li>有以上情况且手头正好有一台闲置的树莓派的人</li></ul><h2 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h2><ol><li>树莓派的配置不高且高负荷工作时发热较严重，推荐搭配散热片及散热风扇来使用。</li><li>树莓派的稳定性较差，仅适用于搭建个人小型服务器，不要跑图、设置在线人数过多。</li><li>本文章需要有一定的技术基础，小白请先了解相关知识。</li><li>本教程一些步骤不单单局限于树莓派，可拓展至大部分安装有Linux系统的硬件设备。</li></ol><h2 id="你需要准备"><a href="#你需要准备" class="headerlink" title="你需要准备"></a>你需要准备</h2><ul><li>安装好系统（最好是图形界面，如果你对命令行界面也很熟悉的话，那么无所谓）且可以联网的树莓派</li><li>公网映射软件（如：<a href="https://www.natfrp.com/" target="_blank" rel="noopener">Sakura FRP</a>等），局域网开服可略过。</li><li>一台能远程控制树莓派的手机/电脑</li></ul><h2 id="开始搭建"><a href="#开始搭建" class="headerlink" title="开始搭建"></a>开始搭建</h2><h3 id="下载开服核心"><a href="#下载开服核心" class="headerlink" title="下载开服核心"></a>下载开服核心</h3><p>首先，搭建Minecraft服务器需要一个开服核心，这是搭建服务器的必由之路。</p><p>这里，我推荐使用Spigot（水龙头）核心，原因是这个核心比较稳定，并且适合配置较低的设备。你也可以使用其它核心，比如bukkit。</p><p>访问<a href="https://getbukkit.org/download/spigot" target="_blank" rel="noopener">Getbukkit</a>，下载你需要版本的核心。</p><p><img src="/images/posts/2021-01-26-01/01.png" alt="01"></p><p>核心是一个<code>.jar</code>文件,此处我使用的核心适用于Minecraft Java版 1.15.2。</p><p><img src="/images/posts/2021-01-26-01/02.png" alt="02"></p><h3 id="配置服务器环境"><a href="#配置服务器环境" class="headerlink" title="配置服务器环境"></a>配置服务器环境</h3><p>在存有核心文件的目录新建一个<code>run.sh</code>文件。</p><p>打开，在编辑器输入以下内容：</p><pre><code>sudo java -Xms768M -Xmx2048M -jar /root/Desktop/Minecraft_server/Server_3/[核心名称].jar nogui</code></pre><p>其中，<strong>文件路径根据具体情况而定</strong>。</p><blockquote><p>sudo：以管理员身份执行<br>-Xms768M：程序运行时最小内存为768M<br>-Xmx2048M：程序运行时最大内存为2048M<br>nogui：即No GUI，无图形界面，可节省内存</p></blockquote><p><img src="/images/posts/2021-01-26-01/03.png" alt="03"></p><p>之后保存文件。</p><p>在终端输入命令：</p><pre><code>cd /root/Desktop/Minecraft_server/Server_3/sh run.sh</code></pre><p>回车。</p><p>命令执行结束，会发现文件夹中多了几个文件。</p><p><img src="/images/posts/2021-01-26-01/04.png" alt="04"></p><p>打开<code>eula.txt</code>，将<code>eula</code>的参数由<code>false</code>改为<code>true</code>。</p><p>保存。</p><p><img src="/images/posts/2021-01-26-01/05.png" alt="05"></p><p>接着，打开文件夹中的<code>server.properties</code>文件，这是服务器的配置文件。</p><p><img src="/images/posts/2021-01-26-01/06.png" alt="06"></p><p>参考<a href="https://minecraft-zh.gamepedia.com/Server.properties" target="_blank" rel="noopener">Minecraft Wiki</a>.以下是我整理出来的各参数的实际含义：</p><pre><code>#Minecraft server properties#Wed Jan 27 16:46:05 CST 2021broadcast-rcon-to-ops=true  # 广播RCON信息给OPview-distance=10  # 视野距离max-build-height=256  # 建筑最大高度，最大值65534server-ip=  # 服务器IP（可留空或填localhost）level-seed=  # 地图种子rcon.port=25575  # 可忽略，RCON远程连接协议端口gamemode=survival  # 游戏模式server-port=25565 # 游戏端口，根据个人情况设置，可保持默认值25565allow-nether=true  # 开放地狱enable-command-block=false  # 开启命令方块enable-rcon=false  # 开启RCON功能，建议不开启enable-query=false  # 允许使用 GameSpy4 协议的服务器监听器op-permission-level=4  # OP等级，最大值为4，等同于控制台权限prevent-proxy-connections=false  # 检测异地登陆并阻止进入游戏generator-settings=  # 生成器设置resource-pack=  # 服务器使用资源包设置level-name=world  # 地图名称rcon.password=  # RCON密码，若不开启RCON功能可忽略player-idle-timeout=0  # 挂机检测，0表示不开启，单位为分钟motd=A Minecraft Server  # 服务器标题，要求使用Unicode格式文字query.port=25565  # Query端口，若不开启Query可忽略debug=false # 调试模式force-gamemode=false  # 强制游戏模式hardcore=false  # 极限生存white-list=false  # 白名单broadcast-console-to-ops=true  # 广播控制台信息给OPpvp=true  # 玩家攻击spawn-npcs=true  # 生成村民generate-structures=true  # 生成建筑spawn-animals=true  # 生成动物snooper-enabled=true  # 允许采集服务器信息difficulty=easy  # 强制难度选项function-permission-level=2  # 默认权限等级network-compression-threshold=256  # 数据包压缩大小level-type=default  # 种子类型spawn-monsters=true  # 生成怪物max-tick-time=60000  # 服务器最大崩溃等待响应时间，单位毫秒enforce-whitelist=false  # 强制白名单use-native-transport=true  # 针对Linux的优化max-players=20  # 最大玩家数量resource-pack-sha1=  # 资源包验证，使用哈希加密SHA1spawn-protection=16  # 出生点保护online-mode=true  # 在线模式（正版模式）allow-flight=false  # 允许飞行max-world-size=29999984  # 世界生成上限</code></pre><p>配置并保存后，再次运行核心。</p><pre><code>sh run.sh</code></pre><p>稍等片刻。</p><p><img src="/images/posts/2021-01-26-01/07.png" alt="07"></p><p>等到命令行出现<code>Done</code>时，即表示我们的服务器在本地已经运行成功了。</p><p>不过，想要邀请你的好朋友一起来玩服务器，还差最后一步，就是-配置公网映射，可以使用Sakura FRP，本教程不再赘述。</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;树莓派搭建Minecraft服务器&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="Minecraft" scheme="https://fly6022.fun/tags/Minecraft/"/>
+    
+      <category term="服务器" scheme="https://fly6022.fun/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>我的期末成绩~</title>
+    <link href="https://fly6022.fun/posts/2021-01-24-01/"/>
+    <id>https://fly6022.fun/posts/2021-01-24-01/</id>
+    <published>2021-01-24T13:29:27.000Z</published>
+    <updated>2021-03-27T15:16:05.994Z</updated>
+    
+    <content type="html"><![CDATA[<p>初中最后一次期末考试告一段落……</p><a id="more"></a><p><img src="/images/posts/2021-01-24-01/01.jpg" alt=""></p><p>语文作文跑题了(T▽T)，分数才（22/40），平常至少要（34/40）的。阅读题答的也不好，每道题都扣一分，课内文言文翻译和注释各错一个…不过选择题全对了(￣▽￣)／</p><p>化学粗心大意白丢了4分╭(╯^╰)╮（我是化学课代表啊）</p><p><img src="/images/posts/2021-01-24-01/02.png" alt=""></p><p><img src="/images/posts/2021-01-24-01/03.png" alt=""></p><p>数学嘛…证明题证一半不会写了…选择题第7题上课讲过的竟然不会了…本可以上90的…（压轴题瞎写两笔6分有了，嘿嘿）</p><p>历史和政治不说什么了，英语物理算正常水平吧。</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;初中最后一次期末考试告一段落……&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="编程语言" scheme="https://fly6022.fun/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>编程语言的分类及区别</title>
+    <link href="https://fly6022.fun/posts/2021-01-19-01/"/>
+    <id>https://fly6022.fun/posts/2021-01-19-01/</id>
+    <published>2021-01-19T02:16:53.000Z</published>
+    <updated>2021-01-29T06:06:35.999Z</updated>
+    
+    <content type="html"><![CDATA[<p>常见的编程语言，如:C, C++, Python, Java等，在日常生活中，我们也时常听说过“高级语言”等词语，它们有什么区别？编程语言的分类又是被如何定义的？</p><a id="more"></a><h2 id="低级语言、中级语言、高级语言的定义"><a href="#低级语言、中级语言、高级语言的定义" class="headerlink" title="低级语言、中级语言、高级语言的定义"></a>低级语言、中级语言、高级语言的定义</h2><p>低级、中级、高级是相较于人而言的。</p><h3 id="低级语言"><a href="#低级语言" class="headerlink" title="低级语言"></a>低级语言</h3><p>形如“汇编语言”这类的语言，被称作“低级语言”，那么它到底“低级”在什么地方呢？</p><p>在汇编语言中，通常用助记符代替机器指令的操作码，它通常长得像这样：</p><pre><code>  DataBegin dw 0  NextDataSeg dw 0ffffh  oldInt2F_addr dw 0, 0  XMS_control dw 0, 0  Handle_begin dw 0  cvtOfs dw 0 ; DOS 3.0 equ 0 and above DOS 4.0 is 1                org 104h                db 0dh                db Revision                db ??date                db 26                org 114h  tsrLength dw 0  MachineID db 0FCh ; IBM PC/AT// 雷军在1994年编写的汇编代码</code></pre><p>看了这段代码，是不是有一种头晕的感觉？(｀・ω・´)，这也就引出了低级语言这类语言缺点了：</p><ul><li>代码单调且冗长，增加了编写的难度</li><li>不易于人的阅读同时也不利于后期对程序的维护</li></ul><p>那么，低级语言就一定“低级”吗？当然不是，它也有很多优点：</p><ul><li>能够减少程序运行时的占用空间、提高程序运行速度</li><li>能够对硬件直接控制且执行的准确率高</li></ul><p>因此，这种语言常常被用来优化应用程序的部分代码来提高程序的运行速度。</p><h3 id="中级语言"><a href="#中级语言" class="headerlink" title="中级语言"></a>中级语言</h3><p>中级语言的定义比较模糊，事实上它应当属于“高级语言”的范畴。</p><p>相信大家对“C语言”、“C++<s>（C艹）</s>”这类语言不陌生。它们通常被称作“中级语言”。</p><p>一般地，中级语言是介于“低级语言”和“高级语言”之间的一类语言，发挥着承上启下的作用，同时也应该是目前在计算机领域应用最广泛的一种语言，小到应用程序，大到操作系统，都少不了它们的身影，由此可见中级语言的重要性。</p><p>中级语言相较于低级语言，更加接近了人的思维（有逻辑性），比较容易被人理解。</p><h3 id="高级语言"><a href="#高级语言" class="headerlink" title="高级语言"></a>高级语言</h3><p>它是对于初学者以及开发人员而言的最友好的一种语言了。</p><p>高级语言的典型代表是Java及Python。</p><p>高级语言相较于前两种语言，变得更加具体化，例如要将两个变量相加并赋值给第三个变量，通过高级语言表达为：</p><pre><code>var3 = var1 + var2;</code></pre><p>由此看出，高级语言的基本特性是：</p><ul><li>便于人的编写及维护</li><li>学习门槛较低，易于掌握</li></ul><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;常见的编程语言，如:C, C++, Python, Java等，在日常生活中，我们也时常听说过“高级语言”等词语，它们有什么区别？编程语言的分类又是被如何定义的？&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="编程语言" scheme="https://fly6022.fun/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>电信家庭网关配置 IPv6 网络 |･ω･` )</title>
+    <link href="https://fly6022.fun/posts/2020-09-20-01/"/>
+    <id>https://fly6022.fun/posts/2020-09-20-01/</id>
+    <published>2021-01-17T03:19:10.000Z</published>
+    <updated>2021-01-18T09:03:36.722Z</updated>
+    
+    <content type="html"><![CDATA[<p>电信家庭网关配置 IPv6 网络.</p><a id="more"></a><h2 id="💻-准备"><a href="#💻-准备" class="headerlink" title="💻 准备"></a>💻 准备</h2><ul><li>电信光猫</li><li>支持IPv6的路由器</li><li>支持IPv6的电脑</li></ul><h2 id="🌈-配置"><a href="#🌈-配置" class="headerlink" title="🌈 配置"></a>🌈 配置</h2><p>首先，在浏览器进入光猫的后台：在地址栏输入“192.168.1.1”（如果你配置的IP地址是其它地址，则输入配置的地址”，之后按“Enter”回车。</p><p><img src="/images/posts/2020-09-20-01/01.png" alt="01.png"></p><p>出现上图页面，即表示你已经进入了光猫后台的登录页面。之后我们输入账号密码登录，<strong>注意，不要在此处输入光猫背面提供的账号和密码！光猫背面提供的并非管理员账号，而是访客账号。</strong></p><p><strong>输入管理员账号</strong>：“telecomadmin”，密码：“nE7jA%5m”。</p><p><img src="/images/posts/2020-09-20-01/02.png" alt="02.png"></p><p>本页面出现，即表示顺利登陆进入光猫后台。</p><p>点击“网络”。</p><p><img src="/images/posts/2020-09-20-01/03.png" alt="03.png"></p><p>之后在“连接名称”中选择带有“Internet”的选项（此步骤根据具体情况而定）</p><p><img src="/images/posts/2020-09-20-01/04.png" alt="04.png"></p><p>在“IP模式”中选择“IPv4&amp;IPv6”.</p><p><img src="/images/posts/2020-09-20-01/05.png" alt="05.png"></p><p>将页面底部的“IPv6”信息配置成下图这样：</p><p><img src="/images/posts/2020-09-20-01/06.png" alt="06.png"></p><p>接着打开“LAN地址设置”.</p><p><img src="/images/posts/2020-09-20-01/07.png" alt="07.png"></p><p>点击“IPv6设置”，将该页面信息设置为下图所示内容：</p><p><img src="/images/posts/2020-09-20-01/08.png" alt="08.png"></p><p>点击保存，接着，可在“状态”页面下的“网络侧信息”看到“已连接”的字样，证明IPv6网络已经配置好。</p><p><img src="/images/posts/2020-09-20-01/09.png" alt="09.png"></p><p>之后在路由器相应页面配置IPv6桥接即可。</p><p>打开<a href="http://test-ipv6.com/index.html.zh_CN" target="_blank" rel="noopener">IPv6 测试</a>。</p><p>该页面证明IPv6已经配置成功！</p><p><img src="/images/posts/2020-09-20-01/10.png" alt="10.png"></p><p>— END</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;电信家庭网关配置 IPv6 网络.&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="IPv6" scheme="https://fly6022.fun/tags/IPv6/"/>
+    
+      <category term="家庭宽带" scheme="https://fly6022.fun/tags/%E5%AE%B6%E5%BA%AD%E5%AE%BD%E5%B8%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>记一次博客优化</title>
+    <link href="https://fly6022.fun/posts/2020-12-26-01/"/>
+    <id>https://fly6022.fun/posts/2020-12-26-01/</id>
+    <published>2020-12-26T10:00:31.000Z</published>
+    <updated>2020-12-27T02:14:18.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>233，本次博客优化主要对网站的层叠样式表（CSS）以及字体方面做了微调。</p><a id="more"></a><h2 id="🎨-层叠样式表"><a href="#🎨-层叠样式表" class="headerlink" title="🎨 层叠样式表"></a>🎨 层叠样式表</h2><p>为了使页面更快响应，我对网站的层叠样式表做了微调及压缩：目前CSS文件的大小由原来的 <code>243 KB</code> 变为了 <code>221 KB</code> 。</p><p><img src="/images/posts/2020-12-26-01/01.png" alt="PNG1"></p><p>经过本地测试，网站首页CSS的响应速度为 <code>33.96 ms</code> 。</p><p><img src="/images/posts/2020-12-26-01/02.png" alt="PNG2"></p><p>在分页测试中，CSS的响应速度为 <code>11.92 ms</code>。</p><p>实际表现虽然不是很理想，但还是比以往要快的。不过受制于CloudFlare CDN的速度，上云的实际速度会比本地测试慢。</p><h2 id="✏-字体"><a href="#✏-字体" class="headerlink" title="✏ 字体"></a>✏ 字体</h2><p>字体方面，由以往单一的 <i>思源黑体</i> 拓展到 <b>思源黑体+思源宋体+Roboto字体</b> 一并使用。</p><p>网站主体部分以及博客文章方面，标题使用思源宋体（<code>font-weight</code>值为<code>800</code>），正文使用思源黑体 + Roboto字体（<code>font-weight</code>值为<code>300</code>）。</p><h3 id="字体对比"><a href="#字体对比" class="headerlink" title="字体对比"></a>字体对比</h3><p><img src="/images/posts/2020-12-26-01/03.PNG" alt="PNG3"></p><h3 id="Google-Fonts"><a href="#Google-Fonts" class="headerlink" title="Google Fonts"></a>Google Fonts</h3><pre><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Noto+Sans+SC:100,200,300,400,500,700,800,900&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Noto+Serif+SC:100,200,300,400,500,700,800,900&quot;&gt;&lt;link rel=&quot;stylesheet&quot; href=&quot;https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700,800,900&quot;&gt;</code></pre><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;233，本次博客优化主要对网站的层叠样式表（CSS）以及字体方面做了微调。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="博客" scheme="https://fly6022.fun/tags/%E5%8D%9A%E5%AE%A2/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>解除手机 Bootloader 锁</title>
+    <link href="https://fly6022.fun/posts/2020-11-27-01/"/>
+    <id>https://fly6022.fun/posts/2020-11-27-01/</id>
+    <published>2020-11-27T13:48:18.000Z</published>
+    <updated>2020-12-26T11:03:47.288Z</updated>
+    
+    <content type="html"><![CDATA[<p>想要获得「Root权限」来搞机？ヾ(ﾟ∀ﾟゞ) 本教程将告诉您如何解除手机的 Bootloader 锁。</p><a id="more"></a><h2 id="⚠-警告"><a href="#⚠-警告" class="headerlink" title="⚠ 警告"></a>⚠ 警告</h2><blockquote><p><strong><font color="red">解除 Bootloader 锁会清除手机所有数据，请提前做好数据备份！</font></strong><br><strong>本教程不适用于华为、VIVO、OPPO等已经锁死BL品牌的手机！╮(╯﹏╰）╭当然，你也可以按照本教程的步骤试一试，我的VIVO旧机型就解锁成功了，不过通常情况下大概率会不成功！</strong></p></blockquote><h2 id="💻-准备"><a href="#💻-准备" class="headerlink" title="💻 准备"></a>💻 准备</h2><ul><li>运行 Windows 操作系统的电脑</li><li>ADB工具（见文末链接）</li><li>数据线 </li><li>一部待解锁的 Android 手机</li></ul><h2 id="🌈-实践"><a href="#🌈-实践" class="headerlink" title="🌈 实践"></a>🌈 实践</h2><p>首先，点击文章末尾的链接，下载并解压ADB工具。</p><p>解压完成后，双击启动程序，将会弹出一个命令行窗口。</p><p>此时，使用数据线将手机与电脑连接起来（一些手机还需要安装USB驱动，可在手机品牌官网找到）</p><p>之后输入指令：</p><pre><code>adb devices</code></pre><p>输入完成后，点击“Enter”，正常情况下会显示“List of devices attached：xxxxx device”。</p><p>然后，我们就可以进入正式的刷机工作了。</p><p>以此输入指令，进入fastboot模式：</p><pre><code>adb reboot bootloader</code></pre><p>此时，手机会自动重启到fastboot模式，输入下一条指令，解除bootloader锁：</p><pre><code>fastboot oem unlock</code></pre><p>之后，待手机重启，BL锁就解锁成功了！可以自由的刷入Magisk、EdXposed等框架了！(ﾉﾟ▽ﾟ)ﾉ</p><h2 id="🎨-下载"><a href="#🎨-下载" class="headerlink" title="🎨 下载"></a>🎨 下载</h2><p>ADB工具【提取码: 8pfc】：<a href="https://pan.baidu.com/s/1yli3Pw4Jgwr5cH3gECokFA" target="_blank" rel="noopener">https://pan.baidu.com/s/1yli3Pw4Jgwr5cH3gECokFA</a> </p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;想要获得「Root权限」来搞机？ヾ(ﾟ∀ﾟゞ) 本教程将告诉您如何解除手机的 Bootloader 锁。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="ADB" scheme="https://fly6022.fun/tags/ADB/"/>
+    
+      <category term="Android" scheme="https://fly6022.fun/tags/Android/"/>
+    
+      <category term="Linux" scheme="https://fly6022.fun/tags/Linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>通过 Javascript 随机调用 Javascript</title>
+    <link href="https://fly6022.fun/posts/2020-08-08-01/"/>
+    <id>https://fly6022.fun/posts/2020-08-08-01/</id>
+    <published>2020-08-08T10:47:04.000Z</published>
+    <updated>2021-01-18T09:14:46.174Z</updated>
+    
+    <content type="html"><![CDATA[<p>通过一段简短的Javascript代码来随机调用外部Javascript文件。</p><a id="more"></a><h2 id="🌈-实例"><a href="#🌈-实例" class="headerlink" title="🌈 实例"></a>🌈 实例</h2><blockquote><p>本教程拿我的一个开源项目“<a href="https://book.fly6022.fun/" target="_blank" rel="noopener">『书摘。』</a>”来举例。</p></blockquote><p>以下为『书摘。』v2.0.0 <code>haoju.js</code>中代码的一部分：</p><pre><code class="lang-javascript">function gethaojudata() {      var haojudata = [&quot;src/haoju/1.js&quot;,&quot;src/haoju/2.js&quot;]; // 枚举好句数据源    var js = document.createElement(&quot;script&quot;);      js.src = haojudata[Math.floor(Math.random()*2)]; // 生成随机数、枚举对象并填充标签参数     js.type = &quot;text/javascript&quot;;   // 引入的文件类型     document.getElementsByTagName(&quot;body&quot;)[0].appendChild(js)  // 引入到HTML文档}setTimeout(&quot;gethaojudata()&quot;,&quot;0&quot;); // 调用函数</code></pre><h2 id="📕-原理"><a href="#📕-原理" class="headerlink" title="📕 原理"></a>📕 原理</h2><p>知其然，更要知其所以然。</p><p>拆解以上代码，逐层分析：</p><p>先看函数<code>gethaojudata()</code>中的第一个变量<code>haojudata</code>(为了便于说明，文件名做了适当调整）：</p><pre><code class="lang-javascript">var data = [&quot;1.js&quot;,&quot;2.js&quot;];</code></pre><p>这是一个简单的数组，存储了两个值，也就是我们<strong>需要随机调用的两个外部JS文件</strong>。此处是Javascript的基础知识，不做过多解释，可在<a href="https://www.w3school.com.cn/js/js_arrays.asp" target="_blank" rel="noopener">w3school</a>详细了解。</p><pre><code class="lang-javascript">var js = document.createElement(&quot;script&quot;);      js.src = haojudata[Math.floor(Math.random()*2)];      js.type = &quot;text/javascript&quot;;     document.getElementsByTagName(&quot;body&quot;)[0].appendChild(js)  // 引入到HTML文档</code></pre><p>再看函数<code>gethaojudata()</code>中的第二个变量<code>js</code>，此变量中的内容相较于上一个变量中的内容稍微复杂了一些，现在我们来拆解分析它：</p><pre><code class="lang-javascript">document.createElement(&quot;script&quot;);</code></pre><p>上面是一个典型的<code>Document.createElement</code>方法。</p><p><a href="https://developer.mozilla.org/zh-CN/docs/Web/API/Document/createElement" target="_blank" rel="noopener">MDN</a>是这样描述它的：在 HTML 文档中，<code>Document.createElement()</code> 方法用于创建一个由标签名称 <em>tagName</em> 指定的 HTML 元素。</p><p>根据MDN的描述以及HTML的相关知识，我们可以得知，以上代码代表的是<em>创建一个HTML元素<code>script</code></em>。</p><pre><code class="lang-javascript"> js.src = haojudata[Math.floor(Math.random()*2)];  js.type = &quot;text/javascript&quot;;</code></pre><p>以上两组变量声明了HTML标签<code>script</code>的参数：<code>src</code>与<code>type</code>。变量的值即为参数的值。</p><p>其中，变量<code>js.src</code>的值使用了<code>Math.floor()</code>和<code>Math.random()</code>两种Javascript内置对象，<code>Math.floor()</code>返回小于或等于一个给定数字的最大整数；<code>Math.random()</code>返回一个浮点，伪随机数在范围从0到小于1。两种方法连用，我们就可以生成<em>随机数</em>了。</p><p><strong>注意：<code>Math.random()*2</code>中的<code>2</code>，随上文中变量<code>data</code>中数组的值的数量而变化，即你需要调用几个外部JS文件，就把数字<code>2</code>换成几。</strong></p><p>变量<code>js.type</code>是一个变量的基本模型，不做过多解释，声明了引用的文件为Javascript文件。</p><pre><code>document.getElementsByTagName(&quot;body&quot;)[0].appendChild(js)</code></pre><p>以上代码的含义是将变量<code>js</code>的内容引入到HTML文档的<code>body</code>标签中。</p><p>此处推荐将内容引入至<code>body</code>标签，浏览器会在页面加载的时候执行。</p><pre><code>setTimeout(&quot;gethaojudata()&quot;,&quot;0&quot;);</code></pre><p>最后再来看以下函数外的<code>setTimeout</code>，此方法用于在指定的毫秒数后调用函数或计算表达式，此处含义为加载到此Javascript后立即执行函数。</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;通过一段简短的Javascript代码来随机调用外部Javascript文件。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/tags/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="Javascript" scheme="https://fly6022.fun/tags/Javascript/"/>
+    
+      <category term="web前端" scheme="https://fly6022.fun/tags/web%E5%89%8D%E7%AB%AF/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>树莓派搭建小型FM电台</title>
+    <link href="https://fly6022.fun/posts/2020-07-29-01/"/>
+    <id>https://fly6022.fun/posts/2020-07-29-01/</id>
+    <published>2020-07-29T07:42:00.000Z</published>
+    <updated>2021-01-18T10:21:51.930Z</updated>
+    
+    <content type="html"><![CDATA[<p>利用树莓派与 PiFmRds 组件搭建小型FM电台。</p><a id="more"></a><h2 id="🔈-声明"><a href="#🔈-声明" class="headerlink" title="🔈 声明"></a>🔈 声明</h2><blockquote><p>未经有关部门审批私自设立大功率私人电台是<strong>违法行为</strong>，轻则没收设备、罚款拘留，重则判刑，请遵守我国《中华人民共和国无线电管理条例》、《中华人民共和国无线电管制规定》等相关法律法规。<strong>本教程仅供实验、学习以及研究，并且实验中使用到的设备发射功率很小（《中华人民共和国无线电管理条例》第五条：国家鼓励、支持对无线电频谱资源的科学技术研究和先进技术的推广应用，提高无线电频谱资源的利用效率。），实际应用请事先取得相关资质！</strong></p><p>为遵守有关法律法规，本教程不实际演示，仅介绍配置过程。</p></blockquote><h2 id="🎃-准备"><a href="#🎃-准备" class="headerlink" title="🎃 准备"></a>🎃 准备</h2><p>需要准备以下物品：</p><ul><li>Rasberry Pi 任意版本（通电、联网）<br><img src="/images/posts/2020-07-29-01/01.jpg" alt="Rasberry Pi 4 Model B"></li><li>杜邦线（可选），也可不使用<br><img src="/images/posts/2020-07-29-01/02.jpg" alt="杜邦线"></li><li>收音机（也可用手机的FM收音机应用）<br><img src="/images/posts/2020-07-29-01/03.jpg" alt="德生R-909">         </li></ul><h2 id="🌈-实现"><a href="#🌈-实现" class="headerlink" title="🌈 实现"></a>🌈 实现</h2><h3 id="将杜邦线连接到树莓派"><a href="#将杜邦线连接到树莓派" class="headerlink" title="将杜邦线连接到树莓派"></a>将杜邦线连接到树莓派</h3><p><strong>若不使用杜邦线，可跳过此步骤。</strong></p><p>这里参考树莓派的GPIO图：</p><p><img src="/images/posts/2020-07-29-01/04.jpg" alt="GPIO"></p><p>将杜邦线与 GPIO 4 管脚连接（图中红色箭头指向的位置，即将树莓派USB口与以太网口朝着自己，从后向前数靠左一排第四个GPIO管脚）</p><p><img src="/images/posts/2020-07-29-01/05.jpg" alt="GPIO4+杜邦线"></p><h3 id="安装组件"><a href="#安装组件" class="headerlink" title="安装组件"></a>安装组件</h3><ol><li>首先安装 Sndfile 库：</li></ol><pre><code>sudo apt-get install libsndfile1-dev</code></pre><ol><li>之后克隆 PiFmRds 源码：</li></ol><pre><code>git clone https://github.com/ChristopheJacquet/PiFmRds.git</code></pre><ol><li>编译 PiFmRds ：</li></ol><pre><code>cd PiFmRds/srcmake cleanmake</code></pre><ol><li>编译完成之后，键入以下命令运行程序：</li></ol><pre><code>sudo ./pi_fm_rds</code></pre><p>此时，FM信号会从树莓派的GPIO 4管脚发出，默认频率为 107.9 MHz，覆盖范围约 100 cm，若增加一条杜邦线，可将覆盖范围扩大到 10 - 100 m 不等。</p><p>同时，你还可以播放 PiFmRds 内置的 wav 音频，输入此命令可播放内置测试音频（频率 100.6 MHz）：</p><pre><code>sudo ./pi_fm_rds -audio sound.wav -freq 100.6</code></pre><p>更多应用语法：</p><pre><code>pi_fm_rds [-freq freq] [-audio file] [-ppm ppm_error] [-pi pi_code] [-ps ps_text] [-rt rt_text]</code></pre><ul><li><p><strong>-freq</strong> 指定载波频率（单位：MHz）。如：<code>-freq 100.6</code>。</p></li><li><p><strong>-audio</strong> 指定一个音频文件作为音频播放。如果提供立体声文件，则软件将产生FM立体声信号。如：<code>-audio sound.wav</code>。支持的格式为.wav（不支持.mp3格式）。</p></li><li><p><strong>-pi</strong> 指定RDS广播的PI代码。4个十六进制数字。如：<code>-pi FFFF</code>。</p></li><li><p><strong>-ps</strong> 指定RDS广播的电台名称。字符限制：8个字符。如：<code>-ps RASP-PI</code>。</p></li><li><p><strong>-rt</strong> 指定要传输的无线文本（RT）。字符限制：64个字符。如：<code>-rt &#39;Hello, world!&#39;</code>。</p></li><li><p><strong>-ctl</strong> 指定一个命名管道（FIFO）作为控制通道在运行时改变PS和RT。</p></li><li><p><strong>-ppm</strong> 以百万分率（ppm）为单位指定树莓派的振荡器误差。</p></li></ul><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;利用树莓派与 PiFmRds 组件搭建小型FM电台。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="树莓派" scheme="https://fly6022.fun/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="Rasberry Pi" scheme="https://fly6022.fun/tags/Rasberry-Pi/"/>
+    
+      <category term="FM" scheme="https://fly6022.fun/tags/FM/"/>
+    
+      <category term="linux" scheme="https://fly6022.fun/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Raspberry Pi 4B 开箱</title>
+    <link href="https://fly6022.fun/posts/2020-05-16-01/"/>
+    <id>https://fly6022.fun/posts/2020-05-16-01/</id>
+    <published>2020-07-23T09:57:07.000Z</published>
+    <updated>2021-01-18T09:56:49.453Z</updated>
+    
+    <content type="html"><![CDATA[<p>树莓派 4B 开箱及简单评测。</p><a id="more"></a><h2 id="💻-图片概览"><a href="#💻-图片概览" class="headerlink" title="💻 图片概览"></a>💻 图片概览</h2><p><img src="/images/posts/2020-05-16-01/01.jpg" alt=""><br><img src="/images/posts/2020-05-16-01/02.jpg" alt=""><br><img src="/images/posts/2020-05-16-01/03.jpg" alt=""><br><img src="/images/posts/2020-05-16-01/04.jpg" alt=""></p><h2 id="📃-配置信息"><a href="#📃-配置信息" class="headerlink" title="📃 配置信息"></a>📃 配置信息</h2><div class="table-container"><table><thead><tr><th>硬件类型</th><th>硬件配置</th></tr></thead><tbody><tr><td>CPU</td><td>Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz</td></tr><tr><td>运行内存</td><td>1GB, 2GB, or 4GB of LPDDR4 SDRAM</td></tr><tr><td>以太网络</td><td>Full-throughput Gigabit Ethernet</td></tr><tr><td>无线网络</td><td>CYW43455 2.4 GHz/5.0 GHz IEEE 802.11ac wireless</td></tr><tr><td>蓝牙</td><td>Bluetooth 5.0</td></tr><tr><td>USB</td><td>Two USB 3.0 and two USB 2.0 ports</td></tr><tr><td>显示输出</td><td>Dual monitor support, at resolutions up to 4K</td></tr><tr><td>GPU</td><td>VideoCore VI graphics, supporting OpenGL ES 3.x</td></tr><tr><td>硬件解码</td><td>4Kp60 hardware decode of HEVC video</td></tr></tbody></table></div><h2 id="🔝-较上一代（树莓派-3B-）性能提升"><a href="#🔝-较上一代（树莓派-3B-）性能提升" class="headerlink" title="🔝 较上一代（树莓派 3B+）性能提升"></a>🔝 较上一代（树莓派 3B+）性能提升</h2><ul><li>核心SoC由 Broadcom BCM2837B0 提升为 Broadcom BCM2711，并且集成了 主频为 1.5GHz的四核Arm Cortex-A72 处理器</li><li>内存由 3B+ 单一的 1GB LPDDR2 SDRAM 变为 4B 的 1GB、2GB、4GB、8GB（均为 LPDDR4 SDRAM）四种版本可选</li><li>无线网络方面差别不大，基本无提升</li><li>以太网络支持千兆网络（1Gbps）</li><li>由蓝牙 4.2 提升为 蓝牙 5.0</li><li>显示输出方面，4B 提供了2个 Micro HDMI 接口，均支持4K 60帧，且支持双路输出</li><li>USB接口由4个 USB 2.0 变为 2个 USB 2.0、2个 USB 3.0</li><li>电源供电由以往的 Micro USB 接口变为 USB-Type-C 接口（供电需求为5V 3A，即 15w）</li></ul><h2 id="😄-个人购买建议"><a href="#😄-个人购买建议" class="headerlink" title="😄 个人购买建议"></a>😄 个人购买建议</h2><p>如果你想入手一台 树莓派 4B ，那么我建议：</p><ol><li>最好不要购买除散热片（散热风扇）、Micro SD卡以外的其它任何配件，若需保护壳，建议购买金属保护壳（不要购买亚克力壳，如果你认为自己永远不会手残那就当我没说_(:3」∠)_，反正博主已经摔碎了一个了qwq），电源适配器方面一般的手机<strong>快充</strong>充电头足以胜任（5v/3A，15w），显示屏方面，如无特殊需求，无需购买额外显示器，使用 VNC 局域网远程连接即可。（注：以上提示可帮你省下大约 100 RMB）</li><li>根据自身需要选择内存大小（目前1GB的已经停售，还有2GB、4GB、8GB版本可供选择）</li><li>购买Micro SD卡时最好容量不低于8GB，并且不要选择小厂生产的或者是价格过于便宜的，一般这种大部分是缩水卡！！！谁买谁吃亏ヽ(#`Д´)ﾉ（缩水卡断电后数据可能无法保存，容易造成数据丢失）！！！（博主的是闪迪 32GB）</li></ol><hr><p>如果你喜欢本文的话，欢迎 <a href="/donate.html">赞赏</a> 作者o(´^｀)o</p><p><strong>本文首次编辑时间：</strong>2020/5/16 15:25:36<br><strong>本文此次编辑时间：</strong>2020/7/23 17:57:07 </p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;树莓派 4B 开箱及简单评测。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="树莓派" scheme="https://fly6022.fun/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>观测2019年最后一次日偏食</title>
+    <link href="https://fly6022.fun/posts/2019-12-30-01/"/>
+    <id>https://fly6022.fun/posts/2019-12-30-01/</id>
+    <published>2019-12-30T12:38:41.000Z</published>
+    <updated>2021-01-18T09:56:12.282Z</updated>
+    
+    <content type="html"><![CDATA[<p>观测2019年最后一次日偏食。</p><a id="more"></a><h2 id="🌞-日偏食"><a href="#🌞-日偏食" class="headerlink" title="🌞 日偏食"></a>🌞 日偏食</h2><p>此次日食，环食带从沙特阿拉伯开始，经过卡塔尔、阿拉伯联合酋长国、阿曼、阿拉伯海、印度、斯里兰卡、印度尼西亚、马来西亚、苏拉威西海等国家及地区，在太平洋西部结束。在非洲东北部、亚洲（除北部）、印度洋北部、大洋洲西北部、太平洋西部均可看到偏食。中国全境可见偏食。</p><pre><code>观测地点：河北 唐山观测时间：2019-12-26 12:53:42 --&gt; 2019-12-26 13:26:24使用设备：OnePlus 7</code></pre><p><img src="/images/posts/2019-12-30-01/02.png" alt="2019日偏食"></p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;观测2019年最后一次日偏食。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
+    
+    
+      <category term="日偏食" scheme="https://fly6022.fun/tags/%E6%97%A5%E5%81%8F%E9%A3%9F/"/>
+    
+  </entry>
+  
+</feed>
