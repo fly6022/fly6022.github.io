@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fly6022.fun/"/>
-  <updated>2021-05-04T08:22:55.336Z</updated>
+  <updated>2021-05-29T11:25:35.352Z</updated>
   <id>https://fly6022.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>树莓派安装Ubuntu系统</title>
+    <link href="https://fly6022.fun/posts/2021-05-29-01/"/>
+    <id>https://fly6022.fun/posts/2021-05-29-01/</id>
+    <published>2021-05-29T11:03:17.000Z</published>
+    <updated>2021-05-29T11:25:35.352Z</updated>
+    
+    <content type="html"><![CDATA[<p>树莓派安装 Ubuntu Server 20.04 LTS</p><a id="more"></a><h1 id="⚠-兼容性警告"><a href="#⚠-兼容性警告" class="headerlink" title="⚠ 兼容性警告"></a>⚠ 兼容性警告</h1><div class="danger custom-block"><p>本教程仅适用于 Raspberry Pi 4B，安装的Ubuntu版本为Ubuntu Server 20.04 LTS (Arm64)</p></div><h2 id="需要准备"><a href="#需要准备" class="headerlink" title="需要准备"></a>需要准备</h2><h3 id="硬件"><a href="#硬件" class="headerlink" title="硬件"></a>硬件</h3><ol><li>Raspberry 4B </li><li>Micro SD Card（≥16GB)</li><li>RJ45网线（超5类及以上）</li><li>Windows 10 电脑</li></ol><h3 id="软件"><a href="#软件" class="headerlink" title="软件"></a>软件</h3><ol><li>balenaEtcher</li><li>PUTTY</li></ol><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><h2 id="烧录镜像"><a href="#烧录镜像" class="headerlink" title="烧录镜像"></a>烧录镜像</h2><h2 id="更换软件源"><a href="#更换软件源" class="headerlink" title="更换软件源"></a>更换软件源</h2><h2 id="安装图形界面（选）"><a href="#安装图形界面（选）" class="headerlink" title="安装图形界面（选）"></a>安装图形界面（选）</h2><h2 id="配置远程连接（基于Xrdp协议）（选）"><a href="#配置远程连接（基于Xrdp协议）（选）" class="headerlink" title="配置远程连接（基于Xrdp协议）（选）"></a>配置远程连接（基于Xrdp协议）（选）</h2><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins></p><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;树莓派安装 Ubuntu Server 20.04 LTS&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="树莓派" scheme="https://fly6022.fun/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
+      <category term="Ubuntu" scheme="https://fly6022.fun/tags/Ubuntu/"/>
+    
+      <category term="Raspberry" scheme="https://fly6022.fun/tags/Raspberry/"/>
+    
+  </entry>
   
   <entry>
     <title>Python QQ/Telegram 聊天机器人的设想</title>
@@ -263,29 +290,6 @@
   </entry>
   
   <entry>
-    <title>低级语言、中级语言、高级语言的定义</title>
-    <link href="https://fly6022.fun/posts/2021-01-19-01/"/>
-    <id>https://fly6022.fun/posts/2021-01-19-01/</id>
-    <published>2021-01-19T02:16:53.000Z</published>
-    <updated>2021-05-04T07:53:26.736Z</updated>
-    
-    <content type="html"><![CDATA[<p>常见的编程语言，如:C, C++, Python, Java等，在日常生活中，我们也时常听说过“高级语言”等词语，它们有什么区别？编程语言的分类又是被如何定义的？</p><a id="more"></a><h2 id="低级语言、中级语言、高级语言的定义"><a href="#低级语言、中级语言、高级语言的定义" class="headerlink" title="低级语言、中级语言、高级语言的定义"></a>低级语言、中级语言、高级语言的定义</h2><p>低级、中级、高级是相较于人而言的。</p><h3 id="低级语言"><a href="#低级语言" class="headerlink" title="低级语言"></a>低级语言</h3><p>形如“汇编语言”这类的语言，被称作“低级语言”，那么它到底“低级”在什么地方呢？</p><p>在汇编语言中，通常用助记符代替机器指令的操作码，它通常长得像这样：</p><pre><code>  DataBegin dw 0  NextDataSeg dw 0ffffh  oldInt2F_addr dw 0, 0  XMS_control dw 0, 0  Handle_begin dw 0  cvtOfs dw 0 ; DOS 3.0 equ 0 and above DOS 4.0 is 1                org 104h                db 0dh                db Revision                db ??date                db 26                org 114h  tsrLength dw 0  MachineID db 0FCh ; IBM PC/AT// 雷军在1994年编写的汇编代码</code></pre><p>看了这段代码，是不是有一种头晕的感觉？(｀・ω・´)，这也就引出了低级语言这类语言缺点了：</p><ul><li>代码单调且冗长，增加了编写的难度</li><li>不易于人的阅读同时也不利于后期对程序的维护</li></ul><p>那么，低级语言就一定“低级”吗？当然不是，它也有很多优点：</p><ul><li>能够减少程序运行时的占用空间、提高程序运行速度</li><li>能够对硬件直接控制且执行的准确率高</li></ul><p>因此，这种语言常常被用来优化应用程序的部分代码来提高程序的运行速度。</p><h3 id="中级语言"><a href="#中级语言" class="headerlink" title="中级语言"></a>中级语言</h3><p>中级语言的定义比较模糊，事实上它应当属于“高级语言”的范畴。</p><p>相信大家对“C语言”、“C++<s>（C艹）</s>”这类语言不陌生。它们通常被称作“中级语言”。</p><p>一般地，中级语言是介于“低级语言”和“高级语言”之间的一类语言，发挥着承上启下的作用，同时也应该是目前在计算机领域应用最广泛的一种语言，小到应用程序，大到操作系统，都少不了它们的身影，由此可见中级语言的重要性。</p><p>中级语言相较于低级语言，更加接近了人的思维（有逻辑性），比较容易被人理解。</p><h3 id="高级语言"><a href="#高级语言" class="headerlink" title="高级语言"></a>高级语言</h3><p>它是对于初学者以及开发人员而言的最友好的一种语言了。</p><p>高级语言的典型代表是Java及Python。</p><p>高级语言相较于前两种语言，变得更加具体化，例如要将两个变量相加并赋值给第三个变量，通过高级语言表达为：</p><pre><code>var3 = var1 + var2;</code></pre><p>由此看出，高级语言的基本特性是：</p><ul><li>便于人的编写及维护</li><li>学习门槛较低，易于掌握</li></ul><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;常见的编程语言，如:C, C++, Python, Java等，在日常生活中，我们也时常听说过“高级语言”等词语，它们有什么区别？编程语言的分类又是被如何定义的？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
-    
-    
-      <category term="编程语言" scheme="https://fly6022.fun/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
     <title>电信家庭网关配置 IPv6 网络 |･ω･` )</title>
     <link href="https://fly6022.fun/posts/2020-09-20-01/"/>
     <id>https://fly6022.fun/posts/2020-09-20-01/</id>
@@ -388,17 +392,17 @@
   </entry>
   
   <entry>
-    <title>树莓派搭建小型FM电台</title>
+    <title>树莓派搭建FM调频广播电台</title>
     <link href="https://fly6022.fun/posts/2020-07-29-01/"/>
     <id>https://fly6022.fun/posts/2020-07-29-01/</id>
     <published>2020-07-29T07:42:00.000Z</published>
-    <updated>2021-01-18T10:21:51.930Z</updated>
+    <updated>2021-05-29T11:11:03.199Z</updated>
     
-    <content type="html"><![CDATA[<p>利用树莓派与 PiFmRds 组件搭建小型FM电台。</p><a id="more"></a><h2 id="🔈-声明"><a href="#🔈-声明" class="headerlink" title="🔈 声明"></a>🔈 声明</h2><blockquote><p>未经有关部门审批私自设立大功率私人电台是<strong>违法行为</strong>，轻则没收设备、罚款拘留，重则判刑，请遵守我国《中华人民共和国无线电管理条例》、《中华人民共和国无线电管制规定》等相关法律法规。<strong>本教程仅供实验、学习以及研究，并且实验中使用到的设备发射功率很小（《中华人民共和国无线电管理条例》第五条：国家鼓励、支持对无线电频谱资源的科学技术研究和先进技术的推广应用，提高无线电频谱资源的利用效率。），实际应用请事先取得相关资质！</strong></p><p>为遵守有关法律法规，本教程不实际演示，仅介绍配置过程。</p></blockquote><h2 id="🎃-准备"><a href="#🎃-准备" class="headerlink" title="🎃 准备"></a>🎃 准备</h2><p>需要准备以下物品：</p><ul><li>Rasberry Pi 任意版本（通电、联网）<br><img src="/images/posts/2020-07-29-01/01.jpg" alt="Rasberry Pi 4 Model B"></li><li>杜邦线（可选），也可不使用<br><img src="/images/posts/2020-07-29-01/02.jpg" alt="杜邦线"></li><li>收音机（也可用手机的FM收音机应用）<br><img src="/images/posts/2020-07-29-01/03.jpg" alt="德生R-909">         </li></ul><h2 id="🌈-实现"><a href="#🌈-实现" class="headerlink" title="🌈 实现"></a>🌈 实现</h2><h3 id="将杜邦线连接到树莓派"><a href="#将杜邦线连接到树莓派" class="headerlink" title="将杜邦线连接到树莓派"></a>将杜邦线连接到树莓派</h3><p><strong>若不使用杜邦线，可跳过此步骤。</strong></p><p>这里参考树莓派的GPIO图：</p><p><img src="/images/posts/2020-07-29-01/04.jpg" alt="GPIO"></p><p>将杜邦线与 GPIO 4 管脚连接（图中红色箭头指向的位置，即将树莓派USB口与以太网口朝着自己，从后向前数靠左一排第四个GPIO管脚）</p><p><img src="/images/posts/2020-07-29-01/05.jpg" alt="GPIO4+杜邦线"></p><h3 id="安装组件"><a href="#安装组件" class="headerlink" title="安装组件"></a>安装组件</h3><ol><li>首先安装 Sndfile 库：</li></ol><pre><code>sudo apt-get install libsndfile1-dev</code></pre><ol><li>之后克隆 PiFmRds 源码：</li></ol><pre><code>git clone https://github.com/ChristopheJacquet/PiFmRds.git</code></pre><ol><li>编译 PiFmRds ：</li></ol><pre><code>cd PiFmRds/srcmake cleanmake</code></pre><ol><li>编译完成之后，键入以下命令运行程序：</li></ol><pre><code>sudo ./pi_fm_rds</code></pre><p>此时，FM信号会从树莓派的GPIO 4管脚发出，默认频率为 107.9 MHz，覆盖范围约 100 cm，若增加一条杜邦线，可将覆盖范围扩大到 10 - 100 m 不等。</p><p>同时，你还可以播放 PiFmRds 内置的 wav 音频，输入此命令可播放内置测试音频（频率 100.6 MHz）：</p><pre><code>sudo ./pi_fm_rds -audio sound.wav -freq 100.6</code></pre><p>更多应用语法：</p><pre><code>pi_fm_rds [-freq freq] [-audio file] [-ppm ppm_error] [-pi pi_code] [-ps ps_text] [-rt rt_text]</code></pre><ul><li><p><strong>-freq</strong> 指定载波频率（单位：MHz）。如：<code>-freq 100.6</code>。</p></li><li><p><strong>-audio</strong> 指定一个音频文件作为音频播放。如果提供立体声文件，则软件将产生FM立体声信号。如：<code>-audio sound.wav</code>。支持的格式为.wav（不支持.mp3格式）。</p></li><li><p><strong>-pi</strong> 指定RDS广播的PI代码。4个十六进制数字。如：<code>-pi FFFF</code>。</p></li><li><p><strong>-ps</strong> 指定RDS广播的电台名称。字符限制：8个字符。如：<code>-ps RASP-PI</code>。</p></li><li><p><strong>-rt</strong> 指定要传输的无线文本（RT）。字符限制：64个字符。如：<code>-rt &#39;Hello, world!&#39;</code>。</p></li><li><p><strong>-ctl</strong> 指定一个命名管道（FIFO）作为控制通道在运行时改变PS和RT。</p></li><li><p><strong>-ppm</strong> 以百万分率（ppm）为单位指定树莓派的振荡器误差。</p></li></ul><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
+    <content type="html"><![CDATA[<p>利用树莓派与 PiFmRds 组件搭建FM调频广播电台。</p><a id="more"></a><h2 id="🔈-声明"><a href="#🔈-声明" class="headerlink" title="🔈 声明"></a>🔈 声明</h2><blockquote><p>未经有关部门审批私自设立大功率私人电台是<strong>违法行为</strong>，轻则没收设备、罚款拘留，重则判刑，请遵守我国《中华人民共和国无线电管理条例》、《中华人民共和国无线电管制规定》等相关法律法规。<strong>本教程仅供实验、学习以及研究，并且实验中使用到的设备发射功率很小（《中华人民共和国无线电管理条例》第五条：国家鼓励、支持对无线电频谱资源的科学技术研究和先进技术的推广应用，提高无线电频谱资源的利用效率。），实际应用请事先取得相关资质！</strong></p></blockquote><h2 id="🎃-准备"><a href="#🎃-准备" class="headerlink" title="🎃 准备"></a>🎃 准备</h2><p>需要准备以下物品：</p><ul><li>Rasberry Pi 任意版本（通电、联网）<br><img src="/images/posts/2020-07-29-01/01.jpg" alt="Rasberry Pi 4 Model B"></li><li>杜邦线（可选），也可不使用<br><img src="/images/posts/2020-07-29-01/02.jpg" alt="杜邦线"></li><li>收音机（也可用手机的FM收音机应用）<br><img src="/images/posts/2020-07-29-01/03.jpg" alt="德生R-909">         </li></ul><h2 id="🌈-实现"><a href="#🌈-实现" class="headerlink" title="🌈 实现"></a>🌈 实现</h2><h3 id="将杜邦线连接到树莓派"><a href="#将杜邦线连接到树莓派" class="headerlink" title="将杜邦线连接到树莓派"></a>将杜邦线连接到树莓派</h3><p><strong>若不使用杜邦线，可跳过此步骤。</strong></p><p>这里参考树莓派的GPIO图：</p><p><img src="/images/posts/2020-07-29-01/04.jpg" alt="GPIO"></p><p>将杜邦线与 GPIO 4 管脚连接（图中红色箭头指向的位置，即将树莓派USB口与以太网口朝着自己，从后向前数靠左一排第四个GPIO管脚）</p><p><img src="/images/posts/2020-07-29-01/05.jpg" alt="GPIO4+杜邦线"></p><h3 id="安装组件"><a href="#安装组件" class="headerlink" title="安装组件"></a>安装组件</h3><ol><li>首先安装 Sndfile 库：</li></ol><pre><code>sudo apt-get install libsndfile1-dev</code></pre><ol><li>之后克隆 PiFmRds 源码：</li></ol><pre><code>git clone https://github.com/ChristopheJacquet/PiFmRds.git</code></pre><ol><li>编译 PiFmRds ：</li></ol><pre><code>cd PiFmRds/srcmake cleanmake</code></pre><ol><li>编译完成之后，键入以下命令运行程序：</li></ol><pre><code>sudo ./pi_fm_rds</code></pre><p>此时，FM信号会从树莓派的GPIO 4管脚发出，默认频率为 107.9 MHz，覆盖范围约 100 cm，若增加一条杜邦线，可将覆盖范围扩大到 10 - 100 m 不等。</p><p>同时，你还可以播放 PiFmRds 内置的 wav 音频，输入此命令可播放内置测试音频（频率 100.6 MHz）：</p><pre><code>sudo ./pi_fm_rds -audio sound.wav -freq 100.6</code></pre><p>更多应用语法：</p><pre><code>pi_fm_rds [-freq freq] [-audio file] [-ppm ppm_error] [-pi pi_code] [-ps ps_text] [-rt rt_text]</code></pre><ul><li><p><strong>-freq</strong> 指定载波频率（单位：MHz）。如：<code>-freq 100.6</code>。</p></li><li><p><strong>-audio</strong> 指定一个音频文件作为音频播放。如果提供立体声文件，则软件将产生FM立体声信号。如：<code>-audio sound.wav</code>。支持的格式为.wav（不支持.mp3格式）。</p></li><li><p><strong>-pi</strong> 指定RDS广播的PI代码。4个十六进制数字。如：<code>-pi FFFF</code>。</p></li><li><p><strong>-ps</strong> 指定RDS广播的电台名称。字符限制：8个字符。如：<code>-ps RASP-PI</code>。</p></li><li><p><strong>-rt</strong> 指定要传输的无线文本（RT）。字符限制：64个字符。如：<code>-rt &#39;Hello, world!&#39;</code>。</p></li><li><p><strong>-ctl</strong> 指定一个命名管道（FIFO）作为控制通道在运行时改变PS和RT。</p></li><li><p><strong>-ppm</strong> 以百万分率（ppm）为单位指定树莓派的振荡器误差。</p></li></ul><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;利用树莓派与 PiFmRds 组件搭建小型FM电台。&lt;/p&gt;
+      &lt;p&gt;利用树莓派与 PiFmRds 组件搭建FM调频广播电台。&lt;/p&gt;
     
     </summary>
     
@@ -413,29 +417,6 @@
       <category term="FM" scheme="https://fly6022.fun/tags/FM/"/>
     
       <category term="linux" scheme="https://fly6022.fun/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Raspberry Pi 4B 开箱</title>
-    <link href="https://fly6022.fun/posts/2020-05-16-01/"/>
-    <id>https://fly6022.fun/posts/2020-05-16-01/</id>
-    <published>2020-07-23T09:57:07.000Z</published>
-    <updated>2021-05-04T07:55:57.771Z</updated>
-    
-    <content type="html"><![CDATA[<p>树莓派 4B 开箱。</p><a id="more"></a><h2 id="💻-图片概览"><a href="#💻-图片概览" class="headerlink" title="💻 图片概览"></a>💻 图片概览</h2><p><img src="/images/posts/2020-05-16-01/01.jpg" alt=""><br><img src="/images/posts/2020-05-16-01/02.jpg" alt=""><br><img src="/images/posts/2020-05-16-01/03.jpg" alt=""><br><img src="/images/posts/2020-05-16-01/04.jpg" alt=""></p><h2 id="📃-配置信息"><a href="#📃-配置信息" class="headerlink" title="📃 配置信息"></a>📃 配置信息</h2><div class="table-container"><table><thead><tr><th>硬件类型</th><th>硬件配置</th></tr></thead><tbody><tr><td>CPU</td><td>Broadcom BCM2711, Quad core Cortex-A72 (ARM v8) 64-bit SoC @ 1.5GHz</td></tr><tr><td>运行内存</td><td>1GB, 2GB, or 4GB of LPDDR4 SDRAM</td></tr><tr><td>以太网络</td><td>Full-throughput Gigabit Ethernet</td></tr><tr><td>无线网络</td><td>CYW43455 2.4 GHz/5.0 GHz IEEE 802.11ac wireless</td></tr><tr><td>蓝牙</td><td>Bluetooth 5.0</td></tr><tr><td>USB</td><td>Two USB 3.0 and two USB 2.0 ports</td></tr><tr><td>显示输出</td><td>Dual monitor support, at resolutions up to 4K</td></tr><tr><td>GPU</td><td>VideoCore VI graphics, supporting OpenGL ES 3.x</td></tr><tr><td>硬件解码</td><td>4Kp60 hardware decode of HEVC video</td></tr></tbody></table></div><h2 id="🔝-较上一代（树莓派-3B-）性能提升"><a href="#🔝-较上一代（树莓派-3B-）性能提升" class="headerlink" title="🔝 较上一代（树莓派 3B+）性能提升"></a>🔝 较上一代（树莓派 3B+）性能提升</h2><ul><li>核心SoC由 Broadcom BCM2837B0 提升为 Broadcom BCM2711，并且集成了 主频为 1.5GHz的四核Arm Cortex-A72 处理器</li><li>内存由 3B+ 单一的 1GB LPDDR2 SDRAM 变为 4B 的 1GB、2GB、4GB、8GB（均为 LPDDR4 SDRAM）四种版本可选</li><li>无线网络方面差别不大，基本无提升</li><li>以太网络支持千兆网络（1Gbps）</li><li>由蓝牙 4.2 提升为 蓝牙 5.0</li><li>显示输出方面，4B 提供了2个 Micro HDMI 接口，均支持4K 60帧，且支持双路输出</li><li>USB接口由4个 USB 2.0 变为 2个 USB 2.0、2个 USB 3.0</li><li>电源供电由以往的 Micro USB 接口变为 USB-Type-C 接口（供电需求为5V 3A，即 15w）</li></ul><hr><p>如果你喜欢本文的话，欢迎 <a href="/donate.html">赞赏</a> 作者o(´^｀)o</p><p><strong>本文首次编辑时间：</strong>2020/5/16 15:25:36<br><strong>本文此次编辑时间：</strong>2020/7/23 17:57:07 </p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;树莓派 4B 开箱。&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="随便写写" scheme="https://fly6022.fun/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/"/>
-    
-    
-      <category term="树莓派" scheme="https://fly6022.fun/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
     
   </entry>
   
