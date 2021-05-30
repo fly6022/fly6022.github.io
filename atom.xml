@@ -35,34 +35,11 @@
       <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
     
     
-      <category term="树莓派" scheme="https://fly6022.fun/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
-    
       <category term="Ubuntu" scheme="https://fly6022.fun/tags/Ubuntu/"/>
     
+      <category term="树莓派" scheme="https://fly6022.fun/tags/%E6%A0%91%E8%8E%93%E6%B4%BE/"/>
+    
       <category term="Raspberry" scheme="https://fly6022.fun/tags/Raspberry/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Python QQ/Telegram 聊天机器人的设想</title>
-    <link href="https://fly6022.fun/posts/2021-05-02-01/"/>
-    <id>https://fly6022.fun/posts/2021-05-02-01/</id>
-    <published>2021-05-02T14:03:42.000Z</published>
-    <updated>2021-05-04T08:22:55.336Z</updated>
-    
-    <content type="html"><![CDATA[<p>聊天机器人的原理大概可以用以下来表述：用户给出程序一个<code>key</code> → 程序处理 → 输出该参数所对应的<code>value</code>，那么，用 Python 能不能做一个聊天机器人呢？</p><a id="more"></a><p>按照以上的原理猜想，我认为是可以的。</p><h3 id="一个简单的流程图"><a href="#一个简单的流程图" class="headerlink" title="一个简单的流程图"></a>一个简单的流程图</h3><center><div id="flowchart-0" class="flow-chart"></div></center><h3 id="用程序表示"><a href="#用程序表示" class="headerlink" title="用程序表示"></a>用程序表示</h3><ul><li>Python:<pre><code class="lang-python">key = input()value = strif key==&quot;hello, world!&quot; : value = &quot;hello!&quot;else : value = &quot;undefined&quot;print(value)</code></pre></li></ul><p>输入→查找对应值→输出，这，便是一个聊天机器人的雏形了。</p><p>但，一个真正的聊天机器人远不止这么简单。</p><p>首先，过多的<code>if</code>函数会使我们的机器人程序变得十分臃肿，因此我们需要让这个机器人有一个单独存储应答内容的“大脑”，我们称之为“数据库”。在此，我使用JSON来存放应答数据。</p><pre><code class="lang-json">[    {        &quot;key&quot;: &quot;hello, world!&quot;,        &quot;value&quot;: &quot;hello!&quot;    }]</code></pre><p>为了让我们的机器人程序能够处理JSON信息，这里需要引入一个 Python库</p><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins></p><p><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: BEGINin=>inputoutput: INPUT keyop=>condition: Searchout=>inputoutput: OUTPUT valueun=>operation: UNDEFINEDe=>end: ENDst->in->opop(yes)->out->eop(no,right)->un->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;聊天机器人的原理大概可以用以下来表述：用户给出程序一个&lt;code&gt;key&lt;/code&gt; → 程序处理 → 输出该参数所对应的&lt;code&gt;value&lt;/code&gt;，那么，用 Python 能不能做一个聊天机器人呢？&lt;/p&gt;
-    
-    </summary>
-    
-    
-      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
-    
-    
-      <category term="Python" scheme="https://fly6022.fun/tags/Python/"/>
     
   </entry>
   
