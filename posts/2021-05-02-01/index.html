@@ -4,7 +4,7 @@
 
 <head>
   
-<title>标签：ADB - fly6022</title>
+<title>【待续】Python QQ/Telegram 聊天机器人的设想 - fly6022</title>
 <meta charset="UTF-8">
 <meta name="description" content="ヾ(=･ω･=)o这里是fly6022的个人小站。">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
@@ -12,19 +12,17 @@
 
 
 <link rel="shortcut icon" href="https://fly6022.fun/images/favicon.png" type="image/png" />
-<meta name="description" content="ヾ(&#x3D;･ω･&#x3D;)o这里是fly6022的个人小站。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="fly6022">
-<meta property="og:url" content="https://fly6022.fun/tags/ADB/index.html">
+<meta name="description" content="聊天机器人的原理大概可以用以下来表述：用户给出程序一个key → 程序处理 → 输出该参数所对应的value，那么，用 Python 能不能做一个聊天机器人呢？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【待续】Python QQ&#x2F;Telegram 聊天机器人的设想">
+<meta property="og:url" content="https://fly6022.fun/posts/2021-05-02-01/index.html">
 <meta property="og:site_name" content="fly6022">
-<meta property="og:description" content="ヾ(&#x3D;･ω･&#x3D;)o这里是fly6022的个人小站。">
+<meta property="og:description" content="聊天机器人的原理大概可以用以下来表述：用户给出程序一个key → 程序处理 → 输出该参数所对应的value，那么，用 Python 能不能做一个聊天机器人呢？">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-05-02T14:03:42.000Z">
+<meta property="article:modified_time" content="2021-05-30T12:27:43.220Z">
 <meta property="article:author" content="fly6022">
-<meta property="article:tag" content="fly6022">
-<meta property="article:tag" content="技术宅">
-<meta property="article:tag" content="动漫">
-<meta property="article:tag" content="编程">
-<meta property="article:tag" content="code">
+<meta property="article:tag" content="Python">
 <meta name="twitter:card" content="summary">
 <link rel="stylesheet" href="/css/style.css" crossorigin>
 <link rel="stylesheet" href="/css/tip.css" />
@@ -32,7 +30,7 @@
 <link rel="stylesheet" href="/css/iconfont.css">
 
 
-  <!--<link rel="stylesheet" href="/css/style.css?v=1622377690703">-->
+  <!--<link rel="stylesheet" href="/css/style.css?v=1622377690994">-->
 
   
 
@@ -270,43 +268,123 @@
   </div>
   <div id="nexmoe-content">
     <div class="nexmoe-primary">
-        <style>
-    #nexmoe-content .nexmoe-archives .nexmoe-post .nexmoe-post-cover {
-        max-height: 75px;
-    }
-</style>
-<section class="nexmoe-archives">
+        <div class="nexmoe-post">
+  
+      <div class="nexmoe-post-cover" 
+          style="padding-bottom: 56.25%;"> 
+          <img data-src="/images/background/29.png" data-sizes="auto" alt="【待续】Python QQ/Telegram 聊天机器人的设想" class="lazyload">
+          <h1>【待续】Python QQ/Telegram 聊天机器人的设想</h1>
+      </div>
+  
+  <div class="nexmoe-post-meta">
+    <a><i class="nexmoefont icon-calendar-fill"></i>2021年05月02日</a>
+    <a><i class="nexmoefont icon-areachart"></i>293 字</a>
+    <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
     
-    <div class="nexmoe-post">
-        <a href="/posts/2020-11-27-01/">
-            
-                <div class="nexmoe-post-cover mdui-ripple"> 
-                    <img data-src="/images/background/52.jpg" data-sizes="auto" alt="解除手机 Bootloader 锁" class="lazyload">
-                    <h1>解除手机 Bootloader 锁</h1>
-                </div>
-            
-        </a>
-        <div class="nexmoe-post-meta">
-            <a><i class="nexmoefont icon-calendar-fill"></i>2020年11月27日</a>
-            <a><i class="nexmoefont icon-areachart"></i>360 字</a>
-            <a><i class="nexmoefont icon-time-circle-fill"></i>大概 1 分钟</a>
-            
-                <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/">编程开发</a>
-            
-            
-                <a class="nexmoefont icon-tag-fill -link" href="/tags/ADB/" rel="tag">ADB</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/Android/" rel="tag">Android</a> <a class="nexmoefont icon-tag-fill -link" href="/tags/Linux/" rel="tag">Linux</a>
-            
-        </div>
-        <div style="height: 50px;"></div>
-    </div>
+      <a class="nexmoefont icon-appstore-fill -link" href="/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/">编程开发</a>
     
-</section>
+    
+      <a class="nexmoefont icon-tag-fill -link" href="/tags/Python/" rel="tag">Python</a>
+    
+    
+  </div>
 
+  <div class="nexmoe-post-right">
+    
+      <div class="nexmoe-fixed">
+        <div class="nexmoe-valign">
+            <div class="nexmoe-toc">
+                <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一个简单的流程图"><span class="toc-number">1.</span> <span class="toc-text">一个简单的流程图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#用程序表示"><span class="toc-number">2.</span> <span class="toc-text">用程序表示</span></a></li></ol>
+            </div>
+        </div>
+      </div>
+    
+  </div>
+
+  <article>
+    <p>聊天机器人的原理大概可以用以下来表述：用户给出程序一个<code>key</code> → 程序处理 → 输出该参数所对应的<code>value</code>，那么，用 Python 能不能做一个聊天机器人呢？</p>
+<a id="more"></a>
+<p>按照以上的原理猜想，我认为是可以的。</p>
+<h3 id="一个简单的流程图"><a href="#一个简单的流程图" class="headerlink" title="一个简单的流程图"></a>一个简单的流程图</h3><center>
+<div id="flowchart-0" class="flow-chart"></div>
+</center>
+
+<h3 id="用程序表示"><a href="#用程序表示" class="headerlink" title="用程序表示"></a>用程序表示</h3><ul>
+<li>Python:<pre><code class="lang-python">key = input()
+value = str
+if key==&quot;hello, world!&quot; :
+ value = &quot;hello!&quot;
+else :
+ value = &quot;undefined&quot;
+print(value)
+</code></pre>
+</li>
+</ul>
+<p>输入→查找对应值→输出，这，便是一个聊天机器人的雏形了。</p>
+<p>但，一个真正的聊天机器人远不止这么简单。</p>
+<p>首先，过多的<code>if</code>函数会使我们的机器人程序变得十分臃肿，因此我们需要让这个机器人有一个单独存储应答内容的“大脑”，我们称之为“数据库”。在此，我使用JSON来存放应答数据。</p>
+<pre><code class="lang-json">[
+    {
+        &quot;key&quot;: &quot;hello, world!&quot;,
+        &quot;value&quot;: &quot;hello!&quot;
+    }
+]
+</code></pre>
+<p>为了让我们的机器人程序能够处理JSON信息，这里需要引入一个 Python库</p>
+<p><ins class="adsbygoogle"
+  style="display:block"
+  data-ad-client="ca-pub-6839568581522290"
+  data-ad-slot="4087099451"
+  data-ad-format="auto"
+  data-full-width-responsive="true"></ins></p>
+<p><script>
+   (adsbygoogle = window.adsbygoogle || []).push({});
+</script><script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.7/raphael.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.6.5/flowchart.min.js"></script><textarea id="flowchart-0-code" style="display: none">st=>start: BEGIN
+in=>inputoutput: INPUT key
+op=>condition: Search
+out=>inputoutput: OUTPUT value
+un=>operation: UNDEFINED
+e=>end: END
+st->in->op
+op(yes)->out->e
+op(no,right)->un->e</textarea><textarea id="flowchart-0-options" style="display: none">{"scale":1,"line-width":2,"line-length":50,"text-margin":10,"font-size":12}</textarea><script>  var code = document.getElementById("flowchart-0-code").value;  var options = JSON.parse(decodeURIComponent(document.getElementById("flowchart-0-options").value));  var diagram = flowchart.parse(code);  diagram.drawSVG("flowchart-0", options);</script></p>
+
+  </article>
+  
+    
+<div class="nexmoe-post-copyright">
+<i class="mdui-list-item-icon nexmoefont icon-info-circle"></i>
+<strong>本文作者：</strong>fly6022<br>
+<strong>本文链接：</strong><a href="https://fly6022.fun/posts/2021-05-02-01/" title="https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-05-02-01&#x2F;" target="_blank" rel="noopener">https:&#x2F;&#x2F;fly6022.fun&#x2F;posts&#x2F;2021-05-02-01&#x2F;</a><br>
+
+  本文章著作权归 fly6022 所有，未经本人允许，禁止在任何平台转载或修改并二次发布。
+
+</div>
+
+
+  
+  <section class="nexmoe-comment">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.css">
+<div id="gitalk"></div>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.6.2/dist/gitalk.min.js"></script>
+<script type="text/javascript">
+    var gitalk = new Gitalk({
+        clientID: '15111f41fc2a43bae55d',
+        clientSecret: 'bd56a6ae6546a0fab467366fa5c14cfed4fd106b',
+        id: window.location.pathname,
+        repo: 'fly6022.github.io',
+        owner: 'fly6022',
+        admin: 'fly6022'
+    })
+    gitalk.render('gitalk')
+</script>
+</section>
+</div>
     </div>
   </div>
   <script src="/js/app-2.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<!--<script src="/js/app.js?v=1622377690706"></script>-->
+<!--<script src="/js/app.js?v=1622377690995"></script>-->
 
 
 
