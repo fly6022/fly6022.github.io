@@ -363,11 +363,14 @@ body {
 	display:block;
 	-webkit-filter:blur(5px);
 	filter:blur(5px);
-	transition:filter .4s ease-in,-webkit-filter .4s ease-in;
+	transition:filter .4s ease-in,-webkit-filter .4s ease-in,transform 0.3s;
 	position:absolute;
 	left:0;
 	top:0;
-	opacity:0
+	opacity:0;
+}
+#nexmoe-content .nexmoe-post .nexmoe-post-cover img:hover {
+	transform: scale(1.03);
 }
 #nexmoe-content .nexmoe-post .nexmoe-post-cover img.lazyloaded {
 	-webkit-filter:blur(0);
@@ -611,14 +614,6 @@ article table.nexmoe-album {
 article table.nexmoe-album+.nexmoe-album {
 	margin-top:5px
 }
-/*article table.nexmoe-album,article table.nexmoe-album td,article table.nexmoe-album th,article table.nexmoe-album thead {
-	border:none;
-	box-shadow:none
-}
-article table.nexmoe-album td,article table.nexmoe-album th {
-	padding:5px;
-	height:300px
-}*/
 article table.nexmoe-album td a::after,article table.nexmoe-album th a::after {
 	display:none
 }
@@ -627,11 +622,6 @@ article table.nexmoe-album td a::after,article table.nexmoe-album th a::after {
 	height:100px
 }
 }
-/*article table.nexmoe-album img {
-	width:100%;
-	height:100%;
-	object-fit:cover;      
-}*/
 article img {
 	display:block;
 	border-radius:6px;

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://fly6022.fun/"/>
-  <updated>2021-07-07T13:24:28.871Z</updated>
+  <updated>2021-07-08T15:12:16.292Z</updated>
   <id>https://fly6022.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【持续更新】常见的CSS用法</title>
+    <link href="https://fly6022.fun/posts/2021-07-08-01/"/>
+    <id>https://fly6022.fun/posts/2021-07-08-01/</id>
+    <published>2021-07-08T15:03:18.000Z</published>
+    <updated>2021-07-08T15:12:16.292Z</updated>
+    
+    <content type="html"><![CDATA[<p>整理的常见CSS用法。</p><a id="more"></a><h2 id="鼠标停留图片放大效果"><a href="#鼠标停留图片放大效果" class="headerlink" title="鼠标停留图片放大效果"></a>鼠标停留图片放大效果</h2><pre><code class="lang-HTML">&lt;img src=&quot;/images/background/1.jpg&quot;&gt;</code></pre><pre><code class="lang-CSS">img {transition: transform 0.3s;}img:hover {    transform: scale(1.03);}</code></pre><p><ins class="adsbygoogle"  style="display:block"  data-ad-client="ca-pub-6839568581522290"  data-ad-slot="4087099451"  data-ad-format="auto"  data-full-width-responsive="true"></ins></p><script>   (adsbygoogle = window.adsbygoogle || []).push({});</script>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;整理的常见CSS用法。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="编程开发" scheme="https://fly6022.fun/categories/%E7%BC%96%E7%A8%8B%E5%BC%80%E5%8F%91/"/>
+    
+    
+      <category term="HTML" scheme="https://fly6022.fun/tags/HTML/"/>
+    
+      <category term="CSS" scheme="https://fly6022.fun/tags/CSS/"/>
+    
+      <category term="前端开发" scheme="https://fly6022.fun/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
   
   <entry>
     <title>树莓派安装Ubuntu系统</title>
