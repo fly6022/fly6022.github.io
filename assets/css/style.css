@@ -1,6 +1,6 @@
 /* Copyright (C) 2022 fly6022. */
 
-@import url("/assets/css/iconfont.css");
+@import url("../css/iconfont.css");
 
 * {
 	-webkit-user-select: none;
@@ -109,7 +109,7 @@ a, a:hover {
 	height: 100px;
 	margin-top: -50px;
 	border:1px soild white;
-	background: url(/assets/images/avatar.jpg) no-repeat center;
+	background: url(../images/avatar.jpg) no-repeat center;
 	border-radius: 50px;
 	background-size: 100px;
 }
