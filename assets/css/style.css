@@ -119,9 +119,8 @@ a, a:hover {
 }
 
 hr {
-	margin: 20px auto;
-	width: 50%;
-	border-top: 1px solid hsla(0,0%,100%,.20);
+	margin: 10px auto;
+	width: 0%;
 }
 
 .footer {
