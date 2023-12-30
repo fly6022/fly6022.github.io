@@ -34,7 +34,7 @@ a, a:hover {
 }
 
 .index_bg {
-	background: url(https://cdn.jsdelivr.net/gh/imageurl/fly6022@master/images/background/48.jpg);
+	background: url(/assets/images/bg/bg.jpg);
 	position:fixed;
 	top: 0;
 	left: 0;
