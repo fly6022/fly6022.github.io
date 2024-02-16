@@ -32,6 +32,15 @@
             <i class="mdui-icon material-icons">menu</i>
           </span>
           <div class="mdui-toolbar-spacer">
+            <script src="https://cdn.jsdelivr.net/gh/ChizaoProject/chizaobook@latest/app.js"></script>
+            <chizaobook style="line-height: 1em; color:antiquewhite;">
+              <script>
+                const chizaobook = new Chizaobook({
+                  container: "chizaobook", // string
+                    packageSource: "https://cdn.jsdelivr.net/gh/ChizaoProject/Packages@latest/package_source.json", // string
+                    packageType: null // int
+                });
+              </script>              
             <!--<div class="mdui-chip" style="margin: auto; position: fixed; transform: translate(0, -50%);">
               <span id="time" class="mdui-chip-title" style="transform: translate(0, -50%);"></span>
               <script>
@@ -74,6 +83,12 @@
                           mdui-list-item
                           mdui-ripple
                           ">学习部落</a>
+                </div>
+                <div class="mdui-collapse-item-body mdui-list">
+                  <a href="https://chizao.fly6022.fun/" target="_blank" mdui-tooltip="{content: '摛藻BOOK'}" class="
+                          mdui-list-item
+                          mdui-ripple
+                          ">摛藻 - ChizaoBook</a>
                 </div>
 
             </div>
