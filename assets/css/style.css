@@ -27,7 +27,7 @@ a, a:hover {
 }
 
 .social a{
-	color: #000;
+	color: auto;
 	transition: .5s;
 	text-decoration: none;
 
