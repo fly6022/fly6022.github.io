@@ -1,57 +1,91 @@
 @font-face {
-  font-family: "iconfont"; /* Project id  */
-  src: url('iconfont.ttf?t=1659407287430') format('truetype');
+  font-family: "iconfont"; /* Project id 1994852 */
+  src: url('iconfont.woff2?t=1738643754843') format('woff2'),
+       url('iconfont.woff?t=1738643754843') format('woff'),
+       url('iconfont.ttf?t=1738643754843') format('truetype');
 }
 
 .iconfont {
   font-family: "iconfont" !important;
-  font-size: 0.96em;
+  font-size: 24px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-blog:before {
-  content: "\e70f";
+.icongame:before {
+  content: "\e635";
 }
 
-.icon-aboutme:before {
+.iconrss:before {
+  content: "\e602";
+}
+
+.iconcarema:before {
+  content: "\e6ce";
+}
+
+.icondownload:before {
+  content: "\e6f2";
+}
+
+.iconradio_device:before {
+  content: "\e622";
+}
+
+.iconMinecraft:before {
+  content: "\ec71";
+}
+
+.iconaboutme:before {
   content: "\e63e";
 }
 
-.icon-zhihu:before {
-  content: "\e87c";
+.iconcode:before {
+  content: "\e7fc";
 }
 
-.icon-QQ:before {
-  content: "\e882";
-}
-
-.icon-wechat-fill:before {
-  content: "\e883";
-}
-
-.icon-github-fill:before {
+.icongithub:before {
   content: "\e885";
 }
 
-.icon-link:before {
-  content: "\e772";
+.iconQQ:before {
+  content: "\e887";
 }
 
-.icon-bilibili-fill:before {
+.iconzhihu:before {
+  content: "\e88b";
+}
+
+.iconwechat:before {
+  content: "\e600";
+}
+
+.iconbili:before {
   content: "\e75c";
 }
 
-.icon-daima:before {
-  content: "\e60e";
+.icondonate:before {
+  content: "\ea1d";
 }
 
-.icon-telegram:before {
-  content: "\e9ac";
+.icontelegram:before {
+  content: "\ec25";
 }
 
-.icon-email:before {
-  content: "\e66f";
+.iconlink:before {
+  content: "\e83d";
+}
+
+.iconemail:before {
+  content: "\e856";
+}
+
+.iconblog:before {
+  content: "\e601";
+}
+
+.iconradio:before {
+  content: "\e61b";
 }
 
