@@ -1,5 +1,7 @@
 const images = [
-    '/assets/images/bg/bg.jpg',
+    '/assets/images/bg/1.jpg',
+    '/assets/images/bg/2.jpg',
+    '/assets/images/bg/5.jpg',
     'https://api.ee123.net/img/bingimg/dayimg.jpg'
 ];
 let currentIndex = 0;
@@ -14,4 +16,4 @@ function changeBackground() {
 }
 
 changeBackground()
-setInterval(changeBackground, 10000); // 每10秒切换一次背景
+setInterval(changeBackground, 15000); // 每15秒切换一次背景
