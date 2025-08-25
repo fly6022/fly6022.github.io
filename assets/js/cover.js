@@ -1,10 +1,8 @@
 const cdn = "https://cdn.jsdelivr.net/gh/fly6022/fly6022.github.io"
 
 const images = [
-    cdn + '/assets/images/bg/1.jpg',
-    cdn + '/assets/images/bg/2.jpg',
-    cdn + '/assets/images/bg/5.jpg',
-    'https://api.ee123.net/img/bingimg/dayimg.jpg'
+    'https://api.ee123.net/img/bingimg/dayimg.jpg',
+    cdn + '/assets/images/bg/5.jpg'
 ];
 let currentIndex = 0;
 

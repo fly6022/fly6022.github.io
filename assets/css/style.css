@@ -21,14 +21,16 @@ body {
 }
 
 a, a:hover {
-	color: #F5F5F5;
+	color: #66CCFF;
 	transition: .5s;
 	text-decoration: none;
 
 }
 
+
+
 .social a{
-	color: auto;
+	color: #F5F5F5;
 	transition: .5s;
 	text-decoration: none;
 
