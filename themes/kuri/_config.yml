@@ -1,0 +1,193 @@
+# kuri Theme Config @ version 1.0.0
+# website: https://kuri.ink | cl@kuri.ink
+
+# Yourself / 个人信息
+nickname: fly6022 # 昵称
+motto: The older you get, the less you cry. # 一句话简介
+logo: /images/avatar.jpg # 头像
+github: https://github.com/fly6022 # Github 个人主页地址
+background: # 背景图片
+  - https://api.ee123.net/img/bingimg/dayimg.jpg
+  - https://cdn.jsdelivr.net/gh/fly6022/fly6022.github.io/images/bg/5.jpg
+
+# SEO / 搜索引擎优化
+fav: /images/fav.png
+
+# Sidebar / 侧边栏
+sidebar:
+  导航:
+    烟波江上:
+      - https://bookrack.kuri.ink/
+      - 在线书架
+    摛藻:
+      - https://chizao.kuri.ink/
+      - 摛藻-Chizaobook
+  工具:
+    Hexo:
+      - https://hexo.io/zh-cn/
+      - Hexo
+    Mastodon:
+      - https://docs.joinmastodon.org/zh-cn/
+      - Mastodon
+    GeoGebra:
+      - https://www.geogebra.org/
+      - GeoGebra
+    Z-Library:
+      - https://zh.z-library.se/
+      - 开放、自由的公共在线图书馆
+    FLOW:
+      - https://www.flowoss.com/zh-CN
+      - FLOW - Epub在线阅读器
+    Text to ASCII Art Generator (TAAG):
+      - http://patorjk.com/software/taag/
+      - 生成字符画
+    Minecraft 版本库:
+      - https://mcarc.github.io/
+      - Minecraft 版本库
+    SauceNAO:
+      - https://saucenao.com/
+      - image source locator
+    慧伊创新:
+      - https://www.china-emu.cn/
+      - 记录动车组列车发展历程
+    Prettier:
+      - https://www.prettier.cn/
+      - 代码格式化工具
+    Mermaid:
+      - https://mermaid.live/
+      - 思维导图
+    7ED:
+      - https://www.7ed.net/gitmirror/hub.html
+      - GitHub 文件加速
+    APRS.TV:
+      - https://aprs.tv/
+      - APRS地图
+  学习:
+    Deepseek:
+      - https://www.deepseek.com/
+      - Deepseek
+    ChatGPT:
+      - https://openai.com/zh-Hans-CN/
+      - ChatGPT
+    China Daily:
+      - http://www.chinadaily.com.cn/
+      - 中国日报网
+    英文分级指难针:
+      - https://www.languagedata.net/tester/
+      - LanguageData
+    CCL-PKU:
+      - http://ccl.pku.edu.cn:8080/ccl_corpus/index.jsp
+      - 北京大学现代汉语语料库
+    Coursera:
+      - https://www.coursera.org/
+      - Coursera
+    英语真题在线:
+      - https://zhenti.burningvocabulary.cn/
+      - 考研英语、四六级等专业的在线训练平台，按试卷排版设计
+    WeHUSTER:
+      - https://www.wehuster.com/
+      - 免费开放的四六级真题听力资源共享站
+  友链:
+    MOXUAN:
+      - https://tianiel.top/
+      - MOXUAN
+    9527DHX:
+      - https://9527dhx.top/
+      - 9527DHX
+    Yang:
+      - https://kaeshi.top/
+      - Yang
+    UUHHOOOO:
+      - https://uuhhoooo.space/
+      - UUHHOOOO
+    PONYJUN:
+      - https://p.cnedge.net/
+      - PONYJUN
+    Jonjs:
+      - https://blog.jonjs.cn/
+      - Jonjs
+    Link:
+      - https://atlinker.cn/
+      - Link
+    FGHRSH:
+      - https://www.fghrsh.net/
+      - FGHRSH
+    Islauso:
+      - https://www.azusemisa.top/
+      - Islauso
+    橘纸柚:
+      - https://lovemen.cc/
+      - 橘纸柚
+    Luminous:
+      - https://luotianyi.vc/
+      - Luminous
+    小丁的屋舍:
+      - https://xding.top/
+      - 小丁的屋舍
+    祈星海:
+      - https://zzzzhi.com
+      - 祈星海
+
+sidebar_color: 
+  导航:
+    - near_me
+    - mdui-text-color-blue
+  工具:
+    - layers
+    - mdui-text-color-green
+  学习:
+    - chrome_reader_mode
+    - mdui-text-color-yellow
+  友链:
+    - people
+    - mdui-text-color-pink
+
+# Header / 页眉信息
+chizaobook: true # true / false 在页眉显示摛藻好句功能
+
+# Social / 社交按钮
+social:
+  哔哩哔哩:
+    - https://space.bilibili.com/191078710
+    - 哔哩哔哩
+    - iconfont iconbili
+  博客:
+    - https://blog.kuri.ink/
+    - 博客
+    - iconfont iconblog
+  无线电:
+    - https://ba4rkw.kuri.ink/
+    - 无线电
+    - iconfont iconradio_device
+  关于我:
+    - https://blog.kuri.ink/about
+    - 关于我
+    - iconfont iconaboutme
+  友情链接:
+    - https://blog.kuri.ink/links
+    - 友情链接
+    - iconfont iconlink
+  邮箱:
+    - mailto:cl@kuri.ink
+    - 邮箱
+    - iconfont iconemail
+
+# Footer / 页脚信息
+## copyright / 版权
+author: fly6022 # 作者名称
+## remark / 备注
+remark: '<a href="https://ipw.cn/ipv6webcheck/?site=kuri.ink" target="_blank"><img style="display:inline-block;vertical-align:middle" src="https://static.ipw.cn/icon/ipv6-s1.svg" width="50%" /></a>'
+## Regist / 备案
+regist: '<a href="https://icp.gov.moe/?keyword=20246022" target="_blank">萌ICP备20246022号</a>'
+
+# tools / 工具
+analysis: 
+  platform: 51.la
+  id: JEOD145Z95thC4GS
+  cd: JEOD145Z95thC4GS
+aplayer: 
+  enable: true
+  platform: netease
+  type: playlist
+  id: 6622801607
+  fixed: true
