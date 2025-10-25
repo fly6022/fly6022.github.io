@@ -9,6 +9,10 @@ github: https://github.com/fly6022 # Github 个人主页地址
 background: # 背景图片
   - https://bing.img.run/uhd.php
   - https://imageurl.kuri.ink/images/background/111.jpg
+iconfont: https://cdn.jsdelivr.net/gh/kuricube/cdn@master/css/iconfont/iconfont.min.css
+cdn:
+  primary: https://cdn.jsdelivr.net/gh/kuricube/cdn@master
+  backup: 
 
 # SEO / 搜索引擎优化
 fav: /images/fav.png
@@ -41,15 +45,15 @@ sidebar:
     Text to ASCII Art Generator (TAAG):
       - http://patorjk.com/software/taag/
       - 生成字符画
-    Minecraft 版本库:
+    MCARC:
       - https://mcarc.github.io/
       - Minecraft 版本库
     SauceNAO:
       - https://saucenao.com/
       - image source locator
-    慧伊创新:
+    China-EMU:
       - https://www.china-emu.cn/
-      - 记录动车组列车发展历程
+      - 慧伊创新 - 记录动车组列车发展历程
     Prettier:
       - https://www.prettier.cn/
       - 代码格式化工具
@@ -72,16 +76,16 @@ sidebar:
     China Daily:
       - http://www.chinadaily.com.cn/
       - 中国日报网
-    英文分级指难针:
+    LanguageData:
       - https://www.languagedata.net/tester/
-      - LanguageData
+      - LanguageData - 英文分级指难针
     CCL-PKU:
       - http://ccl.pku.edu.cn:8080/ccl_corpus/index.jsp
       - 北京大学现代汉语语料库
     Coursera:
       - https://www.coursera.org/
       - Coursera
-    英语真题在线:
+    English.Zhenti:
       - https://zhenti.burningvocabulary.cn/
       - 考研英语、四六级等专业的在线训练平台，按试卷排版设计。
     WeHUSTER:
@@ -121,7 +125,7 @@ sidebar:
     Islauso:
       - https://www.azusemisa.top/
       - Islauso
-    橘纸柚:
+    Juziyou:
       - https://lovemen.cc/
       - 橘纸柚
     Luminous:
