@@ -9,10 +9,10 @@ github: https://github.com/fly6022 # Github 个人主页地址
 background: # 背景图片
   - https://bing.img.run/uhd.php
   - https://imageurl.kuri.ink/images/background/111.jpg
-iconfont: https://cdn.jsdelivr.net/gh/kuricube/cdn@master/css/iconfont/iconfont.min.css
+iconfont: https://cdn.kuri.ink/css/iconfont/iconfont.min.css
 cdn:
-  primary: https://cdn.jsdelivr.net/gh/kuricube/cdn@master
-  backup: 
+  primary: https://cdn.kuri.ink
+  backup: https://cdn.jsdelivr.net/gh/kuricube/cdn@master
 
 # SEO / 搜索引擎优化
 fav: /images/fav.png
